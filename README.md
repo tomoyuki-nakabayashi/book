@@ -1,3 +1,11 @@
+# [Work in Progress] - 組込みRust
+
+このドキュメントは、ベアメタル (マイクロコントローラ) デバイスのファームウェアを開発するために、Rustをどのように使うか、を説明するものです。
+
+keenさん作成の、[対訳表](https://github.com/rust-lang-ja/the-rust-programming-language-ja/blob/master/TranslationTable.md)と[CONTRIBUTING.md](https://github.com/rust-lang-ja/the-rust-programming-language-ja/blob/master/CONTRIBUTING.md)を参考に翻訳を進めていきます。
+
+英語も日本語もRustも未熟者ですが、組込みでRustが主流になってほしいので、がんばります。よろしくお願いいたします。
+
 # [Work in Progress] - The Embedded Rust Book
 
 > Documentation on how to use the Rust Programming Language to develop firmware for bare metal (microcontroller) devices
