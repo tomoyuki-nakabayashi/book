@@ -46,7 +46,7 @@
 <!-- where required. -->
 
 本書は出来る限り一般的な事項を取り扱います。ただし、説明を簡単にするために、全ての例で、ARM Cortex-Mアーキテクチャを利用します。
-読者は、このアーキテクチャに親しんでいる必要はありません。本書では、アーキテクチャ固有の詳細について、必要に応じた説明をします。
+読者は、このアーキテクチャに詳しい必要はありません。本書では、アーキテクチャ固有の詳細について、必要に応じて説明をします。
 
 <!-- ## Who This Book is For -->
 <!-- This book caters towards people with either some embedded background or some Rust background, however we assume -->
@@ -56,7 +56,7 @@
 <!-- you want to catch up on. -->
 
 ## この本は誰のためのもの
-本書では、組込み開発か、Rustかのバックグラウンドを持つ人々に向けたものです。しかし、組込みRustに興味がある人なら、誰でも、この本から何かを得られると思います。本書による学習効果を高めるために、事前知識が不足している皆さんには、`仮定と前提条件`のセクションを読み、不足している知識を補うことをお勧めします。不足知識を補うリソースを見つけるために、`その他のリソース`セクションをチェックすることができます。
+本書は、組込み開発か、Rustかのバックグラウンドを持つ人々に向けたものです。しかし、組込みRustに興味がある人なら、誰でも、この本から何かを得られると思います。本書による学習効果を高めるために、事前知識が不足している読者は、`仮定と前提条件`のセクションを読み、不足している知識を補うことをお勧めします。不足知識を補うリソースを見つけるために、`その他のリソース`セクションをチェックすることができます。
 
 <!-- ### Assumptions and Prerequisites -->
 
@@ -90,6 +90,7 @@
 ### その他のリソース
 もしあなたが上述した何らかの事項をよく知らない場合、もしくは、本書内の特定トピックに関して、より詳細な情報を知りたい場合、これらのリソースが役に立つでしょう。
 
+<!--
 | Topic        | Resource | Description |
 |--------------|----------|-------------|
 | Rust         | [Rust Book 2018 Edition](https://doc.rust-lang.org/book/2018-edition/index.html) | If you are not yet comfortable with Rust, we highly suggest reading the this book. |
@@ -99,6 +100,7 @@
 | Interrupts | [Interrupt](https://en.wikipedia.org/wiki/Interrupt) | - |
 | Memory-mapped IO/Peripherals | [Memory-mapped I/O](https://en.wikipedia.org/wiki/Memory-mapped_I/O) | - |
 | SPI, UART, RS232, USB, I2C, TTL | [Stack Exchange about SPI, UART, and other interfaces](https://electronics.stackexchange.com/questions/37814/usart-uart-rs232-usb-spi-i2c-ttl-etc-what-are-all-of-these-and-how-do-th) | - |
+-->
 
 | トピック      | リソース   | 説明 |
 |--------------|----------|-------------|
@@ -128,7 +130,7 @@
 <!-- vendors, and often even different between Microcontroller families from the same -->
 <!-- vendor. -->
 
-この本は、ほとんどの例で、STマイクロエレクトロニクスの[STM32F3DISCOVERY]開発ボードを使用します。このボードは、ARM Cortex-Mアーキテクチャをベースとしています。基本機能はこのアーキテクチャベースのCPUでは共通ですが、一方、周辺機器とマイクロコントローラ実装の詳細は、他のベンダーと異なります。同じSTマイクロエレクトロニクスのマイクロコントローラファミリでも、違いがあります。
+この本は、ほとんどの例で、STマイクロエレクトロニクスの[STM32F3DISCOVERY]開発ボードを使用します。このボードは、ARM Cortex-Mアーキテクチャをベースとしています。基本機能はこのアーキテクチャベースのCPUでは共通です。一方、周辺機器とマイクロコントローラ実装の詳細は、他のベンダーと異なります。同じSTマイクロエレクトロニクスのマイクロコントローラファミリでも、違いがあります。
 
 <!-- For this reason, we suggest purchasing the [STM32F3DISCOVERY] development board -->
 <!-- for the purpose of following the examples in this book. -->

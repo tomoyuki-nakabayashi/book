@@ -9,7 +9,7 @@ more information and coordination
 
 -->
 
-- [Introduction](./intro/index.md)
+- [導入](./intro/index.md)
     - [`no_std`](./intro/no-std.md)
     - [Tooling](./intro/tooling.md)
     - [Installation](./intro/install.md)
