@@ -62,11 +62,13 @@ characteristics of your target hardware.
 これには、独特なファイル(リンカスクリプトなど)と設定(リンカフラグ)が必要です。
 プロジェクト名やターゲットハードウェアの特徴などを、空白に入力するだけで済むように、テンプレートを用意しています。
 
+<!-- 
 Our template is compatible with `cargo-generate`: a Cargo subcommand for
 creating new Cargo projects from templates. You can also download the
 template using `git`, `curl`, `wget`, or your web browser.
+ -->
 
-このテンプレートは、`cargo-generate`と互換があります。`cargo-generate`は、テンプレートからCargoプロジェクトを作成するためのCargoのサブコマンドです。
+このテンプレートは、`cargo-generate`との互換性があります。`cargo-generate`は、テンプレートからCargoプロジェクトを作成するためのCargoのサブコマンドです。
 このテンプレートは、`git`や`curl`、`wget`、ウェブブラウザを使ってダウンロードできます。
 
 ## `cargo-binutils`
@@ -78,7 +80,7 @@ LLVM versions of `objdump`, `nm` and `size` and are used for inspecting
 binaries.
  -->
 
-`cargo-binutils`は、Rustツールチェインとともに配布されているLLVMツールを、簡単に使えるようにするCargoサブコマンドの一式です。
+`cargo-binutils`は、Rustツールチェインとともに配布されているLLVMツールを簡単に使うためのCargoサブコマンド一式です。
 これらのツールは、LLVMの`objdump`や`nm`、`size`を含んでおり、バイナリを調査するために使われます。
 
 <!-- 
@@ -122,8 +124,8 @@ found an LLDB counterpart to GDB's `load` command, which uploads the program to
 the target hardware, so currently we recommend that you use GDB.
  -->
 
-通常デバッグに関しては、LLDBはGDBと同様に機能します。しかし、ターゲットハードウェアにプログラムをアップロードするGDBの`load`コマンド相当のものは、LLDBにはありません。
-したがって、現在はGDBを使用することをお勧めします。
+通常のデバッグ機能に関しては、LLDBはGDBと同様に機能します。しかし、ターゲットハードウェアにプログラムをアップロードするGDBの`load`コマンド相当のものは、LLDBにはありません。
+したがって、現在はGDBの使用をお勧めします。
 
 ## OpenOCD
 
@@ -145,7 +147,7 @@ debugging of the ARM Cortex-M based microcontroller on your STM32F3DISCOVERY
 development board:
 -->
 
-STM32F3DISCOVERY開発ボード上のARM Cortex-Mベースのマイクロコントローラをデバッグするため、OpenOCDは翻訳の一環として、他の重要な役割も果たします。
+STM32F3DISCOVERY開発ボード上のARM Cortex-Mベースのマイクロコントローラをデバッグするため、OpenOCDは、翻訳の一環として、他の重要な役割も果たします。
 
 <!-- 
 * It knows how to interact with the memory mapped registers used by the ARM
@@ -162,6 +164,6 @@ STM32F3DISCOVERY開発ボード上のARM Cortex-Mベースのマイクロコン�
   * ブレイクポイント/ウォッチポイント操作
   * CPUレジスタの読み込みと書き込み
   * CPUがデバッグイベントのために停止したことの検出
-  * デバッグイベントが発生した後の、CPU実行の継続
+  * デバッグイベントが発生した後のCPU実行の継続
   * 他
 * マイクロコントローラのフラッシュの消去と書き込み方法を知っています。
