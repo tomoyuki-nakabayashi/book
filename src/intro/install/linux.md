@@ -1,13 +1,21 @@
 # Linux
 
-Here are the installation commands for a few Linux distributions.
+<!-- Here are the installation commands for a few Linux distributions. -->
+
+いくつかのLinuxディストリビューションのインストールコマンドを示します。
 
 ## Packages
 
-- Ubuntu 18.04 or newer / Debian stretch or newer
+<!-- - Ubuntu 18.04 or newer / Debian stretch or newer -->
 
+- Ubuntu 18.04以上 / Debian stretch以降
+
+<!-- 
 > **NOTE** `gdb-multiarch` is the GDB command you'll use to debug your ARM
 > Cortex-M programs
+ -->
+
+**注記** `gdb-multiarch`は、ARM Cortex-Mプログラムをデバッグするために使用するGDBのコマンドです。
 
 <!-- Debian stretch -->
 <!-- GDB 7.12 -->
@@ -26,10 +34,16 @@ $ sudo apt install \
   qemu-system-arm
 ```
 
-- Ubuntu 14.04 and 16.04
+<!-- - Ubuntu 14.04 and 16.04 -->
 
+- Ubuntu 14.04と16.04
+
+<!-- 
 > **NOTE** `arm-none-eabi-gdb` is the GDB command you'll use to debug your ARM
 > Cortex-M programs
+ -->
+
+**注記** `arm-none-eabi-gdb`は、ARM Cortex-Mプログラムをデバッグするために使用するGDBのコマンドです。
 
 <!-- Ubuntu 14.04 -->
 <!-- GDB 7.6 (!) -->
@@ -43,10 +57,16 @@ $ sudo apt install \
   qemu-system-arm
 ```
 
-- Fedora 27 or newer
+<!-- - Fedora 27 or newer -->
 
+- Fedora 27以上
+
+<!-- 
 > **NOTE** `arm-none-eabi-gdb` is the GDB command you'll use to debug your ARM
 > Cortex-M programs
+ -->
+
+**注記** `arm-none-eabi-gdb`は、ARM Cortex-Mプログラムをデバッグするために使用するGDBのコマンドです。
 
 <!-- Fedora 27 -->
 <!-- GDB 7.6 (!) -->
@@ -62,8 +82,12 @@ $ sudo dnf install \
 
 - Arch Linux
 
+<!-- 
 > **NOTE** `arm-none-eabi-gdb` is the GDB command you'll use to debug ARM
 > Cortex-M programs
+ -->
+
+**注記** `arm-none-eabi-gdb`は、ARM Cortex-Mプログラムをデバッグするために使用するGDBのコマンドです。
 
 ``` console
 $ sudo pacman -S \
@@ -73,11 +97,17 @@ $ sudo pacman -S \
 $ # install openocd from the AUR -- https://aur.archlinux.org/packages/openocd/
 ```
 
-## udev rules
+<!-- ## udev rules -->
 
-This rule lets you use OpenOCD with the Discovery board without root privilege.
+## udevルール
 
-Create this file in `/etc/udev/rules.d` with the contents shown below.
+<!-- This rule lets you use OpenOCD with the Discovery board without root privilege. -->
+
+このルールにより、ルート権限なしで、OpenOCDをDiscoveryボードに対して使えるようにします。
+
+<!-- Create this file in `/etc/udev/rules.d` with the contents shown below. -->
+
+下記の内容で、`/etc/udev/rules.d`ディレクトリにファイルを作成します。
 
 ``` console
 $ cat /etc/udev/rules.d/70-st-link.rules
@@ -91,15 +121,21 @@ ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3748", TAG+="uaccess"
 ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", TAG+="uaccess"
 ```
 
-Then reload all the udev rules with:
+<!-- Then reload all the udev rules with: -->
+
+その後、全てのudevルールをリロードします。
 
 ``` console
 $ sudo udevadm control --reload-rules
 ```
 
-If you had the board plugged to your laptop, unplug it and then plug it again.
+<!-- If you had the board plugged to your laptop, unplug it and then plug it again. -->
 
-You can check the permissions by running these commands:
+既にボードをノートPCに接続している場合、一度抜いてから、もう一度接続します。
+
+<!-- You can check the permissions by running these commands: -->
+
+これらのコマンド実行することで、パーミッションを確認できます。
 
 ``` console
 $ lsusb
@@ -107,9 +143,12 @@ $ lsusb
 Bus 001 Device 018: ID 0483:374b STMicroelectronics ST-LINK/V2.1
 (..)
 ```
-
+<!-- 
 Take note of the bus and device numbers. Use those numbers in the following
 command:
+ -->
+
+バス番号とデバイス番号をメモします。それらの番号を、次のコマンドで使用します。
 
 ``` console
 $ # the format of the path is /dev/bus/usb/<bus>/<device>
@@ -120,10 +159,18 @@ user::rw-
 user:you:rw-
 ```
 
+<!-- 
 The `+` appended to permissions indicates the existence of an extended
 permission. The `getfacl` command tells the user `you` can make use of
 this device.
+ -->
 
-Now, go to the [next section].
+パーミッションに追加された`+`は、パーミッションが拡張されたことを意味しています。
 
-[next section]: verify.md
+<!-- Now, go to the [next section]. -->
+
+それでは、[次のセクション]に進んで下さい。
+
+<!-- [next section]: verify.md -->
+
+[次のセクション]: verify.md

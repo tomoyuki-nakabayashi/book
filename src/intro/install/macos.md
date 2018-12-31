@@ -1,6 +1,8 @@
 # macOS
 
-All the tools can be install using [Homebrew]:
+<!-- All the tools can be install using [Homebrew]: -->
+
+全てのツールは、[Homebrew]を使ってインストールできます。
 
 [Homebrew]: http://brew.sh/
 
@@ -12,10 +14,17 @@ $ brew install openocd
 
 $ brew install qemu
 ```
-
+<!-- 
 If the `brew cask` command doesn't work (e.g. `error: unknown command: cask`),
 then first run `brew tap Caskroom/tap` and try again.
+ -->
 
-That's all! Go to the [next section].
+`brew cask`コマンドがうまく動かない場合(例えば、`error: unknown command: cask`)、最初に`brew tap Caskroom/tap`を実行してから再実行して下さい。
 
-[next section]: verify.md
+<!-- That's all! Go to the [next section]. -->
+
+以上です！[次のセクション]に進んで下さい。
+
+<!-- [next section]: verify.md -->
+
+[次のセクション]: verify.md
