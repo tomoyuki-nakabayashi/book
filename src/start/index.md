@@ -1,4 +1,6 @@
-# Getting Started
+<!-- # Getting Started -->
+
+# 始めに
 
 In this section we'll walk you through the process of writing, building,
 flashing and debugging embedded programs. You will be able to try most of the
