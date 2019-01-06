@@ -102,7 +102,7 @@ $ cd app
  -->
 
 ``` console
-$ # 注釈 tar形式でも入手可能です: archive/master.tar.gz
+$ # 注記 tar形式でも入手可能です: archive/master.tar.gz
 $ curl -LO https://github.com/rust-embedded/cortex-m-quickstart/archive/master.zip
 
 $ unzip master.zip
@@ -117,15 +117,15 @@ OR you can browse to [`cortex-m-quickstart`], click the green "Clone or
 download" button and then click "Download ZIP".
  -->
 
-[`cortex-m-quickstart`]をウェブブラウザで開いて、緑色の"Clone or download"ボタンをクリックして、
-"Download ZIP"をクリックします。
+もしくは、[`cortex-m-quickstart`]をウェブブラウザで開いて、緑色の「Clone or download」ボタンをクリックして、
+「Download ZIP」をクリックします。
 
 <!-- 
 Then fill in the placeholders in the `Cargo.toml` file as done in the second
 part of the "Using `git`" version.
  -->
 
-次に、`Cargo.toml`ファイルのプレースホルダを"`git`を利用する場合"の2つ目のパートにある通り埋めます。
+次に、`Cargo.toml`ファイルのプレースホルダを「`git`を利用する場合」の2つ目のパートにある通り埋めます。
 
 <!-- 
 **IMPORTANT** We'll use the name "app" for the project name in this tutorial.
@@ -139,8 +139,6 @@ substitutions.
 または、プロジェクトに「app」という名前をつけると、読み替える必要がなくなります。
 
 <!-- For convenience here's the source code of `src/main.rs`: -->
-
-<!-- `For convenience`の適切な翻訳が不明です。便宜上、としても意味が通る？ -->
 
 これは、`src/main.rs`のソースコードです。
 
@@ -204,12 +202,12 @@ closer look.
 `#![no_std]`はこのプログラムが、標準クレートである`std`にリンク*しない*ことを意味します。
 代わりに、そのサブセットである`core`クレートにリンクします。
 
-<!-- 
+<!--
 `#![no_main]` indicates that this program won't use the standard `main`
 interface that most Rust programs use. The main (no pun intended) reason to go
 with `no_main` is that using the `main` interface in `no_std` context requires
 nightly.
- -->
+-->
 
 `#![no_main]`は、ほとんどのRustプログラムが使用する標準の`main`インタフェースを、
 このプログラムでは使用しないことを示します。
@@ -223,39 +221,40 @@ the panicking behavior of the program. More on this later on.
 `extern crate panic_halt;`。このクレートは、プログラムのパニック発生時の挙動を定義する`panic_handler`を提供します。
 後ほど、より詳しく説明します。
 
-<!-- 
+<!--
 [`#[entry]`] is an attribute provided by the [`cortex-m-rt`] crate that's used
 to mark the entry point of the program. As we are not using the standard `main`
 interface we need another way to indicate the entry point of the program and
 that'd be `#[entry]`.
- -->
+-->
 
 [`#[entry]`]は、[`cortex-m-rt`]クレートが提供する属性で、プログラムのエントリポイントを示すために使用します。
 標準の`main`インタフェースを使用しないので、プログラムのエントリポイントを示す別の方法が必要です。それが、`#[entry]`です。
 
-[`#[entry]`]: https://rust-embedded.github.io/cortex-m-rt/0.6.1/cortex_m_rt_macros/fn.entry.html
+[`#[entry]`]: https://rust-embedded.github.io/cortex-m-rt/0.6.1/cortex_m_rt_macros/fn.entry.html  
+
 [`cortex-m-rt`]: https://crates.io/crates/cortex-m-rt
 
-<!-- 
+<!--
 `fn main() -> !`. Our program will be the *only* process running on the target
 hardware so we don't want it to end! We use a divergent function (the `-> !`
 bit in the function signature) to ensure at compile time that'll be the case.
- -->
+-->
 
 `fn main() -> !`。ターゲットハードウェア上で動作しているのは私たちのプログラム*だけ*なので、
 終了させたくありません。
-コンパイル時、確実にそうなるように、発散する関数を使います(関数シグネチャの`-> !`部分)。
+コンパイル時、確実にそうなるように、発散する関数を使います（関数シグネチャの`-> !`部分）。
 
 <!-- ### Cross compiling -->
 
 ### クロスコンパイル
 
-<!-- 
+<!--
 The next step is to *cross* compile the program for the Cortex-M3 architecture.
 That's as simple as running `cargo build --target $TRIPLE` if you know what the
 compilation target (`$TRIPLE`) should be. Luckily, the `.cargo/config` in the
 template has the answer:
- -->
+-->
 
 次のステップは、プログラムをCortex-M3アーキテクチャ向けに*クロス*コンパイルすることです。
 
@@ -327,7 +326,7 @@ $ cargo readobj --bin app -- -file-headers
  -->
 
 ``` console
-$ # `--bin app`は`target/$TRIPLE/debug/app`のバイナリを検査するためのシンタックスシュガーです
+$ # `--bin app`は`target/$TRIPLE/debug/app`のバイナリを確認するためのシンタックスシュガーです
 $ # `--bin app`は必要に応じて、バイナリを（再）コンパイルもします
 
 $ cargo readobj --bin app -- -file-headers
@@ -435,7 +434,7 @@ flashed on a device. *Always* use `cargo-size` to check how big a binary really
 is.
 -->
 
-**重要**: ELFファイルは、デバッグ情報といったメタデータを含んでいるため、そのディスク上のサイズは、
+**重要**: ELFファイルは、デバッグ情報といったメタデータを含んでいるため、*そのディスク上のサイズ*は、
 プログラムがデバイスに書き込まれた時に専有するスペースを正確に反映して*いません*。
 実際のバイナリサイズを確認するために、*常に*`cargo-size`を使用して下さい。
 
@@ -518,7 +517,7 @@ Next, let's see how to run an embedded program on QEMU! This time we'll use the
 
 <!-- For convenience here's the source code of `src/main.rs`: -->
 
-`src/main.rs`のソースコードです:
+便宜上の`src/main.rs`のソースコードです:
 
 ``` console
 $ cat examples/hello.rs
@@ -642,7 +641,7 @@ $ echo $?
   hence the name.
 -->
 
-- `qemu-system-arm`。これはQEMUエミュレータです。QEMUにはいくつかのバイナリがあります;
+- `qemu-system-arm`。これはQEMUエミュレータです。QEMUにはいくつかのバイナリがあります。
   このバイナリは、ARMマシンのフル*システム*をエミュレーションするので、この名前になっています。
 
 <!--
@@ -653,7 +652,7 @@ $ echo $?
 -->
 
 - `-cpu cortex-m3`。QEMUに、Cortex-M3 CPUをエミュレーションするように伝えます。
-  CPUモデルを指定すると、いくつかのコンパイルミスのエラーを検出できます: 例えば、
+  CPUモデルを指定すると、いくつかのコンパイルミスのエラーを検出できます。例えば、
   ハードウェアFPUを搭載しているCortex-M4F用にコンパイルしたプログラムを実行すると、
   実行中にQEMUがエラーを発生させるでしょう。
 
@@ -763,7 +762,7 @@ also running the embedded program.
 
 <!-- The first debugging step is to launch QEMU in debugging mode: -->
 
-最初のデバッグステップは、QEMUをデバッグモードで起動することです:
+最初のデバッグステップは、QEMUをデバッグモードで起動することです。
 
 ``` console
 $ qemu-system-arm \
@@ -782,7 +781,7 @@ have passed two extra flags this time:
 -->
 
 このコマンドは、コンソールに何も表示せず、端末をブロックします。
-ここでは2つの追加フラグを渡しています:
+ここでは2つの追加フラグを渡しています。
 
 <!--
 - `-gdb tcp::3333`. This tells QEMU to wait for a GDB connection on TCP
