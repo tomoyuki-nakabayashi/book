@@ -1,4 +1,6 @@
-# Hardware
+<!-- # Hardware -->
+
+# ハードウェア
 
 By now you should be somewhat familiar with the tooling and the development
 process. In this section we'll switch to real hardware; the process will remain
