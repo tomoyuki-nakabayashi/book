@@ -8,7 +8,7 @@ process. In this section we'll switch to real hardware; the process will remain
 largely the same. Let's dive in.
 -->
 
-ここまでで、ツールと開発プロセスにある程度慣れたはずです。このセクションでは、実際のハードウェアに移行します。
+ここまでで、ツールと開発プロセスにある程度慣れたはずです。このセクションでは、実際のハードウェアに切り替えます。
 開発プロセスは、ほとんど同じままです。飛び込みましょう。
 
 <!-- ## Know your hardware -->
@@ -28,7 +28,7 @@ as these will be used to configure the project:
 
 <!-- - Does the ARM core include an FPU? Cortex-M4**F** and Cortex-M7**F** cores do. -->
 
-- ARMコアはFPUを搭載していますか？Cortex-M4**F**とCortex-M7**F**とは搭載しています。
+- そのARMコアはFPUを搭載していますか？Cortex-M4**F**とCortex-M7**F**は、搭載しています。
 
 <!--
 - How much Flash memory and RAM does the target device have? e.g. 256 KiB of
@@ -44,7 +44,7 @@ as these will be used to configure the project:
 -->
 
 - フラッシュメモリとRAMは、アドレス空間のどこにマッピングされていますか？
-  例えば、RAMは、一般に`0x2000_0000`番地に位置します。
+  例えば、RAMは、通常`0x2000_0000`番地に位置します。
 
 <!--
 You can find this information in the data sheet or the reference manual of your
@@ -228,9 +228,9 @@ reference; for device specific information about debugging check out [the
 Debugonomicon](https://github.com/rust-embedded/debugonomicon).
 -->
 
-デバッグは少し違って見えます。実際、最初のステップは、ターゲットデバイスによって異なります。
+デバッグ方法は少し違います。実際、最初のステップは、ターゲットデバイスによって異なります。
 このセクションでは、STM32F3DISCOVERY上で実行しているプログラムをデバッグするために必要となる手順を説明します。
-これは、参考の役目を果たします。デバッグに関するデバイス固有の情報は、
+これは、参考の役目を果たします。デバイス固有のデバッグ情報は、
 [the Debugonomicon](https://github.com/rust-embedded/debugonomicon)を参照して下さい。
 
 <!--
@@ -267,6 +267,7 @@ discoveryボードのST-LINKに接続するために、端末で`openocd`を実�
 $ cat openocd.cfg
 ```
 
+<!--
 ``` text
 # Sample OpenOCD configuration for the STM32F3DISCOVERY development board
 
@@ -277,6 +278,23 @@ $ cat openocd.cfg
 source [find interface/stlink-v2-1.cfg]
 
 # Revision A and B (older revisions)
+# source [find interface/stlink-v2.cfg]
+
+source [find target/stm32f3x.cfg]
+```
+-->
+
+``` text
+# STM32F3DISCOVERY開発ボード用のOpenOCD設定サンプル
+
+# 持っているハードウェアのリビジョンに応じて、これらのインタフェースのうち、1つを選んで下さい。
+# 常に、1つのインタフェースがコメントアウトされているべきです。
+
+# Revision C (newer revision)
+# リビジョンC （新しいリビジョン）
+source [find interface/stlink-v2-1.cfg]
+
+# リビジョンAとB（古いリビジョン）
 # source [find interface/stlink-v2.cfg]
 
 source [find target/stm32f3x.cfg]
@@ -315,7 +333,7 @@ Info : stm32f3x.cpu: hardware has 6 breakpoints, 4 watchpoints
 <!-- On another terminal run GDB, also from the root of the template. -->
 
 
-別の端末で、GDBを実行します。同様に、テンプレートプロジェクトのルートディレクトから実行して下さい。
+別の端末で、GDBを実行します。こちらも、テンプレートプロジェクトのルートディレクトから実行して下さい。
 
 ``` console
 $ <gdb> -q target/thumbv7em-none-eabihf/debug/examples/hello
@@ -323,7 +341,7 @@ $ <gdb> -q target/thumbv7em-none-eabihf/debug/examples/hello
 
 <!-- Next connect GDB to OpenOCD, which is waiting for a TCP connection on port 3333. -->
 
-次に、GDBを、TCP 3333ポートで接続待ちしているOpenOCDに接続します。
+次に、TCP 3333ポートで接続待ちしているOpenOCDに、GDBを接続します。
 
 ``` console
 (gdb) target remote :3333
@@ -499,7 +517,7 @@ stepi
 ``` text
 target remote :3333
 
-# でマングルされたシンボルを表示します
+# デマングルされたシンボルを表示します
 set print asm-demangle on
 
 # 未処理の例外、ハードフォールト、パニックを検出します
