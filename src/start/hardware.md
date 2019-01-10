@@ -475,6 +475,7 @@ single GDB script named `openocd.gdb`.
 $ cat openocd.gdb
 ```
 
+<!--
 ``` text
 target remote :3333
 
@@ -491,6 +492,26 @@ monitor arm semihosting enable
 load
 
 # start the process but immediately halt the processor
+stepi
+```
+-->
+
+``` text
+target remote :3333
+
+# でマングルされたシンボルを表示します
+set print asm-demangle on
+
+# 未処理の例外、ハードフォールト、パニックを検出します
+break DefaultHandler
+break UserHardFault
+break rust_begin_unwind
+
+monitor arm semihosting enable
+
+load
+
+# プロセスを開始しますが、すぐにプロセッサを停止します
 stepi
 ```
 
@@ -516,6 +537,7 @@ in `.cargo/config` but it's commented out.
 $ head -n10 .cargo/config
 ```
 
+<!--
 ``` toml
 [target.thumbv7m-none-eabi]
 # uncomment this to make `cargo run` execute programs on QEMU
@@ -524,6 +546,20 @@ $ head -n10 .cargo/config
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
 # uncomment ONE of these three option to make `cargo run` start a GDB session
 # which option to pick depends on your system
+runner = "arm-none-eabi-gdb -x openocd.gdb"
+# runner = "gdb-multiarch -x openocd.gdb"
+# runner = "gdb -x openocd.gdb"
+```
+-->
+
+``` toml
+[target.thumbv7m-none-eabi]
+# ここのコメントアウトを外すと、`cargo run`はQEMUでプログラムを実行します
+# runner = "qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel"
+
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+# 3つの選択肢のうち、1つのコメントアウトを外すと、`cargo run`はGDBセッションを開始します。
+# どの選択肢を使うか、は対象システムによって異なります。
 runner = "arm-none-eabi-gdb -x openocd.gdb"
 # runner = "gdb-multiarch -x openocd.gdb"
 # runner = "gdb -x openocd.gdb"
