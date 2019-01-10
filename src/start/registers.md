@@ -1,4 +1,6 @@
-# Memory Mapped Registers
+<!-- # Memory Mapped Registers -->
+
+# メモリマップドレジスタ
 
 Embedded systems can only get so far by executing normal Rust code and moving data around in RAM. If we want to get any information into or out of our system (be that blinking an LED, detecting a button press or communicating with an off-chip peripheral on some sort of bus) we're going to have to dip into the world of Peripherals and their 'memory mapped registers'.
 

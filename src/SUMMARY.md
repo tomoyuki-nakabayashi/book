@@ -21,7 +21,7 @@ more information and coordination
 - [入門](./start/index.md)
   - [QEMU](./start/qemu.md)
   - [ハードウェア](./start/hardware.md)
-  - [Memory-mapped Registers](./start/registers.md)
+  - [メモリマップドレジスタ](./start/registers.md)
   - [Semihosting](./start/semihosting.md)
   - [Panicking](./start/panicking.md)
   - [Exceptions](./start/exceptions.md)
