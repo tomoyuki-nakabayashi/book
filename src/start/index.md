@@ -1,6 +1,6 @@
 <!-- # Getting Started -->
 
-# 始めに
+# 入門
 
 <!-- 
 In this section we'll walk you through the process of writing, building,
