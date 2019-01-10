@@ -20,3 +20,4 @@
 | flash                          | 書き込む
 | halt                           | 停止
 | terminal                       | 端末
+| peripheral                     | ペリフェラル
