@@ -14,22 +14,63 @@ LEDの点滅やボタンの押下検出、もしくは、バス上のオフチ�
 You may well find that the code you need to access the peripherals in your micro-controller has already been written, at one of the following levels:
 -->
 
+マイクロコントローラのペリフェラルにアクセスするためのコードが、次のいずれかのレベルで、既に書かれていることがわかるでしょう。
+
+<!--
 * Micro-architecture Crate - This sort of crate handles any useful routines common to the processor core your microcontroller is using, as well as any peripherals that are common to all micro-controllers that use that particular type of processor core. For example the [cortex-m] crate gives you functions to enable and disable interrupts, which are the same for all Cortex-M based micro-controllers. It also gives you access to the 'SysTick' peripheral included with all Cortex-M based micro-controllers.
+-->
+
+* マイクロアーキテクチャクレート。この種のクレートは、マイクロコントローラに搭載されているプロセッサコアで共通の便利なルーチンを扱っています。
+また、特定のプロセッサコアを使用する全てのマイクロコントローラに共通のペリフェラルも取り扱っています。
+例えば、[cortex-m]クレートは、割込みの有効化と無効化を行う関数を提供しています。これは全てのCortex-Mベースマイクロコントローラで同じものです。
+[cortex-m]クレートは、「SysTick」ペリフェラルへのアクセスも提供しています。このペリフェラルは、全て音Cortex-Mベースマイクロコントローラに搭載されています。
+
+<!--
 * Peripheral Access Crate (PAC) - This sort of crate is a thin wrapper over the various memory-wrapper registers defined for your particular part-number of micro-controller you are using. For example, [tm4c123x] for the Texas Instruments Tiva-C TM4C123 series, or [stm32f30x] for the ST-Micro STM32F30x series. Here, you'll be interacting with the registers directly, following each peripheral's operating instructions given in your micro-controller's Technical Reference Manual.
+-->
+
+<!-- `memory-wrapper registers`は`memory-mapped registers`と解釈した方が自然な日本語になると考え、メモリマップドレジスタと翻訳しました。 -->
+
+* ペリフェラルアクセスクレート（PAC）。この種のクレートは、薄いラッパーです。特定の型番のマイクロコントローラに対して定義されている、
+様々なメモリマップドレジスタのラッパーを提供します。例えば、テキサスインスツルメンツのTiva-C TM4C123シリーズ向けの[tm4c123x]クレートや、
+STマイクロのSTM32F30xシリーズ向けの[stm32f30x]クレートです。ここでは、マイクロコントローラのテクニカルリファレンスマニュアルに記載されている各ペリフェラルの操作手順に従って、
+レジスタと直接やり取りします。
+
+<!--
 * HAL Crate - These crates offer a more user-friendly API for your particular processor, often by implementing some common traits defined in [embedded-hal]. For example, this crate might offer a `Serial` struct, with a constructor that takes an appropriate set of GPIO pins and a baud rate, and offers some sort of `write_byte` function for sending data. See the chapter on [Portability] for more information on [embedded-hal].
+-->
+
+* HALクレート。これらのクレートは、特定のプロセッサに対して、よりユーザーフレンドリなAPIを提供しています。[embedded-hal]で定義されている共通のトレイトを使って実装されていることが多いです。
+例えば、このクレートは、`シリアル`構造体を提供しているでしょう。そのコンストラクタは、適切なGPIOピンの一式とボーレートを引数に取ります。そして、データを送信するための`write_byte`関数一式を提供します。
+[embedded-hal]に関する詳細は、[移植性]の章を参照して下さい。
+
+<!--
 * Board Crate - These crates go one step further than a HAL Crate by pre-configuring various peripherals and GPIO pins to suit the specific developer kit or board you are using, such as [F3] for the STM32F3DISCOVERY board.
+-->
+
+* ボードクレート。これらのクレートは、HALクレートのさらに一歩先を進んでいます。これらは、STM32F3DISCOVERYボード向けの[F3]のように、
+特定の開発キットやボード向けに、様々なペリフェラルとGPIOピンを事前に設定してあります。
 
 [cortex-m]: https://crates.io/crates/cortex-m
 [tm4c123x]: https://crates.io/crates/tm4c123x
 [stm32f30x]: https://crates.io/crates/stm32f30x
 [embedded-hal]: https://crates.io/crates/embedded-hal
-[Portability]: ../portability/index.md
+<!-- [Portability]: ../portability/index.md -->
+
+[移植性]: ../portability/index.md
 [F3]: https://crates.io/crates/f3
 
 
-## Starting at the bottom
+<!-- ## Starting at the bottom -->
 
+## 最下層から始める
+
+<!--
 Let's look at the SysTick peripheral that's common to all Cortex-M based micro-controllers. We can find a pretty low-level API in the [cortex-m] crate, and we can use it like this:
+-->
+
+全てのCortex-Mマイクロコントローラで共通のSysTickペリフェラルから見ていきましょう。
+[cortex-m]クレートにはかなり低レベルなAPIがあり、このように使うことができます。
 
 ```rust
 use cortex_m::peripheral::{syst, Peripherals};
@@ -52,6 +93,9 @@ fn main() -> ! {
 ```
 
 The functions on the `SYST` struct map pretty closely to the functionality defined by the ARM Technical Reference Manual for this peripheral. There's nothing in this API about 'delaying for X milliseconds' - we have to crudely implement that ourselves using a `while` loop. Note that we can't access our `SYST` struct until we have called `Peripherals::take()` - this is a special routine that guarantees that there is only one `SYST` structure in our entire program. For more on that, see the [Peripherals] section.
+
+`SYST`構造体の機能は、ARMテクニカルリファレンスマニュアルでこのペリフェラルに定義されている機能と非常によく似ています。
+「Xミリ秒遅延」といった具合のAPIはありません。`while`ループを使って愚直に実装する必要があります。
 
 [Peripherals]: ../peripherals/index.md
 
