@@ -2,7 +2,7 @@
 
 このドキュメントは、ベアメタル (マイクロコントローラ) デバイスのファームウェアを開発するために、Rustをどのように使うか、を説明するものです。
 
-κeenさん作成の、[対訳表](https://github.com/rust-lang-ja/the-rust-programming-language-ja/blob/master/TranslationTable.md)と[CONTRIBUTING.md](https://github.com/rust-lang-ja/the-rust-programming-language-ja/blob/master/CONTRIBUTING.md)を参考に翻訳を進めていきます。
+ご協力頂く際は、[コントリビューションガイド](./CONTRIBUTING.md)をご参照下さい。不明な点があれば、お気軽にお尋ね下さい。
 組込み固有の[対訳表](./TranslationTableEmbedded.md)も、不完全ではありますが、用意しています。
 
 英語も日本語もRustも未熟者ですが、組込みでRustが主流になってほしいので、がんばります。よろしくお願いいたします。
