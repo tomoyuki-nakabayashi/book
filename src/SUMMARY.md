@@ -23,7 +23,7 @@ more information and coordination
   - [ハードウェア](./start/hardware.md)
   - [メモリマップドレジスタ](./start/registers.md)
   - [セミホスティング](./start/semihosting.md)
-  - [Panicking](./start/panicking.md)
+  - [パニック](./start/panicking.md)
   - [Exceptions](./start/exceptions.md)
   - [Interrupts](./start/interrupts.md)
   - [IO](./start/io.md)
