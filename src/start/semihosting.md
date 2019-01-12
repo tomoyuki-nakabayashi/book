@@ -1,4 +1,6 @@
-# Semihosting
+<!-- # Semihosting -->
+
+# セミホスティング
 
 Semihosting is a mechanism that lets embedded devices do I/O on the host and is
 mainly used to log messages to the host console. Semihosting requires a debug
