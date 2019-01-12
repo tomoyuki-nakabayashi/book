@@ -88,19 +88,6 @@ bench = false
 
 コマンドラインを利用する場合:
 
-<!-- 
-``` console
-$ # NOTE there's also a tarball available: archive/master.tar.gz
-$ curl -LO https://github.com/rust-embedded/cortex-m-quickstart/archive/master.zip
-
-$ unzip master.zip
-
-$ mv cortex-m-quickstart-master app
-
-$ cd app
-```
- -->
-
 ``` console
 $ # 注記 tar形式でも入手可能です: archive/master.tar.gz
 $ curl -LO https://github.com/rust-embedded/cortex-m-quickstart/archive/master.zip
@@ -145,36 +132,20 @@ substitutions.
 ``` console
 $ cat src/main.rs
 ```
-<!-- 
-``` rust
-#![no_std]
-#![no_main]
-
-// pick a panicking behavior
-extern crate panic_halt; // you can put a breakpoint on `rust_begin_unwind` to catch panics
-// extern crate panic_abort; // requires nightly
-// extern crate panic_itm; // logs messages over ITM; requires ITM support
-// extern crate panic_semihosting; // logs messages to the host stderr; requires a debugger
-
-use cortex_m_rt::entry;
-
-#[entry]
-fn main() -> ! {
-    loop {
-        // your code goes here
-    }
-}
-```
- -->
 
 ``` rust
 #![no_std]
 #![no_main]
 
+# // pick a panicking behavior
 // パニック発生時の挙動を選びます
+# // extern crate panic_halt; // you can put a breakpoint on `rust_begin_unwind` to catch panics
 extern crate panic_halt; // パニックをキャッチするため、`rust_begin_unwind`にブレイクポイントを設定できます
+# // extern crate panic_abort; // requires nightly
 // extern crate panic_abort; // nightlyが必要です
+# // extern crate panic_itm; // logs messages over ITM; requires ITM support
 // extern crate panic_itm; // ITMを介してメッセージをログ出力します; ITMサポートが必要です
+# // extern crate panic_semihosting; // logs messages to the host stderr; requires a debugger
 // extern crate panic_semihosting; // ホストの標準エラーにメッセージをログ出力します; デバッガが必要です。
 
 use cortex_m_rt::entry;
@@ -182,6 +153,7 @@ use cortex_m_rt::entry;
 #[entry]
 fn main() -> ! {
     loop {
+#         // your code goes here
         // あなたのコードはここに書きます
     }
 }
@@ -262,17 +234,6 @@ template has the answer:
 $ tail -n6 .cargo/config
 ```
 
-<!-- 
-``` toml
-[build]
-# Pick ONE of these compilation targets
-# target = "thumbv6m-none-eabi"    # Cortex-M0 and Cortex-M0+
-target = "thumbv7m-none-eabi"    # Cortex-M3
-# target = "thumbv7em-none-eabi"   # Cortex-M4 and Cortex-M7 (no FPU)
-# target = "thumbv7em-none-eabihf" # Cortex-M4F and Cortex-M7F (with FPU)
-```
- -->
-
 ``` toml
 [build]
 # 以下のコンパイルターゲットから1つを選びます
@@ -316,15 +277,6 @@ binary.
 
 このバイナリがARMバイナリであることを確かめるために、`cargo-readobj`でELFヘッダを表示できます。
 
-<!-- 
-``` console
-$ # `--bin app` is sugar for inspect the binary at `target/$TRIPLE/debug/app`
-$ # `--bin app` will also (re)compile the binary, if necessary
-
-$ cargo readobj --bin app -- -file-headers
-```
- -->
-
 ``` console
 $ # `--bin app`は`target/$TRIPLE/debug/app`のバイナリを確認するためのシンタックスシュガーです
 $ # `--bin app`は必要に応じて、バイナリを（再）コンパイルもします
@@ -366,13 +318,6 @@ ELF Header:
  -->
 
 > **注記** この出力は、rust-embedded/cortex-m-rt#111がマージされていることを前提とします
-<!--
-``` console
-$ # we use `--release` to inspect the optimized version
-
-$ cargo size --bin app --release -- -A
-```
--->
 
 ``` console
 $ # 最適化されたバイナリを確認するために`--release`を使います。
@@ -522,32 +467,6 @@ Next, let's see how to run an embedded program on QEMU! This time we'll use the
 ``` console
 $ cat examples/hello.rs
 ```
-<!--
-``` rust
-//! Prints "Hello, world!" on the host console using semihosting
-
-#![no_main]
-#![no_std]
-
-extern crate panic_halt;
-
-use core::fmt::Write;
-
-use cortex_m_rt::entry;
-use cortex_m_semihosting::{debug, hio};
-
-#[entry]
-fn main() -> ! {
-    let mut stdout = hio::hstdout().unwrap();
-    writeln!(stdout, "Hello, world!").unwrap();
-
-    // exit QEMU or the debugger section
-    debug::exit(debug::EXIT_SUCCESS);
-
-    loop {}
-}
-```
--->
 
 <!--
 下から4行目のコメント`debugger section`は、`debugger session`の誤記と考えられるため、
@@ -555,6 +474,7 @@ fn main() -> ! {
 -->
 
 ``` rust
+# //! Prints "Hello, world!" on the host console using semihosting
 //! セミホスティングを使って"Hello, world!"をホストのコンソールに表示します
 
 #![no_main]
@@ -572,6 +492,7 @@ fn main() -> ! {
     let mut stdout = hio::hstdout().unwrap();
     writeln!(stdout, "Hello, world!").unwrap();
 
+#     // exit QEMU or the debugger section
     // QEMUもしくはデバッガセッションを終了します
     debug::exit(debug::EXIT_SUCCESS);
 
@@ -698,14 +619,6 @@ QEMU; let's uncomment it:
 ``` console
 $ head -n3 .cargo/config
 ```
-
-<!--
-``` toml
-[target.thumbv7m-none-eabi]
-# uncomment this to make `cargo run` execute programs on QEMU
-runner = ["qemu-system-arm", "-cpu", "cortex-m3", "-machine", "lm3s6965evb", "-nographic", "-semihosting-config", "enable=on,target=native", "-kernel"]
-```
--->
 
 ``` toml
 [target.thumbv7m-none-eabi]
