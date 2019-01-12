@@ -22,7 +22,7 @@ more information and coordination
   - [QEMU](./start/qemu.md)
   - [ハードウェア](./start/hardware.md)
   - [メモリマップドレジスタ](./start/registers.md)
-  - [Semihosting](./start/semihosting.md)
+  - [セミホスティング](./start/semihosting.md)
   - [Panicking](./start/panicking.md)
   - [Exceptions](./start/exceptions.md)
   - [Interrupts](./start/interrupts.md)
