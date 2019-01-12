@@ -10,8 +10,8 @@ to use. The downside is that it's super slow: each write operation can take
 several milliseconds depending on the hardware debugger (e.g. ST-Link) you use.
 -->
 
-セミホスティングは、組込みデバイスがホスト上でI/Oを行えるようにする仕組みで、主に、ホストのコンソールにログを出力するために使われます。
-セミホスティングは、デバッグセッションが必要で、他には何も必要としません（追加の配線は不要です）。そのため、非常に便利です。
+セミホスティングは、組込みデバイスがホスト上でI/Oを行う仕組みです。主に、ホストのコンソールにログ出力するために使われます。
+セミホスティングには、デバッグセッションが必要ですが、他には何も必要としません（追加の配線は不要です）。そのため、非常に便利です。
 欠点は、非常に低速であることです。ハードウェアデバッガ（例えば、ST-Link）によっては、書き込み操作が数ミリ秒かかります。
 
 <!--
@@ -47,7 +47,7 @@ If you run this program on hardware you'll see the "Hello, world!" message
 within the OpenOCD logs.
 -->
 
-このプログラムをハードウェア上で実行すると、OpenOCDログに、「Hello world!」のメッセージが表示されます。
+このプログラムをハードウェア上で実行すると、OpenOCDのログに、「Hello world!」のメッセージが表示されます。
 
 ``` console
 $ openocd
