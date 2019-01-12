@@ -108,7 +108,7 @@
 | Rust、組込み | [Embedded Rust Bookshelf](https://docs.rust-embedded.org) | Rust組込みワーキンググループによるいくらかのリソースがあります。 |
 | Rust、組込み | [Embedonomicon](https://docs.rust-embedded.org/embedonomicon/) | Rustで組込みプログラミングを行うときのより深い詳細が記載されています。 |
 | Rust、組込み | [embedded FAQ](https://docs.rust-embedded.org/faq.html) | 組込みでRustを使う際のよくある質問と回答です。 |
-| 割り込み | [Interrupt](https://en.wikipedia.org/wiki/Interrupt) | - |
+| 割込み | [Interrupt](https://en.wikipedia.org/wiki/Interrupt) | - |
 | メモリマップドI/O／ペリフェラル | [Memory-mapped I/O](https://en.wikipedia.org/wiki/Memory-mapped_I/O) | - |
 | SPI, UART, RS232, USB, I2C, TTL | [Stack Exchange about SPI, UART, and other interfaces](https://electronics.stackexchange.com/questions/37814/usart-uart-rs232-usb-spi-i2c-ttl-etc-what-are-all-of-these-and-how-do-th) | - |
 
