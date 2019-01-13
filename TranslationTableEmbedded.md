@@ -17,7 +17,11 @@
 |:-------------------------------|:-------------
 | breakpoint                     | ブレイクポイント
 | console                        | コンソール
+| driver                         | ドライバ
 | flash                          | 書き込む
 | halt                           | 停止
 | terminal                       | 端末
 | peripheral                     | ペリフェラル
+| register                       | レジスタ
+| user                           | ユーザ
+| volatile                       | volatile
