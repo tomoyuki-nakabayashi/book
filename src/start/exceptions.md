@@ -9,7 +9,7 @@ instruction). Exceptions imply preemption and involve exception handlers,
 subroutines executed in response to the signal that triggered the event.
 -->
 
-例外と割込みは、プロセッサが非同期イベントと致命的なエラー（例えば、不正な命令の実行）を扱うためのハードウェアの仕組みです。
+例外と割り込みは、プロセッサが非同期イベントと致命的なエラー（例えば、不正な命令の実行）を扱うためのハードウェアの仕組みです。
 例外はプリエンプションを意味し、例外ハンドラを呼び出します。例外ハンドラは、イベントを引き起こした信号に応答して実行されるサブルーチンです。
 
 <!--
@@ -38,7 +38,7 @@ would result in a compilation error.
 -->
 
 `exception`属性の他は、例外ハンドラは普通の関数のように見えます。しかし、もう1つ違いがあります。
-`例外`ハンドラはソフトウェアから呼び出すことが**できません**。前述の例では、`SysTick();`というステートメントは、
+`exception`ハンドラはソフトウェアから呼び出すことが**できません**。前述の例では、`SysTick();`というステートメントは、
 コンパイルエラーになります。
 
 <!--
@@ -47,7 +47,7 @@ This behavior is pretty much intended and it's required to provide a feature:
 -->
 
 この動作は、非常に意図的なものであり、次の機能を提供するために求められます。
-`例外`ハンドラ**内**で宣言された`static mut`変数の利用を*安全*にします。
+`exception`ハンドラ**内**で宣言された`static mut`変数の利用を*安全*にします。
 
 ``` rust,ignore
 #[exception]
@@ -68,7 +68,7 @@ directly or indirectly, from more than one exception / interrupt handler or from
 -->
 
 ご存知かもしれませんが、`static mut`変数を関数内で使うことは、その関数を*再入不可能*にします。
-直接的または間接的に、複数の例外・割込みハンドラから、もしくは、`メイン`と1つ以上の例外・割込みハンドラから、
+直接的または間接的に、複数の例外・割り込みハンドラから、もしくは、`main`と1つ以上の例外・割り込みハンドラから、
 再進入不可能な関数を呼び出すことは、未定義動作です。
 
 <!--
@@ -80,8 +80,8 @@ possible.
 -->
 
 安全なRustは、決して未定義動作になりません。そのため、再入不可能な関数は、`unsafe`とマークされなければなりません。
-それでも、`例外`ハンドラは`static mut`な変数を安全に使える、と述べました。これが可能なのは、どうしてでしょうか。
-`例外`ハンドラはソフトウェアから呼び出すことが*できない*ため、再入する可能性はありません。だから、安全に使えるのです。
+それでも、`exception`ハンドラは`static mut`な変数を安全に使える、と述べました。これが可能なのは、どうしてでしょうか。
+`exception`ハンドラはソフトウェアから呼び出すことが*できない*ため、再入する可能性はありません。だから、安全に使えるのです。
 
 <!-- ## A complete example -->
 
@@ -243,7 +243,7 @@ being serviced.
 -->
 
 `irqn`引数は、どの例外が処理されているかを示します。負の値は、Cortex-Mの例外が処理されていることを意味します。
-ゼロまたは正の値は、デバイス固有の例外、すなわち、割込みが処理されていること、を示しています。
+ゼロまたは正の値は、デバイス固有の例外、すなわち、割り込みが処理されていること、を示しています。
 
 <!-- ## The hard fault handler -->
 
@@ -256,9 +256,9 @@ result in undefined behavior. Also, the runtime crate does a bit of work before
 the user defined `HardFault` handler is invoked to improve debuggability.
 -->
 
-`ハードフォールト`例外は、少し特別です。この例外は、プログラムが不正な状態になった場合に発生します。
+`HardFault`例外は、少し特別です。この例外は、プログラムが不正な状態になった場合に発生します。
 そのため、このハンドラはリターンすることができず、未定義動作を引き起こす可能性があります。
-ランタイムクレートは、デバッグ性を向上するために、ユーザー定義の`ハードフォールト`ハンドラが呼び出される前に、少し仕事をします。
+ランタイムクレートは、デバッグ性を向上するために、ユーザ定義の`HardFault`ハンドラが呼び出される前に、少し仕事をします。
 
 <!--
 The result is that the `HardFault` handler must have the following signature:
@@ -268,7 +268,7 @@ a snapshot of the processor state at the moment the exception was triggered and
 are useful to diagnose a hard fault.
 -->
 
-その結果、`ハードフォールト`ハンドラは、`fn(&ExceptionFrame) -> !`のシグネチャを持つ必要があります。
+その結果、`HardFault`ハンドラは、`fn(&ExceptionFrame) -> !`のシグネチャを持つ必要があります。
 ハンドラの引数は、例外によってスタックにプッシュされたレジスタへのポインタです。
 これらのレジスタは、例外が発生した瞬間のプロセッサステートのスナップショットで、ハードフォールトの原因を突き止めるのに便利です。
 
@@ -327,7 +327,7 @@ The `HardFault` handler prints the `ExceptionFrame` value. If you run this
 you'll see something like this on the OpenOCD console.
 -->
 
-`ハードフォールト`ハンドラは、`ExceptionFrame`の値を表示します。実行すると、
+`HardFault`ハンドラは、`ExceptionFrame`の値を表示します。実行すると、
 OpenOCDコンソールに次のような表示が見えるでしょう。
 
 ``` console
