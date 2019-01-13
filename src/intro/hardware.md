@@ -20,7 +20,7 @@
 
 <!-- What does this board contain? -->
 
-このボードには何が搭載されていますか？
+このボードには何が搭載されているか見てみましょう。
 
 <!-- 
 - A STM32F303VCT6 microcontroller. This microcontroller has
@@ -44,7 +44,7 @@
 
   - 48 KiBのRAM
 
-  - 多くの"周辺機器": タイマ、GPIO、I2C、SPI、USART、他
+  - 多くの"ペリフェラル": タイマ、GPIO、I2C、SPI、USART、他
 
   - 両側面の"ヘッダ"に配置された多数の"ピン"
 
