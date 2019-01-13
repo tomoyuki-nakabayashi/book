@@ -32,7 +32,7 @@ more information and coordination
     - [The Borrow Checker](./peripherals/borrowck.md)
     - [Singletons](./peripherals/singletons.md)
 - [静的な保証](./static-guarantees/index.md)
-    - [Typestate Programming](./static-guarantees/typestate-programming.md)
+    - [型状態プログラミング](./static-guarantees/typestate-programming.md)
     - [Peripherals as State Machines](./static-guarantees/state-machines.md)
     - [Design Contracts](./static-guarantees/design-contracts.md)
     - [Zero Cost Abstractions](./static-guarantees/zero-cost-abstractions.md)
