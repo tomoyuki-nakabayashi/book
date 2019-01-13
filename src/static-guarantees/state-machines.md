@@ -1,4 +1,6 @@
-# Peripherals as State Machines
+<!-- # Peripherals as State Machines -->
+
+# ステートマシンとしてのペリフェラル
 
 The peripherals of a microcontroller can be thought of as set of state machines. For example, the configuration of a simplified [GPIO pin] could be represented as the following tree of states:
 

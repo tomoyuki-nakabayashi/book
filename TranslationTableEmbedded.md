@@ -36,5 +36,6 @@
 | processor                      | プロセッサ
 | register                       | レジスタ
 | semihosting                    | セミホスティング
+| state-machine                  | ステートマシン
 | user                           | ユーザ
 | volatile                       | volatile
