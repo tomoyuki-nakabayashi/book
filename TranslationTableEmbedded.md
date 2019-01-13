@@ -24,3 +24,4 @@
 | peripheral                     | ペリフェラル
 | register                       | レジスタ
 | user                           | ユーザ
+| volatile                       | volatile

@@ -58,7 +58,7 @@ The qualifier `#[repr(C)]` tells the Rust compiler to lay this structure out lik
 
 `#[repr(C)]`修飾子はRustコンパイラ対して、この構造体をCコンパイラと同じようにメモリにレイアウトするように指示します。
 これはとても重要なことです。なぜならRustでは、Cにおいては行われない構造体のフィールドの並び替えが許されているためです。
-コンパイラによって暗黙のうちに構造体のフィールドが並び替えられることにより、デバッグをするはめになることは想像できるでしょう。
+コンパイラによって暗黙のうちに構造体のフィールドが並び替えられることにより、デバッグをするはめになることは想像できるでしょう！
 この修飾子を置くことで、4つの32ビットの各フィールドは上記のテーブルに対応付けられます。
 ただしもちろん、この`struct`はそれ自体では何の役にも立ちません。次のように変数として使う必要があります。
 
@@ -85,7 +85,7 @@ Now, there are a couple of problems with the approach above.
 4. Most importantly, it doesn't actually work...
 -->
 
-1. ペリフェラルにアクセスするためには毎回unsafeを使わなくてはなりません。
+1. ペリフェラルにアクセスするためには毎回アンセーフを使わなくてはなりません。
 2. どのレジスタが読み取り専用でどのレジスタが読み書き可能かを指定する方法がありません。
 3. プログラム内のどのコードからでもこの構造体を通してハードウェアにアクセスできてしまいます。
 4. 最も大事なことは、このコードは実際には動作しないということです…
@@ -139,18 +139,18 @@ Now, the volatile accesses are performed automatically through the `read` and `w
 -->
 
 これで`read`と`write`メソッドを通してvolatileアクセスが自動的に行われるようになりました。
-書き込みを実行するのはまだ`unsafe`ですが、公平であるために、ハードウェアは変更可能な状態の集まりであり、コンパイラはそれらの書き込みが実際に安全なのかどうかを知る方法はありません。そのため、これは基本姿勢として悪くないでしょう。
+書き込みを実行するのはまだ`unsafe`です。しかし、公平を期するために言うと、ハードウェアは変更可能な状態の集まりであるため、それらへの書き込みが実際に安全なのかどうか、をコンパイラが知る方法はないのです。そのため、これは基本姿勢としては悪くないでしょう。
 
 <!-- ## The Rusty Wrapper -->
 
-## Rustのラッパー
+## Rustのラッパ
 
 <!--
 We need to wrap this `struct` up into a higher-layer API that is safe for our users to call. As the driver author, we manually verify the unsafe code is correct, and then present a safe API for our users so they don't have to worry about it (provided they trust us to get it right!).
 -->
 
 ユーザが安全に呼び出せるように、この`struct`を高レイヤーのAPIでラップする必要があります。
-ドライバの作者として、危険なコードが正しいことを手動で検証し、ユーザがそのドライバを使用する上で心配することがないように安全なAPIとして提供します。（ユーザは提供されたものが正しいと信頼しています！）
+ドライバの作者として、アンセーフなコードが正しいことを手動で検証し、ユーザがそのドライバを使用する上で心配することがないように安全なAPIとして提供します。（ユーザは提供されたものが正しいと信頼しています！）
 
 <!--
 One example might be:
