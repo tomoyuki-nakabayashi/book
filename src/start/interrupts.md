@@ -1,4 +1,6 @@
-# Interrupts
+<!-- # Interrupts -->
+
+# 割り込み
 
 Interrupts differ from exceptions in a variety of ways but their operation and
 use is largely similar and they are also handled by the same interrupt

@@ -25,7 +25,7 @@ more information and coordination
   - [セミホスティング](./start/semihosting.md)
   - [パニック](./start/panicking.md)
   - [例外](./start/exceptions.md)
-  - [Interrupts](./start/interrupts.md)
+  - [割り込み](./start/interrupts.md)
   - [IO](./start/io.md)
 - [ペリフェラル](./peripherals/index.md)
     - [Rustでの最初の試み](./peripherals/a-first-attempt.md)
