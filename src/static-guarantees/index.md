@@ -1,4 +1,6 @@
-# Static Guarantees
+<!-- # Static Guarantees -->
+
+# 静的な保証
 
 It's Rust's type system what prevents data races at compile time (see [`Send`]
 and [`Sync`] traits). The type system can also be used to check other properties
