@@ -24,6 +24,7 @@
 | exception                      | 例外
 | firmware                       | ファームウェア
 | flash                          | フラッシュに書き込む（動詞としての利用）
+| floating                       | フローティング（ピンがハイインピーダンス状態であることを示す場合）
 | halt                           | 停止
 | handler                        | ハンドラ
 | interrupt                      | 割り込み

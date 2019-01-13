@@ -31,7 +31,7 @@ more information and coordination
     - [Rustでの最初の試み](./peripherals/a-first-attempt.md)
     - [The Borrow Checker](./peripherals/borrowck.md)
     - [Singletons](./peripherals/singletons.md)
-- [Static Guarantees](./static-guarantees/index.md)
+- [静的な保証](./static-guarantees/index.md)
     - [Typestate Programming](./static-guarantees/typestate-programming.md)
     - [Peripherals as State Machines](./static-guarantees/state-machines.md)
     - [Design Contracts](./static-guarantees/design-contracts.md)
