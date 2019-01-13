@@ -1,4 +1,6 @@
-# Typestate Programming
+<!-- # Typestate Programming -->
+
+# 型状態プログラミング
 
 The concept of [typestates] describes the encoding of information about the current state of an object into the type of that object. Although this can sound a little arcane, if you have used the [Builder Pattern] in Rust, you have already started using Typestate Programming!
 
