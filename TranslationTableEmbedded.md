@@ -5,9 +5,11 @@
 
 # 原則
 
-* 活用のある語からなる複合語は、1語目の送り仮名を省略します。
-  + 組込み、割込み、など
-  + IPAなどの`組込み`の表記に合わせています
+* ~~活用のある語からなる複合語は、1語目の送り仮名を省略します。~~
+  + ~~組込み、割込み、など~~
+  + ~~IPAなどの`組込み`の表記に合わせています~~
+* embeddedの翻訳は、`組込み`に統一します。
+  + 「組み込み」、「組込」いずれもNGです。
 * ボード名は英語表記とします。
   + discoveryボード
 
@@ -17,11 +19,20 @@
 |:-------------------------------|:-------------
 | breakpoint                     | ブレイクポイント
 | console                        | コンソール
+| debugger                       | デバッガ
 | driver                         | ドライバ
-| flash                          | 書き込む
+| exception                      | 例外
+| flash                          | フラッシュに書き込む（動詞としての利用）
 | halt                           | 停止
+| handler                        | ハンドラ
+| interrupt                      | 割込み
+| microcontroller                | マイクロコントローラ
 | terminal                       | 端末
+| timer                          | タイマ
 | peripheral                     | ペリフェラル
+| preemption                     | プリエンプション
+| processor                      | プロセッサ
 | register                       | レジスタ
+| semihosting                    | セミホスティング
 | user                           | ユーザ
 | volatile                       | volatile

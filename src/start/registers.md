@@ -42,8 +42,8 @@ STマイクロのSTM32F30xシリーズ向けの[stm32f30x]クレートです。�
 * HAL Crate - These crates offer a more user-friendly API for your particular processor, often by implementing some common traits defined in [embedded-hal]. For example, this crate might offer a `Serial` struct, with a constructor that takes an appropriate set of GPIO pins and a baud rate, and offers some sort of `write_byte` function for sending data. See the chapter on [Portability] for more information on [embedded-hal].
 -->
 
-* HALクレート。これらのクレートは、特定のプロセッサに対して、よりユーザーフレンドリなAPIを提供しています。[embedded-hal]で定義されている共通のトレイトを使って実装されていることが多いです。
-例えば、このクレートは、`シリアル`構造体を提供しているでしょう。そのコンストラクタは、適切なGPIOピンの一式とボーレートを引数に取ります。そして、データを送信するための`write_byte`関数一式を提供します。
+* HALクレート。これらのクレートは、特定のプロセッサに対して、よりユーザフレンドリなAPIを提供しています。[embedded-hal]で定義されている共通のトレイトを使って実装されていることが多いです。
+例えば、このクレートは、`Serial`構造体を提供しているでしょう。そのコンストラクタは、適切なGPIOピンの一式とボーレートを引数に取ります。そして、データを送信するための`write_byte`関数一式を提供します。
 [embedded-hal]に関する詳細は、[移植性]の章を参照して下さい。
 
 <!--
@@ -158,7 +158,7 @@ We've accessed the `PWM0` peripheral in exactly the same way as we accessed the 
 このコードは量が多いように見えますが、Rustコンパイラは一連のチェックを実行し、手書きのアセンブラに近いマシンコードを生成します。
 自動生成されたコードが、特定のアクセサ関数への全引数が有効であることを判断できない場合、その関数は`unsafe`とマークされます。
 例えば、SVDがレジスタを32ビットと定義しているが、それらの32ビット値の一部が特別な意味を持つかどうか、記述していない場合です。
-上記の例では、`bits()`関数を使って`load`と`compa`サブフィールドを設定する時に、unsafeをマークしています。
+上記の例では、`bits()`関数を使って`load`と`compa`サブフィールドを設定する時に、`unsafe`をマークしています。
 
 <!-- ### Reading -->
 
@@ -252,7 +252,7 @@ The HAL crate for a chip typically works by implementing a custom Trait for the 
 PLLと全てのクロック周波数とを設定する関数呼び出しによってのみ、生成することが可能です。この方法では、最初にクロックレートを設定しないでシリアルポートオブジェクトを作成したり、
 シリアルポートオブジェクトがボーレートをクロック数に誤って変換するようなことは、静的に起こり得ません。
 一部のクレートでは、各GPIOが取り得る状態のための特別なトレイトを定義することさえあります。このトレイトは、ペリフェラルにピンを渡す前に、
-ユーザーがピンを正しい状態（例えば、適切なAlternate Functionモードを選択することによって）にすることを求めます。
+ユーザがピンを正しい状態（例えば、適切なAlternate Functionモードを選択することによって）にすることを求めます。
 これらは全て、ランタイムのコストを必要としません。
 
 > 訳注: Alternate Functionモードは、GPIOピンのモードの1つ

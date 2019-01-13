@@ -99,7 +99,7 @@ permission (e.g. `sudo openocd ..`). If the commands do work with root
 permission then check that the [udev rules] has been correctly set.
  -->
 
-どちらのコマンドも通常ユーザーとしてうまく動かなかった場合、rootパーミッションで実行してみて下さい(例えば、`sudo openocd ..`)。
+どちらのコマンドも通常ユーザとしてうまく動かなかった場合、rootパーミッションで実行してみて下さい(例えば、`sudo openocd ..`)。
 コマンドがrootパーミッションで機能した場合、[udevルール]が正しく設定されているか確認して下さい。
 
 <!-- [udev rules]: linux.md#udev-rules -->

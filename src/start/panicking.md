@@ -17,7 +17,7 @@ of the panicking thread, unless the user opted for aborting the program on
 panics.
 -->
 
-標準ライブラリでは、パニックは定義された動作です。ユーザーがパニック発生時にプログラムをアボートする選択をしない限り、
+標準ライブラリでは、パニックは定義された動作です。ユーザがパニック発生時にプログラムをアボートする選択をしない限り、
 パニックを起こしたスレッドのスタックを巻き戻します。
 
 <!--
@@ -42,7 +42,7 @@ commonly used behaviors. These common behaviors have been packaged into crates
 that define the `#[panic_handler]` function. Some examples include:
 -->
 
-組込みシステムは、ユーザーとやり取りするものから、安全性が重要な（クラッシュできない）ものまであります。
+組込みシステムは、ユーザとやり取りするものから、安全性が重要な（クラッシュできない）ものまであります。
 そのため、全てのパニック時動作に対応できる唯一のものはありませんが、よく利用される挙動がたくさんあります。
 これらの一般的な挙動が、`#[panic_handler]`関数を定義するクレートにまとめられています。
 いくつか、例を挙げます。
