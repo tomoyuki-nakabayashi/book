@@ -110,16 +110,6 @@ $ cargo generate --git https://github.com/rust-embedded/cortex-m-quickstart
 $ tail -n5 .cargo/config
 ```
 
-<!--
-``` toml
-# Pick ONE of these compilation targets
-# target = "thumbv6m-none-eabi"    # Cortex-M0 and Cortex-M0+
-# target = "thumbv7m-none-eabi"    # Cortex-M3
-# target = "thumbv7em-none-eabi"   # Cortex-M4 and Cortex-M7 (no FPU)
-target = "thumbv7em-none-eabihf" # Cortex-M4F and Cortex-M7F (with FPU)
-```
--->
-
 ``` toml
 [build]
 # 以下のコンパイルターゲットから1つを選びます
@@ -140,19 +130,6 @@ file.
 
 第二ステップは、`memory.x`ファイルにメモリ領域の情報を入力することです。
 
-<!--
-``` console
-$ cat memory.x
-/* Linker script for the STM32F303VCT6 */
-MEMORY
-{
-  /* NOTE 1 K = 1 KiBi = 1024 bytes */
-  FLASH : ORIGIN = 0x08000000, LENGTH = 256K
-  RAM : ORIGIN = 0x20000000, LENGTH = 40K
-}
-```
--->
-
 ``` console
 $ cat memory.x
 /* STM32F303VCT6用のリンカスクリプト */
@@ -172,26 +149,14 @@ only for running in QEMU.
 `debug::exit()`の呼び出しが、コメントアウトされているか削除されていることを確認して下さい。
 これは、QEMUで実行する時のみ、使用します。
 
-<!--
 ``` rust
 #[entry]
 fn main() -> ! {
     hprintln!("Hello, world!").unwrap();
 
-    // exit QEMU
-    // NOTE do not run this on hardware; it can corrupt OpenOCD state
-    // debug::exit(debug::EXIT_SUCCESS);
-
-    loop {}
-}
-```
--->
-
-``` rust
-#[entry]
-fn main() -> ! {
-    hprintln!("Hello, world!").unwrap();
-
+#     // exit QEMU
+#     // NOTE do not run this on hardware; it can corrupt OpenOCD state
+#     // debug::exit(debug::EXIT_SUCCESS);
     // QEMUを終了する
     // 注記、ハードウェア上で実行しないで下さい。OpenOCDの状態を破壊する可能性があります。
     // debug::exit(debug::EXIT_SUCCESS);
@@ -267,22 +232,6 @@ discoveryボードのST-LINKに接続するために、端末で`openocd`を実�
 $ cat openocd.cfg
 ```
 
-<!--
-``` text
-# Sample OpenOCD configuration for the STM32F3DISCOVERY development board
-
-# Depending on the hardware revision you got you'll have to pick ONE of these
-# interfaces. At any time only one interface should be commented out.
-
-# Revision C (newer revision)
-source [find interface/stlink-v2-1.cfg]
-
-# Revision A and B (older revisions)
-# source [find interface/stlink-v2.cfg]
-
-source [find target/stm32f3x.cfg]
-```
--->
 
 ``` text
 # STM32F3DISCOVERY開発ボード用のOpenOCD設定サンプル
@@ -493,27 +442,6 @@ single GDB script named `openocd.gdb`.
 $ cat openocd.gdb
 ```
 
-<!--
-``` text
-target remote :3333
-
-# print demangled symbols
-set print asm-demangle on
-
-# detect unhandled exceptions, hard faults and panics
-break DefaultHandler
-break UserHardFault
-break rust_begin_unwind
-
-monitor arm semihosting enable
-
-load
-
-# start the process but immediately halt the processor
-stepi
-```
--->
-
 ``` text
 target remote :3333
 
@@ -554,21 +482,6 @@ in `.cargo/config` but it's commented out.
 ``` console
 $ head -n10 .cargo/config
 ```
-
-<!--
-``` toml
-[target.thumbv7m-none-eabi]
-# uncomment this to make `cargo run` execute programs on QEMU
-# runner = "qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel"
-
-[target.'cfg(all(target_arch = "arm", target_os = "none"))']
-# uncomment ONE of these three option to make `cargo run` start a GDB session
-# which option to pick depends on your system
-runner = "arm-none-eabi-gdb -x openocd.gdb"
-# runner = "gdb-multiarch -x openocd.gdb"
-# runner = "gdb -x openocd.gdb"
-```
--->
 
 ``` toml
 [target.thumbv7m-none-eabi]

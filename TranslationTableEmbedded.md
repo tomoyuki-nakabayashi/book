@@ -24,4 +24,3 @@
 | peripheral                     | ペリフェラル
 | register                       | レジスタ
 | user                           | ユーザ
-
