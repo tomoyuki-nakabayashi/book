@@ -24,7 +24,7 @@ more information and coordination
   - [メモリマップドレジスタ](./start/registers.md)
   - [セミホスティング](./start/semihosting.md)
   - [パニック](./start/panicking.md)
-  - [Exceptions](./start/exceptions.md)
+  - [例外](./start/exceptions.md)
   - [Interrupts](./start/interrupts.md)
   - [IO](./start/io.md)
 - [Peripherals](./peripherals/index.md)
