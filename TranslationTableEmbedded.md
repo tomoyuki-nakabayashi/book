@@ -22,6 +22,7 @@
 | debugger                       | デバッガ
 | driver                         | ドライバ
 | exception                      | 例外
+| firmware                       | ファームウェア
 | flash                          | フラッシュに書き込む（動詞としての利用）
 | halt                           | 停止
 | handler                        | ハンドラ
