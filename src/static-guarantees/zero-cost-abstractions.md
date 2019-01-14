@@ -1,4 +1,6 @@
-# Zero Cost Abstractions
+<!-- # Zero Cost Abstractions -->
+
+# ゼロコスト抽象化
 
 Type states are also an excellent example of Zero Cost Abstractions - the ability to move certain behaviors to compile time execution or analysis. These type states contain no actual data, and are instead used as markers. Since they contain no data, they have no actual representation in memory at runtime:
 

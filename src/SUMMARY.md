@@ -35,7 +35,7 @@ more information and coordination
     - [型状態プログラミング](./static-guarantees/typestate-programming.md)
     - [ステートマシンとしてのペリフェラル](./static-guarantees/state-machines.md)
     - [設計契約](./static-guarantees/design-contracts.md)
-    - [Zero Cost Abstractions](./static-guarantees/zero-cost-abstractions.md)
+    - [ゼロコスト抽象化](./static-guarantees/zero-cost-abstractions.md)
 - [Portability](./portability/index.md)
 - [Concurrency](./concurrency/index.md)
 - [Collections](./collections/index.md)
