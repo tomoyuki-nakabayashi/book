@@ -1,4 +1,6 @@
-# Design Contracts
+<!-- # Design Contracts -->
+
+# 設計契約
 
 In our last chapter, we wrote an interface that *didn't* enforce design contracts. Let's take another look at our imaginary GPIO configuration register:
 
