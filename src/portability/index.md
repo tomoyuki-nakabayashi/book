@@ -1,4 +1,6 @@
-# Portability
+<!-- # Portability -->
+
+# 移植性
 
 In embedded environments portability is a very important topic: Every vendor and even each family from a single manufacturer offers different peripherals and capabilities and similarly the ways to interact with the peripherals will vary.
 
