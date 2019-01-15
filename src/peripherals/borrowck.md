@@ -11,7 +11,7 @@ Unfortunately, hardware is basically nothing but mutable global state, which can
 
 <!-- ## What should our rules be? -->
 
-## 何を私達のルールとするべきか？
+## 何をルールとするべきか？
 
 <!--
 How can we reliably interact with these peripherals?
