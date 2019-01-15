@@ -15,7 +15,7 @@ Cortex-M3マイクロコントローラの[LM3S6965]用にプログラムを書�
 
 <!-- ## A non standard Rust program -->
 
-## 標準でないRustプログラム
+## 標準ライブラリを使わないRustプログラムないRustプログラム
 
 <!-- 
 We'll use the [`cortex-m-quickstart`] project template so go generate a new
@@ -122,8 +122,8 @@ substitutions.
  -->
 
 **重要** このチュートリアルでは、「app」という名前をプロジェクト名に使います。
-「app」という単語を見た場合、あなたが、あなたのプロジェクトにつけた名前に読み替えなければなりません。
-または、プロジェクトに「app」という名前をつけると、読み替える必要がなくなります。
+「app」という単語が出てきた場合、それをあなたのプロジェクトにつけた名前に置き替えなければなりません。
+または、プロジェクトに「app」という名前をつけると、置き替える必要がなくなります。
 
 <!-- For convenience here's the source code of `src/main.rs`: -->
 
@@ -200,7 +200,7 @@ interface we need another way to indicate the entry point of the program and
 that'd be `#[entry]`.
 -->
 
-[`#[entry]`]は、[`cortex-m-rt`]クレートが提供する属性で、プログラムのエントリポイントを示すために使用します。
+[`#[entry]`]は、[`cortex-m-rt`]クレートが提供するアトリビュートで、プログラムのエントリポイントを示すために使用します。
 標準の`main`インタフェースを使用しないので、プログラムのエントリポイントを示す別の方法が必要です。それが、`#[entry]`です。
 
 [`#[entry]`]: https://rust-embedded.github.io/cortex-m-rt/0.6.1/cortex_m_rt_macros/fn.entry.html  
@@ -229,6 +229,8 @@ template has the answer:
 -->
 
 次のステップは、プログラムをCortex-M3アーキテクチャ向けに*クロス*コンパイルすることです。
+これはコンパイルターゲット（`$TRIPLE`）が何かわかっていれば、`cargo build --target $TRIPLE`を実行するだけで簡単にできます。
+コンパイルターゲットが何かは、テンプレート中の`.cargo/config`を見ればわかります。
 
 ``` console
 $ tail -n6 .cargo/config
@@ -365,10 +367,10 @@ Total              14570
 > ELFリンカセクションの補足
 >
 > - `.text`は、プログラムの実行コードを含んでいます
-> - `.rodata`は、文字のような定数を含んでいます
-> - `.data`は、静的に割り当てられた変数が格納され、その初期値は0*ではありません*
+> - `.rodata`は、文字列のような定数を含んでいます
+> - `.data`は、初期値が0*ではない*静的に割り当てられた変数が格納されています
 > - `.bss`も静的に割り当てられた変数が格納されますが、その*初期値は0です*
-> - `.vector_table`は、非標準のセクションです。（割り込み）ベクタテーブルを格納するために使用します
+> - `.vector_table`は、*非*標準のセクションです。（割り込み）ベクタテーブルを格納するために使用します
 > - `.ARM.attributes`と`.debug_*`セクションはメタデータを含んでおり、バイナリをフラッシュに書き込む際、
 >   ターゲットボード上にロード*されません*
 
@@ -563,7 +565,7 @@ $ echo $?
 -->
 
 - `qemu-system-arm`。これはQEMUエミュレータです。QEMUにはいくつかのバイナリがあります。
-  このバイナリは、ARMマシンのフル*システム*をエミュレーションするので、この名前になっています。
+  このバイナリは、*ARM*マシンのフル*システム*をエミュレーションするので、この名前になっています。
 
 <!--
 - `-cpu cortex-m3`. This tells QEMU to emulate a Cortex-M3 CPU. Specifying the
