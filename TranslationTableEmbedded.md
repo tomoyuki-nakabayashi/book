@@ -16,6 +16,7 @@
 | English                        | 日本語
 |:-------------------------------|:-------------
 | breakpoint                     | ブレイクポイント
+| borrow checker                 | 借用チェッカ
 | console                        | コンソール
 | driver                         | ドライバ
 | flash                          | 書き込む
