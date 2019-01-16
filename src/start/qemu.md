@@ -15,7 +15,7 @@ Cortex-M3マイクロコントローラの[LM3S6965]用にプログラムを書�
 
 <!-- ## A non standard Rust program -->
 
-## 標準ライブラリを使わないRustプログラムないRustプログラム
+## 標準ライブラリを使わないRustプログラム
 
 <!-- 
 We'll use the [`cortex-m-quickstart`] project template so go generate a new
