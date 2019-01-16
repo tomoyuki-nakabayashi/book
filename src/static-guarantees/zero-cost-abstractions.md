@@ -8,7 +8,7 @@ Type states are also an excellent example of Zero Cost Abstractions - the abilit
 
 型状態はゼロコスト抽象化の優れた例でもあります。特定の動作を、コンパイル時の実行もしくは解析に移動する機能です。
 これらの型状態は、実際のデータを含んでおらず、代わりにマーカとして使われています。
-型状態は、データを含んでいないため、実行時にメモリに実際のデータはありません。
+型状態はデータを含んでいないため、実行時、メモリ内に実際のデータはありません。
 
 ```rust,ignore
 use core::mem::size_of;
@@ -68,11 +68,11 @@ The GpioConfig we return never exists at runtime. Calling this function will gen
 In general, these abstractions may be nested as deeply as you would like. As long as all components used are zero sized types, the whole structure will not exist at runtime.
 -->
 
-通常、これらの抽象化は、望みのまま深さでネストされます。使用される全てのコンポーネントが、ゼロサイズ型である限り、実行時には、構造体全体が存在しません。
+通常、これらの抽象化は、望み通りの深さでネストされます。使用される全てのコンポーネントが、ゼロサイズの型である限り、実行時には、構造体全体が存在しません。
 
 <!--
 For complex or deeply nested structures, it may be tedious to define all possible combinations of state. In these cases, macros may be used to generate all implementations.
 -->
 
-複雑な構造体や深くネストした構造体については、全てのあり得る状態の組み合わせを定義することは、面倒です。
+複雑な構造体や深くネストした構造体については、全ての取り得る状態の組み合わせを定義することは、面倒です。
 このような場合、全ての実装を生成するために、マクロが利用できます。
