@@ -27,7 +27,7 @@ How can we reliably interact with these peripherals?
 
 1. いつ変化するかわからないペリフェラルメモリの読み書きには、常に`volatile`メソッドを使用してください
 2. ソフトウェアでは、これらのペリフェラルへの読み取り専用アクセスをいくつでも共有できるでしょう
-3. あるソフトウェアがあるペリフェラルに読み書きのアクセスをするならば、そのソフトウェアだけがそのペリフェラルの参照を保持するべきです
+3. あるソフトウェアがあるペリフェラルに読み書きのアクセスをするならば、そのソフトウェアは、ペリフェラルへの唯一の参照を持つべきです
 
 <!-- ## The Borrow Checker -->
 
@@ -43,11 +43,11 @@ The last two of these rules sound suspiciously similar to what the Borrow Checke
 Imagine if we could pass around ownership of these peripherals, or offer immutable or mutable references to them?
 -->
 
-これらのペリフェラルの所有権を譲渡できるのか、もしくは、イミュータブルまたはミュータブルな参照をそれらに提供できるのかを想像してみてください。
+ペリフェラルの所有権を譲渡したり、ペリフェラルへのイミュータブルまたはミュータブルな参照を提供したりできるのか、を想像してみてください。
 
 <!--
 Well, we can, but for the Borrow Checker, we need to have exactly one instance of each peripheral, so Rust can handle this correctly. Well, luckliy in the hardware, there is only one instance of any given peripheral, but how can we expose that in the structure of our code?
 -->
 
-借用チェッカがなければ、それは可能です。各ペリフェラルのインスタンスをちょうど１つだけ持つ必要があります。そうすれば、Rustはこれを正しく扱えます。
+それは可能です。しかし借用チェッカを通すためには、各ペリフェラルに対して唯一のインスタンスを持つ必要があります。そうすれば、Rustはその唯一のインスタンスを正しく扱えます。
 幸いなことにハードウェアにおいて、任意のペリフェラルのインスタンスは１つだけしかありません。しかし、どうすればそれをコードの構造として明確にできるでしょうか？

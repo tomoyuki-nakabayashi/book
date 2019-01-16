@@ -29,7 +29,7 @@ more information and coordination
   - [IO](./start/io.md)
 - [ペリフェラル](./peripherals/index.md)
     - [Rustでの最初の試み](./peripherals/a-first-attempt.md)
-    - [The Borrow Checker](./peripherals/borrowck.md)
+    - [借用チェッカ](./peripherals/borrowck.md)
     - [Singletons](./peripherals/singletons.md)
 - [Static Guarantees](./static-guarantees/index.md)
     - [Typestate Programming](./static-guarantees/typestate-programming.md)
