@@ -2,9 +2,16 @@
 
 # 移植性
 
+<!--
 In embedded environments portability is a very important topic: Every vendor and even each family from a single manufacturer offers different peripherals and capabilities and similarly the ways to interact with the peripherals will vary.
+-->
 
-A common way to equalize such differences is via a layer called Hardware Abstraction layer or **HAL**.
+組込み環境においては、移植性は非常に重要なトピックです。1つのメーカから、それぞれのベンダや各プロダクトファミリが、異なるペリフェラルや機能を提供します、
+同様に、ペリフェラルとやり取りする方法も異なります。
+
+<!-- A common way to equalize such differences is via a layer called Hardware Abstraction layer or **HAL**. -->
+
+このような違いを吸収する一般的な方法は、ハードウェア抽象化レイヤまたは**HAL**と呼ばれるレイヤを導入することです。
 
 > Hardware abstractions are sets of routines in software that emulate some platform-specific details, giving programs direct access to the hardware resources.
 >
@@ -12,11 +19,28 @@ A common way to equalize such differences is via a layer called Hardware Abstrac
 >
 > *Wikipedia: [Hardware Abstraction Layer]*
 
-[Hardware Abstraction Layer]: https://en.wikipedia.org/wiki/Hardware_abstraction
+> ハードウェア抽象化は、プラットフォーム固有の細部をエミュレーションして、プログラムにハードウェアリソースへの直接アクセスを提供する、ソフトウェアの一連のルーチンです。
+> 
+> それらのルーチンがハードウェアへのオペレーティングシステム（OS）コールを提供することで、プログラマは、デイバスに依存せず、高性能なアプリケーションを書くことができます。
+> 
+> *Wikipedia: [ハードウェア抽象化レイヤ]*
 
+
+<!-- [Hardware Abstraction Layer]: https://en.wikipedia.org/wiki/Hardware_abstraction -->
+
+[ハードウェア抽象化レイヤ]: https://en.wikipedia.org/wiki/Hardware_abstraction
+
+<!--
 Embedded systems are a bit special in this regard since we typically do not have operating systems and user installable software but firmware images which are compiled as a whole as well as a number of other constraints. So while the traditional approach as defined by Wikipedia could potentially work it is likely not the most productive approach to ensure portability.
+-->
 
-How do we do this in Rust? Enter **embedded-hal**...
+組込みシステムは、通常オペレーティングシステムを使わず、ユーザがインストールできるソフトウェアもなく、
+まとめてコンパイルされたファームウェアイメージで、様々な制約を持つ、という点で特殊です。
+そのため、Wikipediaで定義されている従来のアプローチでもうまく機能する可能性はありますが、移植性を確保するための最も有効なアプローチではない可能性があります。
+
+<!-- How do we do this in Rust? Enter **embedded-hal**... -->
+
+Rustではどうするのでしょうか？**embedded-hal**を見ていきましょう。
 
 ## What is embedded-hal?
 
