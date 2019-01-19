@@ -49,5 +49,5 @@ Imagine if we could pass around ownership of these peripherals, or offer immutab
 Well, we can, but for the Borrow Checker, we need to have exactly one instance of each peripheral, so Rust can handle this correctly. Well, luckliy in the hardware, there is only one instance of any given peripheral, but how can we expose that in the structure of our code?
 -->
 
-それは可能です。しかし借用チェッカを通すためには、各ペリフェラルに対して唯一のインスタンスを持つ必要があります。そうすれば、Rustはその唯一のインスタンスを正しく扱えます。
+それは可能です。ただし、借用チェッカが正しくペリフェラルの所有権や参照を扱うためには、各ペリフェラルが持つインスタンスはただ１つにする必要があります。そうすれば、Rustはこれを正しく扱えます。
 幸いなことにハードウェアにおいて、任意のペリフェラルのインスタンスは１つだけしかありません。しかし、どうすればそれをコードの構造として明確にできるでしょうか？
