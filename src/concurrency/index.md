@@ -1,4 +1,6 @@
-# Concurrency
+<!-- # Concurrency -->
+
+# 並行性
 
 Concurrency happens whenever different parts of your program might execute
 at different times or out of order. In an embedded context, this includes:
