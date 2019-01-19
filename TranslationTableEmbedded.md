@@ -18,6 +18,7 @@
 | English                        | 日本語
 |:-------------------------------|:-------------
 | breakpoint                     | ブレイクポイント
+| borrow checker                 | 借用チェッカ
 | console                        | コンソール
 | debugger                       | デバッガ
 | driver                         | ドライバ
