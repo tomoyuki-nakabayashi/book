@@ -36,7 +36,7 @@ more information and coordination
     - [ステートマシンとしてのペリフェラル](./static-guarantees/state-machines.md)
     - [設計契約](./static-guarantees/design-contracts.md)
     - [ゼロコスト抽象化](./static-guarantees/zero-cost-abstractions.md)
-- [Portability](./portability/index.md)
+- [移植性](./portability/index.md)
 - [Concurrency](./concurrency/index.md)
 - [Collections](./collections/index.md)
 - [Tips for embedded C developers](./c-tips/index.md)
