@@ -6,9 +6,7 @@
 Embedded systems can only get so far by executing normal Rust code and moving data around in RAM. If we want to get any information into or out of our system (be that blinking an LED, detecting a button press or communicating with an off-chip peripheral on some sort of bus) we're going to have to dip into the world of Peripherals and their 'memory mapped registers'.
 -->
 
-<!-- 1文目の適切な翻訳がわかりません・・・。単純にRAM内のデータを加工するだけではない、という意図と考えたため、現状の翻訳としました。 -->
-
-組込みシステムは、通常のRustコードを実行し、データをRAM内で移動させることだけではありません。
+組込みシステムでは、通常のRustコードを実行し、データをRAM内で移動させるだけではたいしたことはできません。
 LEDの点滅やボタンの押下検出、もしくは、バス上のオフチップペリフェラルとの通信など、
 システムが情報を入出力するには、ペリフェラルとその「メモリマップドレジスタ」の世界に足を踏み入れる必要があります。
 
