@@ -1,4 +1,6 @@
-# Singletons
+<!-- # Singletons -->
+
+# シングルトン
 
 > In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object.
 >
