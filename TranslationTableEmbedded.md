@@ -31,6 +31,7 @@
 | microcontroller                | マイクロコントローラ
 | terminal                       | 端末
 | timer                          | タイマ
+| out of order                   | アウトオブオーダ
 | peripheral                     | ペリフェラル
 | preemption                     | プリエンプション
 | processor                      | プロセッサ
