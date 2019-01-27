@@ -1,4 +1,6 @@
-# Collections
+<!-- # Collections -->
+
+# コレクション
 
 Eventually you'll want to use dynamic data structures (AKA collections) in your
 program. `std` provides a set of common collections: [`Vec`], [`String`],
