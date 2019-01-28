@@ -42,7 +42,7 @@ more information and coordination
 - [組込みC開発者へのヒント](./c-tips/index.md)
     <!-- TODO: Define Sections -->
 - [相互運用性](./interoperability/index.md)
-    - [A little C with your Rust](./interoperability/c-with-rust.md)
+    - [Rustと少しのC](./interoperability/c-with-rust.md)
     - [A little Rust with your C](./interoperability/rust-with-c.md)
 - [Unsorted topics](./unsorted/index.md)
   - [Optimizations: The speed size tradeoff](./unsorted/speed-vs-size.md)
