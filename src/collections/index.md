@@ -24,7 +24,7 @@ that's shipped with the compiler.
 -->
 
 `core`は、定義上、メモリアロケーションがないためコレクションの実装を使うことができません。
-しかし、コンパイラと共に配布されている*安定化していない*`alloc`クレートの中にそれらのコレクションがあります。
+しかし、コンパイラと共に配布されている*安定化していない*`alloc`クレートの中にコレクションの実装があります。
 
 <!--
 If you need collections, a heap allocated implementation is not your only
@@ -80,7 +80,7 @@ However, we *strongly* suggest you use a battle tested allocator from crates.io
 in your program instead of this allocator.
 -->
 
-このセクションを可能な限り自己完結させるため、グローバルアロケータとして、単純なポインタを増加するだけのアロケータを実装します。
+このセクションを可能な限り自己完結させるため、グローバルアロケータとして、単純にポインタを増加するだけのアロケータを実装します。
 しかしながら、あなたのプログラムではこのアロケータでなく、crates.ioから歴戦のアロケータを使用することを*強く*お勧めします。
 
 ``` rust,ignore
@@ -107,7 +107,7 @@ unsafe impl GlobalAlloc for BumpPointerAlloc {
     unsafe fn alloc(&self, layout: Layout) -> *mut u8 {
 #         // `interrupt::free` is a critical section that makes our allocator safe
 #         // to use from within interrupts
-        // `interrupt::free`は、割り込み内でアロケータを安全に使えるようにするための
+        // `interrupt::free`は、割り込み内でアロケータを安全に使用するための
         // クリティカルセクションです。
         interrupt::free(|_| {
             let head = self.head.get();
@@ -137,7 +137,7 @@ unsafe impl GlobalAlloc for BumpPointerAlloc {
 # // is not used by other parts of the program
 // グローバルメモリアロケータの宣言
 // ユーザはメモリ領域の`[0x2000_0100, 0x2000_0200]`がプログラムの他の部分で使用されないことを
-// 保証しなければなりません。
+// 保証しなければなりません
 #[global_allocator]
 static HEAP: BumpPointerAlloc = BumpPointerAlloc {
     head: UnsafeCell::new(0x2000_0100),
@@ -232,7 +232,7 @@ This is indicated by the `U8` (see [`typenum`]) in the type signature.
 -->
 
 1つ目は、コレクションの容量を最初に宣言しなければならないことです。
-`heapless`コレクションは、再割り当てすることはなく、固定の容量になります。この容量はコレクションの型シグネチャの一部になります。
+`heapless`コレクションは、再割り当てが発生せず、固定の容量になります。この容量はコレクションの型シグネチャの一部になります。
 上記の例では、`xs`は8要素の容量を持つように宣言しています。このベクタは最大で8つの要素を保持することができます。
 型シグネチャの`U8`（[`typenum`]を参照）がこのことを表しています。
 
@@ -287,7 +287,7 @@ some operations can *implicitly* fail. Some `alloc` collections expose
 growing the collection but you need be proactive about using them.
 -->
 
-ヒープアロケーションでは、メモリ不足は常に発生する可能性があり、コレクションが拡大する必要がある場所であれば、どこでも発生する可能性があります。
+ヒープアロケーションでは、メモリ不足は常に発生する可能性があり、コレクションが拡大する場所であれば、どこでも発生する可能性があります。
 例えば、全ての`alloc::Vec.push`呼び出しは、OOM状態を引き起こす可能性があります。
 そのため、一部の操作は*暗黙的に*失敗する可能性があります。
 一部の`alloc`コレクションは`try_reserve`メソッドを提供しています。
@@ -301,7 +301,7 @@ That is you'll have deal with *all* the `Result`s returned by methods like
 `Vec.push`.
 -->
 
-`heapless`コレクションだけを使っていて、メモリアロケータを使用しないのであれば、OOM状態状態は発生しません。
+`heapless`コレクションだけを使っていて、メモリアロケータを使用しないのであれば、OOM状態は発生しません。
 その代わりに、コレクションの容量オーバーを個別に処理しなければなりません。
 つまり、`Vec.push`のようなメソッドが返す全ての`Result`を処理することになります。
 
@@ -314,7 +314,7 @@ some other collection was leaking memory (memory leaks are possible in safe
 Rust).
 -->
 
-OOM障害は、`heapless::Vec.push`が返す全ての`Result`を`unwrap`することより、デバッグが難しいでしょう。
+OOM障害は、`heapless::Vec.push`が返す全ての`Result`を`unwrap`するより、デバッグが難しいでしょう。
 なぜなら、障害が発生した場所は、問題の原因となる場所と一致*しない*可能性があるからです。
 例えば、他のコレクションがメモリリークを起こしているせいでアロケータが枯渇しそうな場合、`vec.reserve(1)`がOOMを発生させる可能性があります
 （メモリリークは安全なRustでも発生します）。
@@ -323,6 +323,7 @@ OOM障害は、`heapless::Vec.push`が返す全ての`Result`を`unwrap`する�
 
 ### メモリ使用量
 
+<!--
 Reasoning about memory usage of heap allocated collections is hard because the
 capacity of long lived collections can change at runtime. Some operations may
 implicitly reallocate the collection increasing its memory usage, and some
@@ -331,46 +332,101 @@ memory used by the collection -- ultimately, it's up to the allocator to decide
 whether to actually shrink the memory allocation or not. Additionally, the
 allocator may have to deal with memory fragmentation which can increase the
 *apparent* memory usage.
+-->
 
+長期間使われるコレクションの容量は、実行時に変わる可能性があるため、ヒープ割り当てされたコレクションのメモリ使用量を推測することは難しいです。
+一部の操作は、暗黙的にコレクションを再割り当てし、メモリ使用量が増加します。
+一部のコレクションは、`shrink_to_fit`のようなメソッドを持っており、コレクションが使用しているメモリを減らすこともあります。
+最終的に、実際にメモリアロケーションを縮小するかどうかは、アロケータ次第です。
+さらに、アロケータは、メモリフラグメンテーションを扱う必要があります。このことは*見かけ上の*メモリ使用量を増やす可能性があります。
+
+<!--
 On the other hand if you exclusively use fixed capacity collections, store
 most of them in `static` variables and set a maximum size for the call stack
 then the linker will detect if you try to use more memory than what's physically
 available.
+-->
 
+一方で、固定容量のコレクションだけを使用して、そのほとんどを`static`変数に格納し、コールスタックの最大サイズを設定すると、
+リンカは、物理的に利用可能なメモリより大きな容量を使おうとしたかどうか検出します。
+
+<!--
 Furthermore, fixed capacity collections allocated on the stack will be reported
 by [`-Z emit-stack-sizes`] flag which means that tools that analyze stack usage
 (like [`stack-sizes`]) will include them in their analysis.
+-->
+
+その上、スタックに割り当てられた固定容量のコレクションは、[`-Z emit-stack-sizes`]フラグによって報告されます。
+このフラグは、（[`stack-sizes`]のような）スタック使用量を解析するツールがスタック使用量を解析することを意味します。
 
 [`-Z emit-stack-sizes`]: https://doc.rust-lang.org/beta/unstable-book/compiler-flags/emit-stack-sizes.html
 [`stack-sizes`]: https://crates.io/crates/stack-sizes
 
+<!--
 However, fixed capacity collections can *not* be shrunk which can result in
 lower load factors (the ratio between the size of the collection and its
 capacity) than what relocatable collections can achieve.
+-->
 
-### Worst Case Execution Time (WCET)
+しかし、固定容量のコレクションは、縮小することが*できません*。
+再配置可能なコレクションよりも負荷率（コレクションのサイズとその容量の比率）が低くなる可能性があります。
 
+<!-- ### Worst Case Execution Time (WCET) -->
+
+### 最悪実行時間（WCET; Worst Case Execution Time）
+
+<!--
 If are building time sensitive applications or hard real time applications then
 you care, maybe a lot, about the worst case execution time of the different
 parts of your program.
+-->
 
+時間制約のあるアプリケーションやハードリアルタイムアプリケーションを作成している場合、
+プログラムの様々な部分で最悪実行時間が気になるでしょう。
+
+<!--
 The `alloc` collections can reallocate so the WCET of operations that may grow
 the collection will also include the time it takes to reallocate the collection,
 which itself depends on the *runtime* capacity of the collection. This makes it
 hard to determine the WCET of, for example, the `alloc::Vec.push` operation as
 it depends on both the allocator being used and its runtime capacity.
+-->
 
+`alloc`コレクションは再割り当てする可能性があるため、コレクションが拡大する操作の最悪実行時間は、
+コレクションが再割り当てされるのにかかる時間も含みます。
+コレクションが再割り当てされるかどうかは、*実行時*のコレクションの容量に依存します。
+このことは、`alloc::Vec.push`といった操作の最悪実行時間の決定を難しくします。
+この操作の最悪実行時間は、使用するアロケータとコレクションの実行時容量との両方に依存するためです。
+
+<!--
 On the other hand fixed capacity collections never reallocate so all operations
 have a predictable execution time. For example, `heapless::Vec.push` executes in
 constant time.
+-->
 
-### Ease of use
+一方、固定容量のコレクションは再割り当てが発生しないため、全ての操作の実行時間が予測可能です。
+例えば、`heapless::Vec.push`は定数時間で実行します。
 
+<!-- ### Ease of use -->
+
+### 使いやすさ
+
+<!--
 `alloc` requires setting up a global allocator whereas `heapless` does not.
 However, `heapless` requires you to pick the capacity of each collection that
 you instantiate.
+-->
 
+`alloc`はグローバルアロケータの準備が必要ですが、`heapless`はそうではありません。
+しかし、`heapless`は、インスタンスを作成する各コレクションの容量を指定する必要があります。
+
+<!--
 The `alloc` API will be familiar to virtually every Rust developer. The
 `heapless` API tries to closely mimic the `alloc` API but it will never be
 exactly the same due to its explicit error handling -- some developers may feel
 the explicit error handling is excessive or too cumbersome.
+-->
+
+`alloc` APIは、事実上、全てのRust開発者がなじみのあるものです。
+`heapless` APIは、`alloc` APIに似せてはいますが、明示的なエラー処理のため、全く同じにはなりません。
+一部の開発者はこの明示的なエラー処理を、度が過ぎていたり、面倒すぎる、と感じるかもしれません。
