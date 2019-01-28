@@ -1,4 +1,6 @@
-# Tips for embedded C developers
+<!-- # Tips for embedded C developers -->
+
+# ???C????????
 
 This chapter collects a variety of tips that might be useful to experienced
 embedded C developers looking to start writing Rust. It will especially
