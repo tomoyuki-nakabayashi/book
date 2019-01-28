@@ -39,7 +39,7 @@ more information and coordination
 - [移植性](./portability/index.md)
 - [並行性](./concurrency/index.md)
 - [コレクション](./collections/index.md)
-- [Tips for embedded C developers](./c-tips/index.md)
+- [組込みC開発者へのヒント](./c-tips/index.md)
     <!-- TODO: Define Sections -->
 - [Interoperability](./interoperability/index.md)
     - [A little C with your Rust](./interoperability/c-with-rust.md)
