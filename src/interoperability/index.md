@@ -1,4 +1,6 @@
-# Interoperability
+<!-- # Interoperability -->
+
+# 相互運用性
 
 Interoperability between Rust and C code is always dependent
 on transforming data between the two languages.
