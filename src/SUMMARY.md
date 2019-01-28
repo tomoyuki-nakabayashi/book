@@ -38,7 +38,7 @@ more information and coordination
     - [ゼロコスト抽象化](./static-guarantees/zero-cost-abstractions.md)
 - [移植性](./portability/index.md)
 - [並行性](./concurrency/index.md)
-- [Collections](./collections/index.md)
+- [コレクション](./collections/index.md)
 - [Tips for embedded C developers](./c-tips/index.md)
     <!-- TODO: Define Sections -->
 - [Interoperability](./interoperability/index.md)
