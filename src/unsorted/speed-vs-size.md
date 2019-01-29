@@ -1,4 +1,6 @@
-# Optimizations: the speed size tradeoff
+<!-- # Optimizations: the speed size tradeoff -->
+
+# 最適化：速度とサイズのトレードオフ
 
 Everyone wants their program to be super fast and super small but it's usually
 not possible to have maximize both characteristics. This section discusses the
