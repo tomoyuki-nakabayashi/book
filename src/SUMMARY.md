@@ -44,5 +44,5 @@ more information and coordination
 - [相互運用性](./interoperability/index.md)
     - [Rustと少しのC](./interoperability/c-with-rust.md)
     - [Cと少しのRust](./interoperability/rust-with-c.md)
-- [Unsorted topics](./unsorted/index.md)
-  - [Optimizations: The speed size tradeoff](./unsorted/speed-vs-size.md)
+- [未分類のトピック](./unsorted/index.md)
+  - [最適化: 速度とサイズのトレードオフ](./unsorted/speed-vs-size.md)
