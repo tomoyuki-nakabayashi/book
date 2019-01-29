@@ -43,6 +43,6 @@ more information and coordination
     <!-- TODO: Define Sections -->
 - [相互運用性](./interoperability/index.md)
     - [Rustと少しのC](./interoperability/c-with-rust.md)
-    - [A little Rust with your C](./interoperability/rust-with-c.md)
+    - [Cと少しのRust](./interoperability/rust-with-c.md)
 - [Unsorted topics](./unsorted/index.md)
   - [Optimizations: The speed size tradeoff](./unsorted/speed-vs-size.md)

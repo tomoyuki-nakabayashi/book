@@ -1,4 +1,6 @@
-# A little Rust with your C
+<!-- # A little Rust with your C -->
+
+# Cと少しのRust
 
 Using Rust code inside a C or C++ project mostly consists of two parts.
 
