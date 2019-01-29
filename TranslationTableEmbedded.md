@@ -29,6 +29,7 @@
 | halt                           | 停止
 | handler                        | ハンドラ
 | interrupt                      | 割り込み
+| mangle                         | マングル
 | microcontroller                | マイクロコントローラ
 | terminal                       | 端末
 | timer                          | タイマ
