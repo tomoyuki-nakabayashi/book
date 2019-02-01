@@ -17,7 +17,7 @@ The `cortex-m-rt` crate provides an [`exception`] attribute to declare exception
 handlers.
 -->
 
-`cortex-m-rt`クレートは、例外ハンドラを宣言するために、[`exception`]属性を提供しています。
+`cortex-m-rt`クレートは、例外ハンドラを宣言するために、[`exception`]アトリビュートを提供しています。
 
 [`exception`]: https://rust-embedded.github.io/cortex-m-rt/0.6.1/cortex_m_rt_macros/fn.exception.html
 
@@ -38,7 +38,7 @@ would result in a compilation error.
 -->
 
 `exception`属性の他は、例外ハンドラは普通の関数のように見えます。しかし、もう1つ違いがあります。
-`exception`ハンドラはソフトウェアから呼び出すことが**できません**。前述の例では、`SysTick();`というステートメントは、
+`exception`ハンドラはソフトウェアから呼び出すことが*できません*。前述の例では、`SysTick();`というステートメントは、
 コンパイルエラーになります。
 
 <!--
@@ -46,8 +46,8 @@ This behavior is pretty much intended and it's required to provide a feature:
 `static mut` variables declared *inside* `exception` handlers are *safe* to use.
 -->
 
-この動作は、非常に意図的なものであり、次の機能を提供するために求められます。
-`exception`ハンドラ**内**で宣言された`static mut`変数の利用を*安全*にします。
+この動作は、非常に意図的なものです。
+これは`exception`ハンドラ*内*で宣言された`static mut`変数の利用を*安全*にする、という機能を提供するためのものです。
 
 ``` rust,ignore
 #[exception]
@@ -204,7 +204,7 @@ particular exception it will be handled by the `DefaultHandler` function, which
 defaults to:
 -->
 
-`exception`属性が実際に行っていることは、特定の例外を処理するデフォルト例外ハンドラの*オーバーライド*です。
+`exception`アトリビュートが実際に行っていることは、特定の例外を処理するデフォルト例外ハンドラの*オーバーライド*です。
 特定の例外について、ハンドラをオーバーライドしない場合、`DefaultHandler`関数がその例外を処理します。
 DefaultHandler関数は下記の通りです。
 
@@ -225,7 +225,7 @@ This function is provided by the `cortex-m-rt` crate and marked as
 
 <!-- It's possible to override this `DefaultHandler` using the `exception` attribute: -->
 
-`exception`属性を使うことで、`DefaultHandler`をオーバーライドできます。
+`exception`アトリビュートを使うことで、`DefaultHandler`をオーバーライドできます。
 
 ``` rust,ignore
 #[exception]
