@@ -62,7 +62,7 @@ and spawning the main thread before a program's main function is invoked. This r
 ### libstdランタイム
 上述の通り、[libstd](https://doc.rust-lang.org/std/)の利用には、いくらかのシステムインテグレーションが必要です。しかし、これは[libstd](https://doc.rust-lang.org/std/)がOSの抽象にアクセスするための共通の方法を提供しているだけでなく、ランタイムも提供しているためです。
 ランタイムは、とりわけ、スタックオーバーフロープロテクションの準備、コマンドライン引数の処理、メインスレッドの生成、をプログラムのメイン関数が呼び出される前に処理します。
-このラインタムも、`no_std`環境では利用できません。
+このランタイムも、`no_std`環境では利用できません。
 
 <!-- 
 ## Summary

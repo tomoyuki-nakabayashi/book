@@ -203,7 +203,7 @@ As before we'll do remote debugging and the client will be a GDB process. This
 time, however, the server will be OpenOCD.
 -->
 
-以前と同様に、リモートデバックを行います。クライアントがGDBプロセスであることも同様です。
+以前と同様に、リモートデバッグを行います。クライアントがGDBプロセスであることも同様です。
 しかし、今回、サーバはOpenOCDになります。
 
 <!--
