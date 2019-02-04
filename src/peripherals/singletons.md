@@ -124,7 +124,7 @@ fn main() {
 Additionally, if you use `cortex-m-rtfm`, the entire process of defining and obtaining these peripherals are abstracted for you, and you are instead handed a `Peripherals` structure that contains a non-`Option<T>` version of all of the items you define.
 -->
 
-加えて、あなたが`cortex-m-rtfm`クレートを使うのなら、これらのペリフェラルを定義・取得するプロセス全体は抽象化され、代わりにあなたが定義した全てのアイテムの`Option<T>`以外のバージョンを含む`Peripherals`構造体を手渡されます。
+加えて、あなたが`cortex-m-rtfm`クレートを使うのなら、これらのペリフェラルを定義・取得するプロセス全体は抽象化され、代わりにあなたが定義した全てのアイテムが、`Option<T>`なしで含まれている`Peripherals`構造体を手渡されます。
 
 ```rust,ignore
 // cortex-m-rtfm v0.3.x
@@ -244,4 +244,4 @@ This allows us to enforce whether code should or should not make changes to hard
 -->
 
 これにより、実行時ではなく**コンパイル時に**コードがハードウェアを変更するかどうかを強制できます。
-注意点としては、通常この強制はひとつのアプリケーション内でのみ機能します。ベアメタルシステムにおいては、ソフトウェアはひとつのアプリケーションにコンパイルされるため機能しますが、これは一般的な制約ではありません。
+注意点としては、通常この強制はひとつのアプリケーション内でのみ機能します。ベアメタルシステムにおいては、ソフトウェアはひとつのアプリケーションにコンパイルされるため、これは一般的には制約にはなりません。
