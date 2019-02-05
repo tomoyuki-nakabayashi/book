@@ -205,7 +205,7 @@ the same as disabling interrupts, running some code, and then re-enabling
 interrupts.
 -->
 
-この例では`cortex_m::interrupt::free`を使いました。他のプラットフォームでもクリティカルセクションのコードを実行するための、類似の方法があります。。
+この例では`cortex_m::interrupt::free`を使いました。他のプラットフォームでもクリティカルセクションのコードを実行するための、類似の方法があります。
 これは、割り込みを無効にして、コードを実行し、再び割り込みを有効にすることと同じです。
 
 <!--

@@ -13,6 +13,6 @@ where we use OpenOCD to program an [STM32F3DISCOVERY].
 
 このセクションでは、組込みプログラムを書いて、ビルドして、フラッシュに書き込み、デバッグする、という一連のプロセスを説明します。
 ほとんどの例を特別なハードウェアなしで試すことができます。有名なオープンソースハードウェアエミュレータであるQEMUを使うからです。
-ハードウェが必要となる唯一のセクションは、当然ながら、OpenOCDを使って[STM32F3DISCOVERY]にプログラムする[Hardware](./hardware.md)セクションです。
+ハードウェアが必要となる唯一のセクションは、当然ながら、OpenOCDを使って[STM32F3DISCOVERY]にプログラムする[Hardware](./hardware.md)セクションです。
 
 [STM32F3DISCOVERY]: http://www.st.com/en/evaluation-tools/stm32f3discovery.html
