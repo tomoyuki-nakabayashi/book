@@ -203,7 +203,7 @@ that'd be `#[entry]`.
 [`#[entry]`]は、[`cortex-m-rt`]クレートが提供するアトリビュートで、プログラムのエントリポイントを示すために使用します。
 標準の`main`インタフェースを使用しないので、プログラムのエントリポイントを示す別の方法が必要です。それが、`#[entry]`です。
 
-[`#[entry]`]: https://rust-embedded.github.io/cortex-m-rt/0.6.1/cortex_m_rt_macros/fn.entry.html  
+[`#[entry]`]: https://docs.rs/cortex-m-rt-macros/latest/cortex_m_rt_macros/attr.entry.html  
 
 [`cortex-m-rt`]: https://crates.io/crates/cortex-m-rt
 
@@ -420,8 +420,8 @@ Reset:
      430:       bl      #0x1c
      434:       b       #-0x4 <Reset+0x34>
 
-UserHardFault_:
-     436:       b       #-0x4 <UserHardFault_>
+HardFault_:
+     436:       b       #-0x4 <HardFault_>
 
 UsageFault:
      438:       b       #-0x4 <UsageFault>
@@ -624,8 +624,13 @@ $ head -n3 .cargo/config
 
 ``` toml
 [target.thumbv7m-none-eabi]
+<<<<<<< HEAD
 # `cargo run`で、プログラムをQEMUで実行するため、コメントアウトを外して下さい。
 runner = ["qemu-system-arm", "-cpu", "cortex-m3", "-machine", "lm3s6965evb", "-nographic", "-semihosting-config", "enable=on,target=native", "-kernel"]
+=======
+# uncomment this to make `cargo run` execute programs on QEMU
+runner = "qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel"
+>>>>>>> upstream
 ```
 
 <!--

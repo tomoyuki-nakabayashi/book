@@ -5,7 +5,7 @@
 <!--
 Interrupts differ from exceptions in a variety of ways but their operation and
 use is largely similar and they are also handled by the same interrupt
-controller. Whereas exeptions are defined by the Cortex-M architecture,
+controller. Whereas exceptions are defined by the Cortex-M architecture,
 interrupts are always vendor (and often even chip) specific implementations,
 both in naming and functionality.
 -->
@@ -13,8 +13,12 @@ both in naming and functionality.
 割り込みは様々な点で例外と違いますが、その動作と使用方法は、ほとんど同じで、同じ割り込みコントローラによって処理されます。
 例外がCortex-Mアーキテクチャで定義されているのに対し、割り込みは、命名と機能との両方において、常にベンダ（もっと言うとチップ）固有の実装です。
 
+<<<<<<< HEAD
 <!--
 Interrupts do allow for a lot of flexbility which needs to be accounted for
+=======
+Interrupts do allow for a lot of flexibility which needs to be accounted for
+>>>>>>> upstream
 when attempting to use them in an advanced way. We will not cover those uses in
 this book, however it is a good idea to keep the following in mind:
 -->
@@ -35,9 +39,9 @@ this book, however it is a good idea to keep the following in mind:
 * 通常、割り込み要因は、割り込みハンドラが無限に再呼び出しされないようにするため、クリアされる必要があります。
 
 <!--
-The general initialisation steps at runtime are always the same:
+The general initialization steps at runtime are always the same:
 * Setup the peripheral(s) to generate interrupts requests at the desired occasions
-* Set the desired priority of the interrupt handler in the interupt controller
+* Set the desired priority of the interrupt handler in the interrupt controller
 * Enable the interrupt handler in the interrupt controller
 -->
 
@@ -47,7 +51,7 @@ The general initialisation steps at runtime are always the same:
 
 <!--
 Similarly to exceptions, the `cortex-m-rt` crate provides an [`interrupt`]
-attribute to declare interrupt handlers. The available interrupts are (and
+attribute to declare interrupt handlers. The available interrupts (and
 their position in the interrupt handler table) are usually automatically
 generated via `svd2rust` from a SVD description.
 -->
@@ -80,8 +84,12 @@ to the interrupt handler.
 しかし、割り込みハンドラは、特別な呼び出し規約のため、ファームウェアの他の部分から直接呼び出すことができません。
 ソフトウェアで割り込み要求を起こし、割り込みハンドラへの転送を発生させることは可能です。
 
+<<<<<<< HEAD
 <!--
 Similar to exeption handlers it is also possible to declare `static mut`
+=======
+Similar to exception handlers it is also possible to declare `static mut`
+>>>>>>> upstream
 variables inside the interrupt handlers for *safe* state keeping.
 -->
 

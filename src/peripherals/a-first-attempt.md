@@ -101,7 +101,7 @@ Rustでは、変数ではなく*アクセス*に対してvolatileをつけます
 
 ```rust,ignore
 let systick = unsafe { &mut *(0xE000_E010 as *mut SysTick) };
-let time = unsafe { std::ptr::read_volatile(&mut systick.cvr) };
+let time = unsafe { core::ptr::read_volatile(&mut systick.cvr) };
 ```
 
 <!--
