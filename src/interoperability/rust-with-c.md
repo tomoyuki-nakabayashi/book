@@ -33,7 +33,7 @@ any dependencies.
 
 <!--
 There are flags to tell `cargo` to emit a systems library, instead of
-its regular rust target.
+it's regular rust target.
 This also allows you to set a different output name for your library,
 if you want it to differ from the rest of your crate.
 -->

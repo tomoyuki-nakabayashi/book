@@ -450,7 +450,7 @@ set print asm-demangle on
 
 # 未処理の例外、ハードフォールト、パニックを検出します
 break DefaultHandler
-break HardFault
+break UserHardFault
 break rust_begin_unwind
 
 monitor arm semihosting enable
