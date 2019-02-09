@@ -19,7 +19,7 @@ handlers.
 
 `cortex-m-rt`クレートは、例外ハンドラを宣言するために、[`exception`]アトリビュートを提供しています。
 
-[`exception`]: https://rust-embedded.github.io/cortex-m-rt/0.6.1/cortex_m_rt_macros/fn.exception.html
+[`exception`]: https://docs.rs/cortex-m-rt-macros/latest/cortex_m_rt_macros/attr.exception.html
 
 ``` rust,ignore
 # // Exception handler for the SysTick (System Timer) exception

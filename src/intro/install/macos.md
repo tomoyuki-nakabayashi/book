@@ -8,18 +8,16 @@
 
 ``` console
 $ # GDB
-$ brew cask install gcc-arm-embedded
+$ brew tap armmbed/formulae
+$ brew install armmbed/formulae/arm-none-eabi-gcc
 
+$ # OpenOCD
 $ brew install openocd
 
+$ # QEMU
 $ brew install qemu
 ```
-<!-- 
-If the `brew cask` command doesn't work (e.g. `error: unknown command: cask`),
-then first run `brew tap Caskroom/tap` and try again.
- -->
 
-`brew cask`コマンドがうまく動かない場合(例えば、`error: unknown command: cask`)、最初に`brew tap Caskroom/tap`を実行してから再実行して下さい。
 
 <!-- That's all! Go to the [next section]. -->
 
