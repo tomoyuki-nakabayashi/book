@@ -624,13 +624,8 @@ $ head -n3 .cargo/config
 
 ``` toml
 [target.thumbv7m-none-eabi]
-<<<<<<< HEAD
 # `cargo run`で、プログラムをQEMUで実行するため、コメントアウトを外して下さい。
-runner = ["qemu-system-arm", "-cpu", "cortex-m3", "-machine", "lm3s6965evb", "-nographic", "-semihosting-config", "enable=on,target=native", "-kernel"]
-=======
-# uncomment this to make `cargo run` execute programs on QEMU
 runner = "qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel"
->>>>>>> upstream
 ```
 
 <!--
