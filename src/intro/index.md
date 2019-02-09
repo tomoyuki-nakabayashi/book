@@ -139,12 +139,6 @@
 
 [STM32F3DISCOVERY]: http://www.st.com/en/evaluation-tools/stm32f3discovery.html
 
-<!-- > **HEADS UP** Until the official release of this book, which is planned to -->
-<!-- > coincide with the 2018 edition release of the Rust Programming Language, -->
-<!-- > expect the sections of this book to change quite a bit. We recommend -->
-<!-- > bookmarking the root of this book instead of any specific section. -->
-
-> **注意** 本書の公式リリースまで (Rust 2018 editionのリリースと当時になるように計画しています)、本書のセクションは大きく修正することが予測されます。特定のセクションではなく、本書のトップページをブックマークすることをお勧めします。
 
 <!-- 日本語訳へのコントリビューション情報を代わりに掲載する？ -->
 
