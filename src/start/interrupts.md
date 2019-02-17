@@ -13,12 +13,8 @@ both in naming and functionality.
 割り込みは様々な点で例外と違いますが、その動作と使用方法は、ほとんど同じで、同じ割り込みコントローラによって処理されます。
 例外がCortex-Mアーキテクチャで定義されているのに対し、割り込みは、命名と機能との両方において、常にベンダ（もっと言うとチップ）固有の実装です。
 
-<<<<<<< HEAD
 <!--
-Interrupts do allow for a lot of flexbility which needs to be accounted for
-=======
 Interrupts do allow for a lot of flexibility which needs to be accounted for
->>>>>>> upstream
 when attempting to use them in an advanced way. We will not cover those uses in
 this book, however it is a good idea to keep the following in mind:
 -->
@@ -47,6 +43,7 @@ The general initialization steps at runtime are always the same:
 
 ランタイムでの一般的な初期化手順は、常に同じです。
 * 必要な時に割り込み要求を起こすように、ペリフェラルを設定します
+* 割り込みコントローラで割り込みハンドラの優先度をセットします
 * 割り込みコントローラで割り込みハンドラを有効化します
 
 <!--
@@ -84,12 +81,8 @@ to the interrupt handler.
 しかし、割り込みハンドラは、特別な呼び出し規約のため、ファームウェアの他の部分から直接呼び出すことができません。
 ソフトウェアで割り込み要求を起こし、割り込みハンドラへの転送を発生させることは可能です。
 
-<<<<<<< HEAD
 <!--
-Similar to exeption handlers it is also possible to declare `static mut`
-=======
 Similar to exception handlers it is also possible to declare `static mut`
->>>>>>> upstream
 variables inside the interrupt handlers for *safe* state keeping.
 -->
 
