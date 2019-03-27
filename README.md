@@ -1,11 +1,9 @@
-# [Work in Progress] - 組込みRust
+# 組込みRust
 
 このドキュメントは、ベアメタル (マイクロコントローラ) デバイスのファームウェアを開発するために、Rustをどのように使うか、を説明するものです。
 
 ご協力頂く際は、[コントリビューションガイド](./CONTRIBUTING.md)をご参照下さい。不明な点があれば、お気軽にお尋ね下さい。
 組込み固有の[対訳表](./TranslationTableEmbedded.md)も、不完全ではありますが、用意しています。
-
-英語も日本語もRustも未熟者ですが、組込みでRustが主流になってほしいので、がんばります。よろしくお願いいたします。
 
 # [Work in Progress] - The Embedded Rust Book
 
