@@ -1,0 +1,375 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ツール - The Embedded Rust Book</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro/index.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/no-std.html"><strong aria-hidden="true">1.1.</strong> no_std</a></li><li class="chapter-item expanded "><a href="../intro/tooling.html" class="active"><strong aria-hidden="true">1.2.</strong> ツール</a></li><li class="chapter-item expanded "><a href="../intro/install.html"><strong aria-hidden="true">1.3.</strong> インストール</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/install/linux.html"><strong aria-hidden="true">1.3.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../intro/install/macos.html"><strong aria-hidden="true">1.3.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../intro/install/windows.html"><strong aria-hidden="true">1.3.3.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../intro/install/verify.html"><strong aria-hidden="true">1.3.4.</strong> インストールの確認</a></li></ol></li><li class="chapter-item expanded "><a href="../intro/hardware.html"><strong aria-hidden="true">1.4.</strong> ハードウェア</a></li></ol></li><li class="chapter-item expanded "><a href="../start/index.html"><strong aria-hidden="true">2.</strong> 入門</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../start/qemu.html"><strong aria-hidden="true">2.1.</strong> QEMU</a></li><li class="chapter-item expanded "><a href="../start/hardware.html"><strong aria-hidden="true">2.2.</strong> ハードウェア</a></li><li class="chapter-item expanded "><a href="../start/registers.html"><strong aria-hidden="true">2.3.</strong> メモリマップドレジスタ</a></li><li class="chapter-item expanded "><a href="../start/semihosting.html"><strong aria-hidden="true">2.4.</strong> セミホスティング</a></li><li class="chapter-item expanded "><a href="../start/panicking.html"><strong aria-hidden="true">2.5.</strong> パニック</a></li><li class="chapter-item expanded "><a href="../start/exceptions.html"><strong aria-hidden="true">2.6.</strong> 例外</a></li><li class="chapter-item expanded "><a href="../start/interrupts.html"><strong aria-hidden="true">2.7.</strong> 割り込み</a></li><li class="chapter-item expanded "><a href="../start/io.html"><strong aria-hidden="true">2.8.</strong> IO</a></li></ol></li><li class="chapter-item expanded "><a href="../peripherals/index.html"><strong aria-hidden="true">3.</strong> ペリフェラル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../peripherals/a-first-attempt.html"><strong aria-hidden="true">3.1.</strong> Rustでの最初の試み</a></li><li class="chapter-item expanded "><a href="../peripherals/borrowck.html"><strong aria-hidden="true">3.2.</strong> 借用チェッカ</a></li><li class="chapter-item expanded "><a href="../peripherals/singletons.html"><strong aria-hidden="true">3.3.</strong> シングルトン</a></li></ol></li><li class="chapter-item expanded "><a href="../static-guarantees/index.html"><strong aria-hidden="true">4.</strong> 静的な保証</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../static-guarantees/typestate-programming.html"><strong aria-hidden="true">4.1.</strong> 型状態プログラミング</a></li><li class="chapter-item expanded "><a href="../static-guarantees/state-machines.html"><strong aria-hidden="true">4.2.</strong> ステートマシンとしてのペリフェラル</a></li><li class="chapter-item expanded "><a href="../static-guarantees/design-contracts.html"><strong aria-hidden="true">4.3.</strong> 設計契約</a></li><li class="chapter-item expanded "><a href="../static-guarantees/zero-cost-abstractions.html"><strong aria-hidden="true">4.4.</strong> ゼロコスト抽象化</a></li></ol></li><li class="chapter-item expanded "><a href="../portability/index.html"><strong aria-hidden="true">5.</strong> 移植性</a></li><li class="chapter-item expanded "><a href="../concurrency/index.html"><strong aria-hidden="true">6.</strong> 並行性</a></li><li class="chapter-item expanded "><a href="../collections/index.html"><strong aria-hidden="true">7.</strong> コレクション</a></li><li class="chapter-item expanded "><a href="../c-tips/index.html"><strong aria-hidden="true">8.</strong> 組込みC開発者へのヒント</a></li><li class="chapter-item expanded "><a href="../interoperability/index.html"><strong aria-hidden="true">9.</strong> 相互運用性</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/c-with-rust.html"><strong aria-hidden="true">9.1.</strong> Rustと少しのC</a></li><li class="chapter-item expanded "><a href="../interoperability/rust-with-c.html"><strong aria-hidden="true">9.2.</strong> Cと少しのRust</a></li></ol></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">10.</strong> 未分類のトピック</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/speed-vs-size.html"><strong aria-hidden="true">10.1.</strong> 最適化: 速度とサイズのトレードオフ</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">The Embedded Rust Book</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- # Tooling -->
+<h1><a class="header" href="#ツール" id="ツール">ツール</a></h1>
+<!-- 
+Dealing with microcontrollers involves using several different tools as we'll be
+dealing with an architecture different than your laptop's and we'll have to run
+and debug programs on a *remote* device.
+ -->
+<p>マイクロコントローラを扱う際は、いくつかの異なるツールを利用することになります。あなたのノートPCとは異なるアーキテクチャを扱うことになるでしょうし、<em>リモート</em>デバイス上でプログラムを実行しデバッグする必要があります。</p>
+<!-- 
+We'll use all the tools listed below. Any recent version should work when a
+minimum version is not specified, but we have listed the versions we have
+tested.
+ -->
+<p>下記リストのツールを利用します。最小バージョンが指定されていない場合、新しいバージョンであれば機能するはずです。私たちがテストしたバージョンをリストに示しています。</p>
+<!-- 
+- Rust 1.31, 1.31-beta, or a newer toolchain PLUS ARM Cortex-M compilation
+  support.
+- [`cargo-binutils`](https://github.com/rust-embedded/cargo-binutils) ~0.1.4
+- [`qemu-system-arm`](https://www.qemu.org/). Tested versions: 3.0.0
+- OpenOCD >=0.8. Tested versions: v0.9.0 and v0.10.0
+- GDB with ARM support. Version 7.12 or newer highly recommended. Tested
+  versions: 7.10, 7.11, 7.12 and 8.1
+- [OPTIONAL] `git` OR
+  [`cargo-generate`](https://github.com/ashleygwilliams/cargo-generate). If you
+  have neither installed then don't worry about installing either.
+ -->
+<ul>
+<li>ARM Cortex-Mコンパイルサポートを追加したRust 1.31、1.31-beta以上のツールチェイン。</li>
+<li><a href="https://github.com/rust-embedded/cargo-binutils"><code>cargo-binutils</code></a> ~0.1.4</li>
+<li><a href="https://www.qemu.org/"><code>qemu-system-arm</code></a>。テストしたバージョン: 3.0.0</li>
+<li>OpenOCD &gt;=0.8.テストしたバージョン: v0.9.0とv0.10.0</li>
+<li>ARMサポートのGDB。バージョン7.12以上を強く推奨。テストしたバージョン: 7.10、7.11、7.12、8.1</li>
+<li>[任意] <code>git</code>または<a href="https://github.com/ashleygwilliams/cargo-generate"><code>cargo-generate</code></a>。どちらもインストールしていないのであれば、どちらをインストールしてもかまいません。</li>
+</ul>
+<!-- 
+The text below explains why we are using these tools. Installation instructions
+can be found on the next page.
+ -->
+<p>下記に、なぜこれらのツールを利用するのか、を説明します。インストール方法は、次のページにあります。</p>
+<!-- ## `cargo-generate` OR `git` -->
+<h2><a class="header" href="#cargo-generateかgit" id="cargo-generateかgit"><code>cargo-generate</code>か<code>git</code></a></h2>
+<!-- 
+Bare metal programs are non-standard (`no_std`) Rust programs that require some
+fiddling with the linking process to get the memory layout of the program
+right. All this requires unusual files (like linker scripts) and unusual
+settings (like linker flags). We have packaged all that for you in a template
+so that you only need to fill in the blanks such as the project name and the
+characteristics of your target hardware.
+ -->
+<p>ベアメタルプログラムは、非標準 (<code>no_std</code>)なRustプログラムであり、プログラムのメモリレイアウトを正しくするために、リンクプロセスをいじる必要があります。
+これには、独特なファイル(リンカスクリプトなど)と設定(リンカフラグ)が必要です。
+プロジェクト名やターゲットハードウェアの特徴などを、空白に入力するだけで済むように、テンプレートを用意しています。</p>
+<!-- 
+Our template is compatible with `cargo-generate`: a Cargo subcommand for
+creating new Cargo projects from templates. You can also download the
+template using `git`, `curl`, `wget`, or your web browser.
+ -->
+<p>このテンプレートは、<code>cargo-generate</code>との互換性があります。<code>cargo-generate</code>は、テンプレートからCargoプロジェクトを作成するためのCargoのサブコマンドです。
+このテンプレートは、<code>git</code>や<code>curl</code>、<code>wget</code>、ウェブブラウザを使ってダウンロードできます。</p>
+<h2><a class="header" href="#cargo-binutils" id="cargo-binutils"><code>cargo-binutils</code></a></h2>
+<!-- 
+`cargo-binutils` is a collection of Cargo subcommands that make it easy to use
+the LLVM tools that are shipped with the Rust toolchain. These tools include the
+LLVM versions of `objdump`, `nm` and `size` and are used for inspecting
+binaries.
+ -->
+<p><code>cargo-binutils</code>は、Rustツールチェインとともに配布されているLLVMツールを簡単に使うためのCargoサブコマンド一式です。
+これらのツールは、LLVMの<code>objdump</code>や<code>nm</code>、<code>size</code>を含んでおり、バイナリを調査するために使われます。</p>
+<!-- 
+The advantage of using these tools over GNU binutils is that (a) installing the
+LLVM tools is the same one-command installation (`rustup component add
+llvm-tools-preview`) regardless of your OS and (b) tools like `objdump` support
+all the architectures that `rustc` supports -- from ARM to x86_64 -- because
+they both share the same LLVM backend.
+ -->
+<p>GNU binutilsではなく、これらのツールを利用する利点は次の通りです。
+(a) LLVMツールのインストールは、OSに関わらず、共通のコマンド1つ(<code>rustup component add llvm-tools-preview</code>)で済みます。
+(b) <code>objdump</code>などのツールは、<code>rustc</code>がサポートする全てのアーキテクチャ(ARMからx86_64まで)をサポートします。これは、同じLLVMバックエンドを共有しているためです。</p>
+<h2><a class="header" href="#qemu-system-arm" id="qemu-system-arm"><code>qemu-system-arm</code></a></h2>
+<!-- 
+QEMU is an emulator. In this case we use the variant that can fully emulate ARM
+systems. We use QEMU to run embedded programs on the host. Thanks to this you
+can follow some parts of this book even if you don't have any hardware with you!
+ -->
+<p>QEMUはエミュレータです。今回は、ARMシステムを完全にエミュレートできるものを使います。
+私たちは、ホスト上で組込みプログラムを実行するためにQEMUを利用します。
+このおかげで、ハードウェアを持っていなくても、この本のいくつかの部分を試すことができます。</p>
+<h2><a class="header" href="#gdb" id="gdb">GDB</a></h2>
+<!-- 
+A debugger is a very important component of embedded development as you may not
+always have the luxury to log stuff to the host console. In some cases, you may
+not have LEDs to blink on your hardware!
+ -->
+<p>デバッガは、組込み開発で非常に重要です。ホストコンソールにログを記録するような贅沢は、必ずしもできないからです。
+場合によっては、ハードウェア上のLEDが点滅しないことがあります。</p>
+<!-- 
+In general, LLDB works as well as GDB when it comes to debugging but we haven't
+found an LLDB counterpart to GDB's `load` command, which uploads the program to
+the target hardware, so currently we recommend that you use GDB.
+ -->
+<p>通常のデバッグ機能に関しては、LLDBはGDBと同様に機能します。しかし、ターゲットハードウェアにプログラムをアップロードするGDBの<code>load</code>コマンド相当のものは、LLDBにはありません。
+したがって、現在はGDBの使用をお勧めします。</p>
+<h2><a class="header" href="#openocd" id="openocd">OpenOCD</a></h2>
+<!-- 
+GDB isn't able to communicate directly with the ST-Link debugging hardware on
+your STM32F3DISCOVERY development board. It needs a translator and the Open
+On-Chip Debugger, OpenOCD, is that translator. OpenOCD is a program that runs
+on your laptop/PC and translates between GDB's TCP/IP based remote debug
+protocol and ST-Link's USB based protocol.
+ -->
+<p>GDBは、STM32F3DISCOVERY開発ボード上のST-Linkデバッグハードウェアと直接通信することはできません。
+翻訳プログラムが必要であり、OpenOCD (Open On-Chip Debugger)がその翻訳プログラムです。
+OpenOCDは、ノートPCやPC上で動作するプログラムで、GDBのTCP/IPベースのリモートデバッグプロトコルとST-LinkのUSBベースのプロトコルとを翻訳します。</p>
+<!-- 
+OpenOCD also performs other important work as part of its translation for the
+debugging of the ARM Cortex-M based microcontroller on your STM32F3DISCOVERY
+development board:
+-->
+<p>STM32F3DISCOVERY開発ボード上のARM Cortex-Mベースのマイクロコントローラをデバッグするため、OpenOCDは、翻訳の一環として、他の重要な役割も果たします。</p>
+<!-- 
+* It knows how to interact with the memory mapped registers used by the ARM
+  CoreSight debug peripheral. It is these CoreSight registers that allow for:
+  * Breakpoint/Watchpoint manipulation
+  * Reading and writing of the CPU registers
+  * Detecting when the CPU has been halted for a debug event
+  * Continuing CPU execution after a debug event has been encountered
+  * etc.
+* It also knows how to erase and write to the microcontroller's FLASH
+ -->
+<ul>
+<li>ARM CoreSightデバッグ周辺機器で使用されるメモリマップドレジスタとの通信方法を知っています。CoreSightレジスタは、次のことをできるようにします。
+<ul>
+<li>ブレイクポイント/ウォッチポイント操作</li>
+<li>CPUレジスタの読み込みと書き込み</li>
+<li>CPUがデバッグイベントのために停止したことの検出</li>
+<li>デバッグイベントが発生した後のCPU実行の継続</li>
+<li>他</li>
+</ul>
+</li>
+<li>マイクロコントローラのフラッシュの消去と書き込み方法を知っています。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../intro/no-std.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../intro/install.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../intro/no-std.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../intro/install.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

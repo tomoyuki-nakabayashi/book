@@ -1,0 +1,397 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ステートマシンとしてのペリフェラル - The Embedded Rust Book</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro/index.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/no-std.html"><strong aria-hidden="true">1.1.</strong> no_std</a></li><li class="chapter-item expanded "><a href="../intro/tooling.html"><strong aria-hidden="true">1.2.</strong> ツール</a></li><li class="chapter-item expanded "><a href="../intro/install.html"><strong aria-hidden="true">1.3.</strong> インストール</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/install/linux.html"><strong aria-hidden="true">1.3.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../intro/install/macos.html"><strong aria-hidden="true">1.3.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../intro/install/windows.html"><strong aria-hidden="true">1.3.3.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../intro/install/verify.html"><strong aria-hidden="true">1.3.4.</strong> インストールの確認</a></li></ol></li><li class="chapter-item expanded "><a href="../intro/hardware.html"><strong aria-hidden="true">1.4.</strong> ハードウェア</a></li></ol></li><li class="chapter-item expanded "><a href="../start/index.html"><strong aria-hidden="true">2.</strong> 入門</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../start/qemu.html"><strong aria-hidden="true">2.1.</strong> QEMU</a></li><li class="chapter-item expanded "><a href="../start/hardware.html"><strong aria-hidden="true">2.2.</strong> ハードウェア</a></li><li class="chapter-item expanded "><a href="../start/registers.html"><strong aria-hidden="true">2.3.</strong> メモリマップドレジスタ</a></li><li class="chapter-item expanded "><a href="../start/semihosting.html"><strong aria-hidden="true">2.4.</strong> セミホスティング</a></li><li class="chapter-item expanded "><a href="../start/panicking.html"><strong aria-hidden="true">2.5.</strong> パニック</a></li><li class="chapter-item expanded "><a href="../start/exceptions.html"><strong aria-hidden="true">2.6.</strong> 例外</a></li><li class="chapter-item expanded "><a href="../start/interrupts.html"><strong aria-hidden="true">2.7.</strong> 割り込み</a></li><li class="chapter-item expanded "><a href="../start/io.html"><strong aria-hidden="true">2.8.</strong> IO</a></li></ol></li><li class="chapter-item expanded "><a href="../peripherals/index.html"><strong aria-hidden="true">3.</strong> ペリフェラル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../peripherals/a-first-attempt.html"><strong aria-hidden="true">3.1.</strong> Rustでの最初の試み</a></li><li class="chapter-item expanded "><a href="../peripherals/borrowck.html"><strong aria-hidden="true">3.2.</strong> 借用チェッカ</a></li><li class="chapter-item expanded "><a href="../peripherals/singletons.html"><strong aria-hidden="true">3.3.</strong> シングルトン</a></li></ol></li><li class="chapter-item expanded "><a href="../static-guarantees/index.html"><strong aria-hidden="true">4.</strong> 静的な保証</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../static-guarantees/typestate-programming.html"><strong aria-hidden="true">4.1.</strong> 型状態プログラミング</a></li><li class="chapter-item expanded "><a href="../static-guarantees/state-machines.html" class="active"><strong aria-hidden="true">4.2.</strong> ステートマシンとしてのペリフェラル</a></li><li class="chapter-item expanded "><a href="../static-guarantees/design-contracts.html"><strong aria-hidden="true">4.3.</strong> 設計契約</a></li><li class="chapter-item expanded "><a href="../static-guarantees/zero-cost-abstractions.html"><strong aria-hidden="true">4.4.</strong> ゼロコスト抽象化</a></li></ol></li><li class="chapter-item expanded "><a href="../portability/index.html"><strong aria-hidden="true">5.</strong> 移植性</a></li><li class="chapter-item expanded "><a href="../concurrency/index.html"><strong aria-hidden="true">6.</strong> 並行性</a></li><li class="chapter-item expanded "><a href="../collections/index.html"><strong aria-hidden="true">7.</strong> コレクション</a></li><li class="chapter-item expanded "><a href="../c-tips/index.html"><strong aria-hidden="true">8.</strong> 組込みC開発者へのヒント</a></li><li class="chapter-item expanded "><a href="../interoperability/index.html"><strong aria-hidden="true">9.</strong> 相互運用性</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/c-with-rust.html"><strong aria-hidden="true">9.1.</strong> Rustと少しのC</a></li><li class="chapter-item expanded "><a href="../interoperability/rust-with-c.html"><strong aria-hidden="true">9.2.</strong> Cと少しのRust</a></li></ol></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">10.</strong> 未分類のトピック</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/speed-vs-size.html"><strong aria-hidden="true">10.1.</strong> 最適化: 速度とサイズのトレードオフ</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">The Embedded Rust Book</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- # Peripherals as State Machines -->
+<h1><a class="header" href="#ステートマシンとしてのペリフェラル" id="ステートマシンとしてのペリフェラル">ステートマシンとしてのペリフェラル</a></h1>
+<!--
+The peripherals of a microcontroller can be thought of as set of state machines. For example, the configuration of a simplified [GPIO pin] could be represented as the following tree of states:
+-->
+<p>マイクロコントローラのペリフェラルは、一連のステートマシンとして考えることができます。
+例えば、簡略化された<a href="https://en.wikipedia.org/wiki/General-purpose_input/output">GPIOピン</a>の設定は、次の状態ツリーとして表すことができます。</p>
+<!-- [GPIO pin]: https://en.wikipedia.org/wiki/General-purpose_input/output -->
+<!--
+* Disabled
+* Enabled
+    * Configured as Output
+        * Output: High
+        * Output: Low
+    * Configured as Input
+        * Input: High Resistance
+        * Input: Pulled Low
+        * Input: Pulled High
+-->
+<ul>
+<li>無効</li>
+<li>有効
+<ul>
+<li>出力として設定
+<ul>
+<li>出力：ハイ</li>
+<li>出力：ロー</li>
+</ul>
+</li>
+<li>入力として設定
+<ul>
+<li>入力：高抵抗（訳注：ハイインピーダンス）</li>
+<li>入力：プルダウン</li>
+<li>入力：プルアップ</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- If the peripheral starts in the `Disabled` mode, to move to the `Input: High Resistance` mode, we must perform the following steps: -->
+<p>このペリフェラルが<code>無効</code>モードから始まるとすると、<code>入力：高抵抗</code>モードに移行するには、次のステップを踏みます。</p>
+<!--
+1. Disabled
+2. Enabled
+3. Configured as Input
+4. Input: High Resistance
+-->
+<ol>
+<li>無効</li>
+<li>有効</li>
+<li>入力として設定</li>
+<li>入力：高抵抗</li>
+</ol>
+<!-- If we wanted to move from `Input: High Resistance` to `Input: Pulled Low`, we must perform the following steps: -->
+<p><code>入力：高抵抗</code>から<code>入力：プルダウン</code>へと移る場合、次のステップを実行しなければなりません。</p>
+<!--
+1. Input: High Resistance
+2. Input: Pulled Low
+-->
+<ol>
+<li>入力：高抵抗</li>
+<li>入力：プルダウン</li>
+</ol>
+<!-- Similarly, if we want to move a GPIO pin from configured as `Input: Pulled Low` to `Output: High`, we must perform the following steps: -->
+<p>同じように、<code>入力：プルダウン</code>と設定されているGPIOピンを、<code>出力：ハイ</code>にするには、次のステップを実行しなければなりません。</p>
+<!--
+1. Input: Pulled Low
+2. Configured as Input
+3. Configured as Output
+4. Output: High
+-->
+<ol>
+<li>入力：プルダウン</li>
+<li>入力として設定</li>
+<li>出力として設定</li>
+<li>出力：ハイ</li>
+</ol>
+<!-- ## Hardware Representation -->
+<h2><a class="header" href="#ハードウェアの表現" id="ハードウェアの表現">ハードウェアの表現</a></h2>
+<!--
+Typically the states listed above are set by writing values to given registers mapped to a GPIO peripheral. Let's define an imaginary GPIO Configuration Register to illustrate this:
+-->
+<p>通常、上記の状態は、GPIOペリフェラルに割り当てられたレジスタに値を書き込むことで設定できます。
+これを説明するために、架空のGPIO設定レジスタを定義しましょう。</p>
+<!--
+| Name         | Bit Number(s) | Value | Meaning   | Notes |
+| ---:         | ------------: | ----: | ------:   | ----: |
+| enable       | 0             | 0     | disabled  | Disables the GPIO |
+|              |               | 1     | enabled   | Enables the GPIO |
+| direction    | 1             | 0     | input     | Sets the direction to Input |
+|              |               | 1     | output    | Sets the direction to Output |
+| input_mode   | 2..3          | 00    | hi-z      | Sets the input as high resistance |
+|              |               | 01    | pull-low  | Input pin is pulled low |
+|              |               | 10    | pull-high | Input pin is pulled high |
+|              |               | 11    | n/a       | Invalid state. Do not set |
+| output_mode  | 4             | 0     | set-low   | Output pin is driven low |
+|              |               | 1     | set-high  | Output pin is driven high |
+| input_status | 5             | x     | in-val    | 0 if input is < 1.5v, 1 if input >= 1.5v |
+-->
+<table><thead><tr><th align="right">名前</th><th align="right">ビットフィールド</th><th align="right">値</th><th align="right">意味</th><th align="right">説明</th></tr></thead><tbody>
+<tr><td align="right">有効</td><td align="right">0</td><td align="right">0</td><td align="right">無効</td><td align="right">GPIOを無効にする</td></tr>
+<tr><td align="right"></td><td align="right"></td><td align="right">1</td><td align="right">有効</td><td align="right">GPIOを有効にする</td></tr>
+<tr><td align="right">方向</td><td align="right">1</td><td align="right">0</td><td align="right">入力</td><td align="right">方向を入力に設定する</td></tr>
+<tr><td align="right"></td><td align="right"></td><td align="right">1</td><td align="right">出力</td><td align="right">方向を出力に設定する</td></tr>
+<tr><td align="right">入力モード</td><td align="right">2..3</td><td align="right">00</td><td align="right">hi-z</td><td align="right">入力を高抵抗に設定する</td></tr>
+<tr><td align="right"></td><td align="right"></td><td align="right">01</td><td align="right">プルダウン</td><td align="right">入力ピンはプルダウンになる</td></tr>
+<tr><td align="right"></td><td align="right"></td><td align="right">10</td><td align="right">プルアップ</td><td align="right">入力ピンはプルアップになる</td></tr>
+<tr><td align="right"></td><td align="right"></td><td align="right">11</td><td align="right">n/a</td><td align="right">無効な状態。設定しないこと。</td></tr>
+<tr><td align="right">出力モード</td><td align="right">4</td><td align="right">0</td><td align="right">ロー</td><td align="right">出力ピンをローにする</td></tr>
+<tr><td align="right"></td><td align="right"></td><td align="right">1</td><td align="right">ハイ</td><td align="right">出力ピンをハイにする</td></tr>
+<tr><td align="right">入力状態</td><td align="right">5</td><td align="right">x</td><td align="right">入力値</td><td align="right">入力が1.5Vより低ければ0、1.5V以上であれば1</td></tr>
+</tbody></table>
+<!-- We _could_ expose the following structure in Rust to control this GPIO: -->
+<p>このGPIOを制御するために、次のようなRustの構造体を公開することが <em>できます</em>。</p>
+<pre><code class="language-rust ignore"><span class="boring">/// GPIO interface
+</span>/// GPIOインタフェース
+struct GpioConfig {
+<span class="boring">    /// GPIO Configuration structure generated by svd2rust
+</span>    /// svd2rustで生成されたGPIO設定構造体
+    periph: GPIO_CONFIG,
+}
+
+impl Gpio {
+    pub fn set_enable(&amp;mut self, is_enabled: bool) {
+        self.periph.modify(|_r, w| {
+            w.enable().set_bit(is_enabled)
+        });
+    }
+
+    pub fn set_direction(&amp;mut self, is_output: bool) {
+        self.periph.modify(|r, w| {
+            w.direction().set_bit(is_output)
+        });
+    }
+
+    pub fn set_input_mode(&amp;mut self, variant: InputMode) {
+        self.periph.modify(|_r, w| {
+            w.input_mode().variant(variant)
+        });
+    }
+
+    pub fn set_output_mode(&amp;mut self, is_high: bool) {
+        self.periph.modify(|_r, w| {
+            w.output_mode.set_bit(is_high)
+        });
+    }
+
+    pub fn get_input_status(&amp;self) -&gt; bool {
+        self.periph.read().input_status().bit_is_set()
+    }
+}
+</code></pre>
+<!--
+However, this would allow us to modify certain registers that do not make sense. For example, what happens if we set the `output_mode` field when our GPIO is configured as an input? 
+-->
+<p>しかし、この実装では、筋が通らないレジスタの修正が可能になってしまいます。例えば、GPIOを入力に設定している時に、<code>出力モード</code>を設定すると、どうなるのでしょう？</p>
+<!--
+In general, use of this structure would allow us to reach states not defined by our state machine above: e.g. an output that is pulled low, or an input that is set high. For some hardware, this may not matter. On other hardware, it could cause unexpected or undefined behavior!
+-->
+<p>通常、この構造体を利用すると、上のステートマシンで定義されていない状態に到達できてしまいます。
+例えば、プルダウンの出力や、ハイに設定された入力、です。</p>
+<!-- Although this interface is convenient to write, it doesn't enforce the design contracts set out by our hardware implementation. -->
+<p>このインタフェースは書き込みには便利ですが、ハードウェア実装によって定められた設計の契約を強制しません。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../static-guarantees/typestate-programming.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../static-guarantees/design-contracts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../static-guarantees/typestate-programming.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../static-guarantees/design-contracts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

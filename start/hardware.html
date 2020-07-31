@@ -1,0 +1,622 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ハードウェア - The Embedded Rust Book</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro/index.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/no-std.html"><strong aria-hidden="true">1.1.</strong> no_std</a></li><li class="chapter-item expanded "><a href="../intro/tooling.html"><strong aria-hidden="true">1.2.</strong> ツール</a></li><li class="chapter-item expanded "><a href="../intro/install.html"><strong aria-hidden="true">1.3.</strong> インストール</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/install/linux.html"><strong aria-hidden="true">1.3.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../intro/install/macos.html"><strong aria-hidden="true">1.3.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../intro/install/windows.html"><strong aria-hidden="true">1.3.3.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../intro/install/verify.html"><strong aria-hidden="true">1.3.4.</strong> インストールの確認</a></li></ol></li><li class="chapter-item expanded "><a href="../intro/hardware.html"><strong aria-hidden="true">1.4.</strong> ハードウェア</a></li></ol></li><li class="chapter-item expanded "><a href="../start/index.html"><strong aria-hidden="true">2.</strong> 入門</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../start/qemu.html"><strong aria-hidden="true">2.1.</strong> QEMU</a></li><li class="chapter-item expanded "><a href="../start/hardware.html" class="active"><strong aria-hidden="true">2.2.</strong> ハードウェア</a></li><li class="chapter-item expanded "><a href="../start/registers.html"><strong aria-hidden="true">2.3.</strong> メモリマップドレジスタ</a></li><li class="chapter-item expanded "><a href="../start/semihosting.html"><strong aria-hidden="true">2.4.</strong> セミホスティング</a></li><li class="chapter-item expanded "><a href="../start/panicking.html"><strong aria-hidden="true">2.5.</strong> パニック</a></li><li class="chapter-item expanded "><a href="../start/exceptions.html"><strong aria-hidden="true">2.6.</strong> 例外</a></li><li class="chapter-item expanded "><a href="../start/interrupts.html"><strong aria-hidden="true">2.7.</strong> 割り込み</a></li><li class="chapter-item expanded "><a href="../start/io.html"><strong aria-hidden="true">2.8.</strong> IO</a></li></ol></li><li class="chapter-item expanded "><a href="../peripherals/index.html"><strong aria-hidden="true">3.</strong> ペリフェラル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../peripherals/a-first-attempt.html"><strong aria-hidden="true">3.1.</strong> Rustでの最初の試み</a></li><li class="chapter-item expanded "><a href="../peripherals/borrowck.html"><strong aria-hidden="true">3.2.</strong> 借用チェッカ</a></li><li class="chapter-item expanded "><a href="../peripherals/singletons.html"><strong aria-hidden="true">3.3.</strong> シングルトン</a></li></ol></li><li class="chapter-item expanded "><a href="../static-guarantees/index.html"><strong aria-hidden="true">4.</strong> 静的な保証</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../static-guarantees/typestate-programming.html"><strong aria-hidden="true">4.1.</strong> 型状態プログラミング</a></li><li class="chapter-item expanded "><a href="../static-guarantees/state-machines.html"><strong aria-hidden="true">4.2.</strong> ステートマシンとしてのペリフェラル</a></li><li class="chapter-item expanded "><a href="../static-guarantees/design-contracts.html"><strong aria-hidden="true">4.3.</strong> 設計契約</a></li><li class="chapter-item expanded "><a href="../static-guarantees/zero-cost-abstractions.html"><strong aria-hidden="true">4.4.</strong> ゼロコスト抽象化</a></li></ol></li><li class="chapter-item expanded "><a href="../portability/index.html"><strong aria-hidden="true">5.</strong> 移植性</a></li><li class="chapter-item expanded "><a href="../concurrency/index.html"><strong aria-hidden="true">6.</strong> 並行性</a></li><li class="chapter-item expanded "><a href="../collections/index.html"><strong aria-hidden="true">7.</strong> コレクション</a></li><li class="chapter-item expanded "><a href="../c-tips/index.html"><strong aria-hidden="true">8.</strong> 組込みC開発者へのヒント</a></li><li class="chapter-item expanded "><a href="../interoperability/index.html"><strong aria-hidden="true">9.</strong> 相互運用性</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/c-with-rust.html"><strong aria-hidden="true">9.1.</strong> Rustと少しのC</a></li><li class="chapter-item expanded "><a href="../interoperability/rust-with-c.html"><strong aria-hidden="true">9.2.</strong> Cと少しのRust</a></li></ol></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">10.</strong> 未分類のトピック</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/speed-vs-size.html"><strong aria-hidden="true">10.1.</strong> 最適化: 速度とサイズのトレードオフ</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">The Embedded Rust Book</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- # Hardware -->
+<h1><a class="header" href="#ハードウェア" id="ハードウェア">ハードウェア</a></h1>
+<!--
+By now you should be somewhat familiar with the tooling and the development
+process. In this section we'll switch to real hardware; the process will remain
+largely the same. Let's dive in.
+-->
+<p>ここまでで、ツールと開発プロセスにある程度慣れたはずです。このセクションでは、実際のハードウェアに切り替えます。
+開発プロセスは、ほとんど同じままです。飛び込みましょう。</p>
+<!-- ## Know your hardware -->
+<h2><a class="header" href="#ハードウェアを知る" id="ハードウェアを知る">ハードウェアを知る</a></h2>
+<!--
+Before we begin you need to identify some characteristics of the target device
+as these will be used to configure the project:
+-->
+<p>始める前に、プロジェクトの設定に利用するターゲットデバイスのいくつかの特徴を確認する必要があります。</p>
+<!-- - The ARM core. e.g. Cortex-M3. -->
+<ul>
+<li>ARMコア、例えばCortex-M3です。</li>
+</ul>
+<!-- - Does the ARM core include an FPU? Cortex-M4**F** and Cortex-M7**F** cores do. -->
+<ul>
+<li>そのARMコアはFPUを搭載していますか？Cortex-M4<strong>F</strong>とCortex-M7<strong>F</strong>は、搭載しています。</li>
+</ul>
+<!--
+- How much Flash memory and RAM does the target device have? e.g. 256 KiB of
+  Flash and 32 KiB of RAM.
+-->
+<ul>
+<li>ターゲットデバイスに搭載されているフラッシュメモリとRAMの容量はいくらですか？
+例えば、フラッシュは256KiBでRAMは32KiBです。</li>
+</ul>
+<!--
+- Where are Flash memory and RAM mapped in the address space? e.g. RAM is
+  commonly located at address `0x2000_0000`.
+-->
+<ul>
+<li>フラッシュメモリとRAMは、アドレス空間のどこにマッピングされていますか？
+例えば、RAMは、通常<code>0x2000_0000</code>番地に位置します。</li>
+</ul>
+<!--
+You can find this information in the data sheet or the reference manual of your
+device.
+-->
+<p>これらの情報は、デバイスのデータシートかリファレンスマニュアルに掲載されています。</p>
+<!--
+In this section we'll be using our reference hardware, the STM32F3DISCOVERY.
+This board contains an STM32F303VCT6 microcontroller. This microcontroller has:
+-->
+<p>このセクションでは、私たちのリファレンスハードウェアであるSTM32F3DISCOVERYを使用します。
+このボードは、STM32F303VCT6マイクロコントローラを1つ搭載しています。このマイクロコントローラは以下のものを持っています。</p>
+<!-- - A Cortex-M4F core that includes a single precision FPU -->
+<ul>
+<li>単精度FPUを含むCortex-M4Fコアが1つ</li>
+</ul>
+<!-- - 256 KiB of Flash located at address 0x0800_0000. -->
+<ul>
+<li>0x0800_0000番地に配置された256KiBのフラッシュメモリ</li>
+</ul>
+<!--
+- 40 KiB of RAM located at address 0x2000_0000. (There's another RAM region but
+  for simplicity we'll ignore it).
+-->
+<ul>
+<li>0x2000_0000番地に配置された40KiBのRAM。（別のRAM領域もありますが、説明の簡単化のため、取り扱いません）</li>
+</ul>
+<!-- ## Configuring -->
+<h2><a class="header" href="#設定" id="設定">設定</a></h2>
+<!--
+We'll start from scratch with a fresh template instance. Refer to the
+[previous section on QEMU] for a refresher on how to do this without
+`cargo-generate`.
+-->
+<p>テンプレートの新しいインスタンスを使って、スクラッチから書いていきましょう。
+<code>cargo-generate</code>を使用しない方法については、<a href="qemu.html">前セクションのQEMU</a>を参照して下さい。</p>
+<!-- [previous section on QEMU]: qemu.md -->
+<pre><code class="language-console">$ cargo generate --git https://github.com/rust-embedded/cortex-m-quickstart
+ Project Name: app
+ Creating project called `app`...
+ Done! New project created /tmp/app
+
+ $ cd app
+</code></pre>
+<!-- Step number one is to set a default compilation target in `.cargo/config`. -->
+<p>第一ステップは、<code>.cargo/config</code>にデフォルトコンパイルターゲットを設定することです。</p>
+<pre><code class="language-console">$ tail -n5 .cargo/config
+</code></pre>
+<pre><code class="language-toml">[build]
+# 以下のコンパイルターゲットから1つを選びます
+# target = &quot;thumbv6m-none-eabi&quot;    # Cortex-M0およびCortex-M0+
+# target = &quot;thumbv7m-none-eabi&quot;    # Cortex-M3
+# target = &quot;thumbv7em-none-eabi&quot;   # Cortex-M4およびCortex-M7 (no FPU)
+target = &quot;thumbv7em-none-eabihf&quot; # Cortex-M4FおよびCortex-M7F (with FPU)
+</code></pre>
+<!-- We'll use `thumbv7em-none-eabihf` as that covers the Cortex-M4F core. -->
+<p>Cortex-M4Fコアを対象とするものとして、<code>thumbv7em-none-eabihf</code>を使います。</p>
+<!--
+The second step is to enter the memory region information into the `memory.x`
+file.
+-->
+<p>第二ステップは、<code>memory.x</code>ファイルにメモリ領域の情報を入力することです。</p>
+<pre><code class="language-console">$ cat memory.x
+/* STM32F303VCT6用のリンカスクリプト */
+MEMORY
+{
+  /* 注記 1 K = 1 KiBi = 1024バイト */
+  FLASH : ORIGIN = 0x08000000, LENGTH = 256K
+  RAM : ORIGIN = 0x20000000, LENGTH = 40K
+}
+</code></pre>
+<!--
+Make sure the `debug::exit()` call is commented out or removed, it is used
+only for running in QEMU.
+-->
+<p><code>debug::exit()</code>の呼び出しが、コメントアウトされているか削除されていることを確認して下さい。
+これは、QEMUで実行する時のみ、使用します。</p>
+<pre><pre class="playground"><code class="language-rust">#[entry]
+fn main() -&gt; ! {
+    hprintln!(&quot;Hello, world!&quot;).unwrap();
+
+<span class="boring">    // exit QEMU
+</span><span class="boring">    // NOTE do not run this on hardware; it can corrupt OpenOCD state
+</span><span class="boring">    // debug::exit(debug::EXIT_SUCCESS);
+</span>    // QEMUを終了する
+    // 注記、ハードウェア上で実行しないで下さい。OpenOCDの状態を破壊する可能性があります。
+    // debug::exit(debug::EXIT_SUCCESS);
+
+    loop {}
+}
+</code></pre></pre>
+<!--
+You can now cross compile programs using `cargo build`
+and inspect the binaries using `cargo-binutils` as you did before. The
+`cortex-m-rt` crate handles all the magic required to get your chip running,
+as helpfully, pretty much all Cortex-M CPUs boot in the same fashion.
+-->
+<p>これまでやってきた通り、<code>cargo build</code>でプログラムをクロスコンパイルし、
+<code>cargo-binutils</code>でバイナリを調べることができます。
+<code>cortex-m-rt</code>クレートは、チップを動作させるために必要な、全てのおまじないを処理します。
+便利なことに、ほとんど全てのCortex-M CPUが同じ方法で起動します。</p>
+<pre><code class="language-console">$ cargo build --example hello
+</code></pre>
+<!-- ## Debugging -->
+<h2><a class="header" href="#デバッグ" id="デバッグ">デバッグ</a></h2>
+<!--
+Debugging will look a bit different. In fact, the first steps can look different
+depending on the target device. In this section we'll show the steps required to
+debug a program running on the STM32F3DISCOVERY. This is meant to serve as a
+reference; for device specific information about debugging check out [the
+Debugonomicon](https://github.com/rust-embedded/debugonomicon).
+-->
+<p>デバッグ方法は少し違います。実際、最初のステップは、ターゲットデバイスによって異なります。
+このセクションでは、STM32F3DISCOVERY上で実行しているプログラムをデバッグするために必要となる手順を説明します。
+これは、参考の役目を果たします。デバイス固有のデバッグ情報は、
+<a href="https://github.com/rust-embedded/debugonomicon">the Debugonomicon</a>を参照して下さい。</p>
+<!--
+As before we'll do remote debugging and the client will be a GDB process. This
+time, however, the server will be OpenOCD.
+-->
+<p>以前と同様に、リモートデバッグを行います。クライアントがGDBプロセスであることも同様です。
+しかし、今回、サーバはOpenOCDになります。</p>
+<!--
+As done during the [verify] section connect the discovery board to your laptop /
+PC and check that the ST-LINK header is populated.
+-->
+<p><a href="../intro/install/verify.html">インストールの確認</a>セクションでやったように、ノートPCまたはPCをdiscoveryボードに接続し、
+ST-LINKヘッダが設定されていることを確認して下さい。</p>
+<!-- [verify]: ../intro/install/verify.md -->
+<!--
+On a terminal run `openocd` to connect to the ST-LINK on the discovery board.
+Run this command from the root of the template; `openocd` will pick up the
+`openocd.cfg` file which indicates which interface file and target file to use.
+-->
+<p>discoveryボードのST-LINKに接続するために、端末で<code>openocd</code>を実行して下さい。
+このコマンドは、テンプレートプロジェクトのルートディレクトリから実行して下さい。
+<code>openocd</code>は、どのインタフェースファイルとターゲットファイルを使うか、が記述されている<code>openocd.cfg</code>ファイルを見つけます。</p>
+<pre><code class="language-console">$ cat openocd.cfg
+</code></pre>
+<pre><code class="language-text"># STM32F3DISCOVERY開発ボード用のOpenOCD設定サンプル
+
+# 持っているハードウェアのリビジョンに応じて、これらのインタフェースのうち、1つを選んで下さい。
+# 常に、1つのインタフェースがコメントアウトされているべきです。
+
+# Revision C (newer revision)
+# リビジョンC （新しいリビジョン）
+source [find interface/stlink-v2-1.cfg]
+
+# リビジョンAとB（古いリビジョン）
+# source [find interface/stlink-v2.cfg]
+
+source [find target/stm32f3x.cfg]
+</code></pre>
+<!--
+> **NOTE** If you found out that you have an older revision of the discovery
+> board during the [verify] section then you should modify the `openocd.cfg`
+> file at this point to use `interface/stlink-v2.cfg`.
+-->
+<blockquote>
+<p><strong>注記</strong> <a href="../intro/install/verify.html">インストールの確認</a>セクションで、古いバージョンのdiscoveryボードを持っていることが判明している場合、
+<code>interface/stlink-v2.cfg</code>を使うように<code>openocd.cfg</code>ファイルを修正する必要があります。</p>
+</blockquote>
+<pre><code class="language-console">$ openocd
+Open On-Chip Debugger 0.10.0
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+Info : auto-selecting first available session transport &quot;hla_swd&quot;. To override use 'transport select &lt;transport&gt;'.
+adapter speed: 1000 kHz
+adapter_nsrst_delay: 100
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+none separate
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : clock speed 950 kHz
+Info : STLINK v2 JTAG v27 API v2 SWIM v15 VID 0x0483 PID 0x374B
+Info : using stlink api v2
+Info : Target voltage: 2.913879
+Info : stm32f3x.cpu: hardware has 6 breakpoints, 4 watchpoints
+</code></pre>
+<!-- On another terminal run GDB, also from the root of the template. -->
+<p>別の端末で、GDBを実行します。こちらも、テンプレートプロジェクトのルートディレクトから実行して下さい。</p>
+<pre><code class="language-console">$ &lt;gdb&gt; -q target/thumbv7em-none-eabihf/debug/examples/hello
+</code></pre>
+<!-- Next connect GDB to OpenOCD, which is waiting for a TCP connection on port 3333. -->
+<p>次に、TCP 3333ポートで接続待ちしているOpenOCDに、GDBを接続します。</p>
+<pre><code class="language-console">(gdb) target remote :3333
+Remote debugging using :3333
+0x00000000 in ?? ()
+</code></pre>
+<!--
+Now proceed to *flash* (load) the program onto the microcontroller using the
+`load` command.
+-->
+<p>それでは、<code>load</code>コマンドを使って、マイクロコントローラにプログラムを<em>書き込んで</em>下さい。</p>
+<pre><code class="language-console">(gdb) load
+Loading section .vector_table, size 0x400 lma 0x8000000
+Loading section .text, size 0x1e70 lma 0x8000400
+Loading section .rodata, size 0x61c lma 0x8002270
+Start address 0x800144e, load size 10380
+Transfer rate: 17 KB/sec, 3460 bytes/write.
+</code></pre>
+<!--
+The program is now loaded. This program uses semihosting so before we do any
+semihosting call we have to tell OpenOCD to enable semihosting. You can send
+commands to OpenOCD using the `monitor` command.
+-->
+<p>プログラムがロードされました。このプログラムはセミホスティングを使用します。そこで、
+セミホスティングを呼び出して何かを行う前に、OpenOCDにセミホスティングを有効にするように、
+指示する必要があります。</p>
+<pre><code class="language-console">(gdb) monitor arm semihosting enable
+semihosting is enabled
+</code></pre>
+<!-- > You can see all the OpenOCD commands by invoking the `monitor help` command. -->
+<blockquote>
+<p><code>monitor help</code>コマンドを実行することで、全てのOpenOCDコマンドを見ることができます。</p>
+</blockquote>
+<!--
+Like before we can skip all the way to `main` using a breakpoint and the
+`continue` command.
+-->
+<p>以前のように、ブレイクポイントと<code>continue</code>コマンドを使用することで、<code>main</code>までスキップすることができます。</p>
+<pre><code class="language-console">(gdb) break main
+Breakpoint 1 at 0x8000d18: file examples/hello.rs, line 15.
+
+(gdb) continue
+Continuing.
+Note: automatically using hardware breakpoints for read-only addresses.
+
+Breakpoint 1, main () at examples/hello.rs:15
+15          let mut stdout = hio::hstdout().unwrap();
+</code></pre>
+<!-- Advancing the program with `next` should produce the same results as before. -->
+<p><code>next</code>でプログラムを先に進めると、以前と同じ結果になるはずです。</p>
+<pre><code class="language-console">(gdb) next
+16          writeln!(stdout, &quot;Hello, world!&quot;).unwrap();
+
+(gdb) next
+19          debug::exit(debug::EXIT_SUCCESS);
+</code></pre>
+<!--
+At this point you should see "Hello, world!" printed on the OpenOCD console,
+among other stuff.
+-->
+<p>この時点で、OpenOCDコンソールに、他のものと入り混じって「Hello, world!」と表示されるはずです。</p>
+<pre><code class="language-console">$ openocd
+(..)
+Info : halted: PC: 0x08000e6c
+Hello, world!
+Info : halted: PC: 0x08000d62
+Info : halted: PC: 0x08000d64
+Info : halted: PC: 0x08000d66
+Info : halted: PC: 0x08000d6a
+Info : halted: PC: 0x08000a0c
+Info : halted: PC: 0x08000d70
+Info : halted: PC: 0x08000d72
+</code></pre>
+<!--
+Issuing another `next` will make the processor execute `debug::exit`. This acts
+as a breakpoint and halts the process:
+-->
+<p>もう一度<code>next</code>を実行して、プロセッサに<code>debug::exit</code>を実行させます。
+これはブレイクポイントとして動作し、プロセスを停止します。</p>
+<pre><code class="language-console">(gdb) next
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x0800141a in __syscall ()
+</code></pre>
+<!-- It also causes this to be printed to the OpenOCD console: -->
+<p>また、OpenOCDコンソールに次のものが表示されます。</p>
+<pre><code class="language-console">$ openocd
+(..)
+Info : halted: PC: 0x08001188
+semihosting: *** application exited ***
+Warn : target not halted
+Warn : target not halted
+target halted due to breakpoint, current mode: Thread
+xPSR: 0x21000000 pc: 0x08000d76 msp: 0x20009fc0, semihosting
+</code></pre>
+<!--
+However, the process running on the microcontroller has not terminated and you
+can resume it using `continue` or a similar command.
+-->
+<p>しかし、マイクロコントローラ上で動作しているプロセスは終了していないため、
+<code>continue</code>もしくは同様のコマンドを使って、プログラムを再開することができます。</p>
+<!-- You can now exit GDB using the `quit` command. -->
+<p>ここで、<code>quit</code>コマンドを使うことで、GDBを終了できます。</p>
+<pre><code class="language-console">(gdb) quit
+</code></pre>
+<!--
+Debugging now requires a few more steps so we have packed all those steps into a
+single GDB script named `openocd.gdb`.
+-->
+<p>デバッグにはもう少しステップが必要なので、これらのステップを<code>openocd.gdb</code>というGDBスクリプトにまとめました。</p>
+<pre><code class="language-console">$ cat openocd.gdb
+</code></pre>
+<pre><code class="language-text">target remote :3333
+
+# デマングルされたシンボルを表示します
+set print asm-demangle on
+
+# 未処理の例外、ハードフォールト、パニックを検出します
+break DefaultHandler
+break HardFault
+break rust_begin_unwind
+
+monitor arm semihosting enable
+
+load
+
+# プロセスを開始しますが、すぐにプロセッサを停止します
+stepi
+</code></pre>
+<!--
+Now running `<gdb> -x openocd.gdb $program` will immediately connect GDB to
+OpenOCD, enable semihosting, load the program and start the process.
+-->
+<p><code>&lt;gdb&gt; -x openocd.gdb $program</code>を実行することで、GDBはすぐにOpenOCDに接続し、
+セミホスティングを有効化し、プログラムをロードした上で、プロセスを開始します。</p>
+<!--
+Alternatively, you can turn `<gdb> -x openocd.gdb` into a custom runner to make
+`cargo run` build a program *and* start a GDB session. This runner is included
+in `.cargo/config` but it's commented out.
+-->
+<p>別の方法として、<code>&lt;gdb&gt; -x openocd.gdb</code>をカスタムランナーにして、<code>cargo run</code>でプログラムをビルドし、
+<em>さらに</em>GDBセッションを開始することもできます。このランナーは、<code>.cargo/config</code>に含まれていますが、
+コメントアウトされています。</p>
+<pre><code class="language-console">$ head -n10 .cargo/config
+</code></pre>
+<pre><code class="language-toml">[target.thumbv7m-none-eabi]
+# ここのコメントアウトを外すと、`cargo run`はQEMUでプログラムを実行します
+# runner = &quot;qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel&quot;
+
+[target.'cfg(all(target_arch = &quot;arm&quot;, target_os = &quot;none&quot;))']
+# 3つの選択肢のうち、1つのコメントアウトを外すと、`cargo run`はGDBセッションを開始します。
+# どの選択肢を使うか、は対象システムによって異なります。
+runner = &quot;arm-none-eabi-gdb -x openocd.gdb&quot;
+# runner = &quot;gdb-multiarch -x openocd.gdb&quot;
+# runner = &quot;gdb -x openocd.gdb&quot;
+</code></pre>
+<pre><code class="language-console">$ cargo run --example hello
+(..)
+Loading section .vector_table, size 0x400 lma 0x8000000
+Loading section .text, size 0x1e70 lma 0x8000400
+Loading section .rodata, size 0x61c lma 0x8002270
+Start address 0x800144e, load size 10380
+Transfer rate: 17 KB/sec, 3460 bytes/write.
+(gdb)
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../start/qemu.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../start/registers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../start/qemu.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../start/registers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>QEMU - The Embedded Rust Book</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro/index.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/no-std.html"><strong aria-hidden="true">1.1.</strong> no_std</a></li><li class="chapter-item expanded "><a href="../intro/tooling.html"><strong aria-hidden="true">1.2.</strong> ツール</a></li><li class="chapter-item expanded "><a href="../intro/install.html"><strong aria-hidden="true">1.3.</strong> インストール</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/install/linux.html"><strong aria-hidden="true">1.3.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../intro/install/macos.html"><strong aria-hidden="true">1.3.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../intro/install/windows.html"><strong aria-hidden="true">1.3.3.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../intro/install/verify.html"><strong aria-hidden="true">1.3.4.</strong> インストールの確認</a></li></ol></li><li class="chapter-item expanded "><a href="../intro/hardware.html"><strong aria-hidden="true">1.4.</strong> ハードウェア</a></li></ol></li><li class="chapter-item expanded "><a href="../start/index.html"><strong aria-hidden="true">2.</strong> 入門</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../start/qemu.html" class="active"><strong aria-hidden="true">2.1.</strong> QEMU</a></li><li class="chapter-item expanded "><a href="../start/hardware.html"><strong aria-hidden="true">2.2.</strong> ハードウェア</a></li><li class="chapter-item expanded "><a href="../start/registers.html"><strong aria-hidden="true">2.3.</strong> メモリマップドレジスタ</a></li><li class="chapter-item expanded "><a href="../start/semihosting.html"><strong aria-hidden="true">2.4.</strong> セミホスティング</a></li><li class="chapter-item expanded "><a href="../start/panicking.html"><strong aria-hidden="true">2.5.</strong> パニック</a></li><li class="chapter-item expanded "><a href="../start/exceptions.html"><strong aria-hidden="true">2.6.</strong> 例外</a></li><li class="chapter-item expanded "><a href="../start/interrupts.html"><strong aria-hidden="true">2.7.</strong> 割り込み</a></li><li class="chapter-item expanded "><a href="../start/io.html"><strong aria-hidden="true">2.8.</strong> IO</a></li></ol></li><li class="chapter-item expanded "><a href="../peripherals/index.html"><strong aria-hidden="true">3.</strong> ペリフェラル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../peripherals/a-first-attempt.html"><strong aria-hidden="true">3.1.</strong> Rustでの最初の試み</a></li><li class="chapter-item expanded "><a href="../peripherals/borrowck.html"><strong aria-hidden="true">3.2.</strong> 借用チェッカ</a></li><li class="chapter-item expanded "><a href="../peripherals/singletons.html"><strong aria-hidden="true">3.3.</strong> シングルトン</a></li></ol></li><li class="chapter-item expanded "><a href="../static-guarantees/index.html"><strong aria-hidden="true">4.</strong> 静的な保証</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../static-guarantees/typestate-programming.html"><strong aria-hidden="true">4.1.</strong> 型状態プログラミング</a></li><li class="chapter-item expanded "><a href="../static-guarantees/state-machines.html"><strong aria-hidden="true">4.2.</strong> ステートマシンとしてのペリフェラル</a></li><li class="chapter-item expanded "><a href="../static-guarantees/design-contracts.html"><strong aria-hidden="true">4.3.</strong> 設計契約</a></li><li class="chapter-item expanded "><a href="../static-guarantees/zero-cost-abstractions.html"><strong aria-hidden="true">4.4.</strong> ゼロコスト抽象化</a></li></ol></li><li class="chapter-item expanded "><a href="../portability/index.html"><strong aria-hidden="true">5.</strong> 移植性</a></li><li class="chapter-item expanded "><a href="../concurrency/index.html"><strong aria-hidden="true">6.</strong> 並行性</a></li><li class="chapter-item expanded "><a href="../collections/index.html"><strong aria-hidden="true">7.</strong> コレクション</a></li><li class="chapter-item expanded "><a href="../c-tips/index.html"><strong aria-hidden="true">8.</strong> 組込みC開発者へのヒント</a></li><li class="chapter-item expanded "><a href="../interoperability/index.html"><strong aria-hidden="true">9.</strong> 相互運用性</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/c-with-rust.html"><strong aria-hidden="true">9.1.</strong> Rustと少しのC</a></li><li class="chapter-item expanded "><a href="../interoperability/rust-with-c.html"><strong aria-hidden="true">9.2.</strong> Cと少しのRust</a></li></ol></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">10.</strong> 未分類のトピック</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/speed-vs-size.html"><strong aria-hidden="true">10.1.</strong> 最適化: 速度とサイズのトレードオフ</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">The Embedded Rust Book</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#qemu" id="qemu">QEMU</a></h1>
+<!-- 
+We'll start writing a program for the [LM3S6965], a Cortex-M3 microcontroller.
+We have chosen this as our initial target because it can be emulated using QEMU
+so you don't need to fiddle with hardware in this section and we can focus on
+the tooling and the development process.
+ -->
+<p>Cortex-M3マイクロコントローラの<a href="http://www.ti.com/product/LM3S6965">LM3S6965</a>用にプログラムを書くところから始めましょう。
+このLM3S6965を最初のターゲットとして選んだ理由は、QEMUを使ってエミュレーションできるからです。
+このセクションでは、ハードウェアをいじる必要がなく、ツールと開発プロセスに集中できます。</p>
+<!-- ## A non standard Rust program -->
+<h2><a class="header" href="#標準ライブラリを使わないrustプログラム" id="標準ライブラリを使わないrustプログラム">標準ライブラリを使わないRustプログラム</a></h2>
+<!-- 
+We'll use the [`cortex-m-quickstart`] project template so go generate a new
+project from it.
+ -->
+<p><a href="https://github.com/rust-embedded/cortex-m-quickstart"><code>cortex-m-quickstart</code></a>プロジェクトテンプレートを使用し、新しいプロジェクトを生成します。</p>
+<!-- - Using `cargo-generate` -->
+<ul>
+<li><code>cargo-generate</code>を利用する場合</li>
+</ul>
+<pre><code class="language-console">$ cargo generate --git https://github.com/rust-embedded/cortex-m-quickstart
+ Project Name: app
+ Creating project called `app`...
+ Done! New project created /tmp/app
+
+$ cd app
+</code></pre>
+<!-- - Using `git` -->
+<ul>
+<li><code>git</code>を利用する場合</li>
+</ul>
+<!-- Clone the repository -->
+<p>レポジトリをクローンします。</p>
+<pre><code class="language-console">$ git clone https://github.com/rust-embedded/cortex-m-quickstart app
+
+$ cd app
+</code></pre>
+<!-- And then fill in the placeholders in the `Cargo.toml` file -->
+<p><code>Cargo.toml</code>のプレースホルダを埋めます。</p>
+<pre><code class="language-console">$ cat Cargo.toml
+</code></pre>
+<pre><code class="language-toml">[package]
+authors = [&quot;{{authors}}&quot;] # &quot;{{authors}}&quot; -&gt; &quot;John Smith&quot;
+edition = &quot;2018&quot;
+name = &quot;{{project-name}}&quot; # &quot;{{project-name}}&quot; -&gt; &quot;awesome-app&quot;
+version = &quot;0.1.0&quot;
+
+# ..
+
+[[bin]]
+name = &quot;{{project-name}}&quot; # &quot;{{project-name}}&quot; -&gt; &quot;awesome-app&quot;
+test = false
+bench = false
+</code></pre>
+<!-- - Using neither -->
+<ul>
+<li>どちらも使わない場合</li>
+</ul>
+<!-- Grab the latest snapshot of the `cortex-m-quickstart` template and extract it. -->
+<p><code>cortex-m-quickstart</code>テンプレートの最新スナップショットを入手し、展開します。</p>
+<!-- Using the command line: -->
+<p>コマンドラインを利用する場合:</p>
+<pre><code class="language-console">$ # 注記 tar形式でも入手可能です: archive/master.tar.gz
+$ curl -LO https://github.com/rust-embedded/cortex-m-quickstart/archive/master.zip
+
+$ unzip master.zip
+
+$ mv cortex-m-quickstart-master app
+
+$ cd app
+</code></pre>
+<!-- 
+OR you can browse to [`cortex-m-quickstart`], click the green "Clone or
+download" button and then click "Download ZIP".
+ -->
+<p>もしくは、<a href="https://github.com/rust-embedded/cortex-m-quickstart"><code>cortex-m-quickstart</code></a>をウェブブラウザで開いて、緑色の「Clone or download」ボタンをクリックして、
+「Download ZIP」をクリックします。</p>
+<!-- 
+Then fill in the placeholders in the `Cargo.toml` file as done in the second
+part of the "Using `git`" version.
+ -->
+<p>次に、<code>Cargo.toml</code>ファイルのプレースホルダを「<code>git</code>を利用する場合」の2つ目のパートにある通り埋めます。</p>
+<!-- 
+**IMPORTANT** We'll use the name "app" for the project name in this tutorial.
+Whenever you see the word "app" you should replace it with the name you selected
+for your project. Or, you could also name your project "app" and avoid the
+substitutions.
+ -->
+<p><strong>重要</strong> このチュートリアルでは、「app」という名前をプロジェクト名に使います。
+「app」という単語が出てきた場合、それをあなたのプロジェクトにつけた名前に置き替えなければなりません。
+または、プロジェクトに「app」という名前をつけると、置き替える必要がなくなります。</p>
+<!-- For convenience here's the source code of `src/main.rs`: -->
+<p>これは、<code>src/main.rs</code>のソースコードです。</p>
+<pre><code class="language-console">$ cat src/main.rs
+</code></pre>
+<pre><pre class="playground"><code class="language-rust">#![no_std]
+#![no_main]
+
+<span class="boring">// pick a panicking behavior
+</span>// パニック発生時の挙動を選びます
+<span class="boring">// extern crate panic_halt; // you can put a breakpoint on `rust_begin_unwind` to catch panics
+</span>extern crate panic_halt; // パニックをキャッチするため、`rust_begin_unwind`にブレイクポイントを設定できます
+<span class="boring">// extern crate panic_abort; // requires nightly
+</span>// extern crate panic_abort; // nightlyが必要です
+<span class="boring">// extern crate panic_itm; // logs messages over ITM; requires ITM support
+</span>// extern crate panic_itm; // ITMを介してメッセージをログ出力します; ITMサポートが必要です
+<span class="boring">// extern crate panic_semihosting; // logs messages to the host stderr; requires a debugger
+</span>// extern crate panic_semihosting; // ホストの標準エラーにメッセージをログ出力します; デバッガが必要です。
+
+use cortex_m_rt::entry;
+
+#[entry]
+fn main() -&gt; ! {
+    loop {
+<span class="boring">        // your code goes here
+</span>        // あなたのコードはここに書きます
+    }
+}
+</code></pre></pre>
+<!-- 
+This program is a bit different from a standard Rust program so let's take a
+closer look.
+ -->
+<p>このプログラムは、標準的なRustプログラムとは少し異なりますので、もう少し詳しく見てみましょう。</p>
+<!-- 
+`#![no_std]` indicates that this program will *not* link to the standard crate,
+`std`. Instead it will link to its subset: the `core` crate.
+ -->
+<p><code>#![no_std]</code>はこのプログラムが、標準クレートである<code>std</code>にリンク<em>しない</em>ことを意味します。
+代わりに、そのサブセットである<code>core</code>クレートにリンクします。</p>
+<!--
+`#![no_main]` indicates that this program won't use the standard `main`
+interface that most Rust programs use. The main (no pun intended) reason to go
+with `no_main` is that using the `main` interface in `no_std` context requires
+nightly.
+-->
+<p><code>#![no_main]</code>は、ほとんどのRustプログラムが使用する標準の<code>main</code>インタフェースを、
+このプログラムでは使用しないことを示します。
+<code>no_main</code>を利用する主な理由は、<code>no_std</code>の状況で<code>main</code>インタフェースを使用するにはnightlyが必要だからです。</p>
+<!-- 
+`extern crate panic_halt;`. This crate provides a `panic_handler` that defines
+the panicking behavior of the program. More on this later on.
+ -->
+<p><code>extern crate panic_halt;</code>。このクレートは、プログラムのパニック発生時の挙動を定義する<code>panic_handler</code>を提供します。
+後ほど、より詳しく説明します。</p>
+<!--
+[`#[entry]`] is an attribute provided by the [`cortex-m-rt`] crate that's used
+to mark the entry point of the program. As we are not using the standard `main`
+interface we need another way to indicate the entry point of the program and
+that'd be `#[entry]`.
+-->
+<p>[<code>#[entry]</code>]は、<a href="https://crates.io/crates/cortex-m-rt"><code>cortex-m-rt</code></a>クレートが提供するアトリビュートで、プログラムのエントリポイントを示すために使用します。
+標準の<code>main</code>インタフェースを使用しないので、プログラムのエントリポイントを示す別の方法が必要です。それが、<code>#[entry]</code>です。</p>
+<p>[<code>#[entry]</code>]: https://docs.rs/cortex-m-rt-macros/latest/cortex_m_rt_macros/attr.entry.html</p>
+<!--
+`fn main() -> !`. Our program will be the *only* process running on the target
+hardware so we don't want it to end! We use a divergent function (the `-> !`
+bit in the function signature) to ensure at compile time that'll be the case.
+-->
+<p><code>fn main() -&gt; !</code>。ターゲットハードウェア上で動作しているのは私たちのプログラム<em>だけ</em>なので、
+終了させたくありません。
+コンパイル時、確実にそうなるように、発散する関数を使います（関数シグネチャの<code>-&gt; !</code>部分）。</p>
+<!-- ### Cross compiling -->
+<h3><a class="header" href="#クロスコンパイル" id="クロスコンパイル">クロスコンパイル</a></h3>
+<!--
+The next step is to *cross* compile the program for the Cortex-M3 architecture.
+That's as simple as running `cargo build --target $TRIPLE` if you know what the
+compilation target (`$TRIPLE`) should be. Luckily, the `.cargo/config` in the
+template has the answer:
+-->
+<p>次のステップは、プログラムをCortex-M3アーキテクチャ向けに<em>クロス</em>コンパイルすることです。
+これはコンパイルターゲット（<code>$TRIPLE</code>）が何かわかっていれば、<code>cargo build --target $TRIPLE</code>を実行するだけで簡単にできます。
+コンパイルターゲットが何かは、テンプレート中の<code>.cargo/config</code>を見ればわかります。</p>
+<pre><code class="language-console">$ tail -n6 .cargo/config
+</code></pre>
+<pre><code class="language-toml">[build]
+# 以下のコンパイルターゲットから1つを選びます
+# target = &quot;thumbv6m-none-eabi&quot;    # Cortex-M0およびCortex-M0+
+target = &quot;thumbv7m-none-eabi&quot;    # Cortex-M3
+# target = &quot;thumbv7em-none-eabi&quot;   # Cortex-M4およびCortex-M7 (no FPU)
+# target = &quot;thumbv7em-none-eabihf&quot; # Cortex-M4FおよびCortex-M7F (with FPU)
+</code></pre>
+<!-- 
+To cross compile for the Cortex-M3 architecture we have to use
+`thumbv7m-none-eabi`. This compilation target has been set as the default so the
+two commands below do the same:
+ -->
+<p>Cortex-M3アーキテクチャ向けにクロスコンパイルするためには、<code>thumbv7m-none-eabi</code>を使う必要があります。
+このコンパイルターゲットは、デフォルトとして設定されているため、下記2つのコマンドは同じ意味になります。</p>
+<pre><code class="language-console">$ cargo build --target thumbv7m-none-eabi
+
+$ cargo build
+</code></pre>
+<!-- ### Inspecting -->
+<h3><a class="header" href="#確認" id="確認">確認</a></h3>
+<!-- 
+Now we have a non-native ELF binary in `target/thumbv7m-none-eabi/debug/app`. We
+can inspect it using `cargo-binutils`.
+ -->
+<p>今、<code>target/thumbv7m-none-eabi/debug/app</code>に、非ネイティブなバイナリがあります。
+<code>cargo-binutils</code>を使って、このバイナリを確認することができます。</p>
+<!-- 
+With `cargo-readobj` we can print the ELF headers to confirm that this is an ARM
+binary.
+ -->
+<p>このバイナリがARMバイナリであることを確かめるために、<code>cargo-readobj</code>でELFヘッダを表示できます。</p>
+<pre><code class="language-console">$ # `--bin app`は`target/$TRIPLE/debug/app`のバイナリを確認するためのシンタックスシュガーです
+$ # `--bin app`は必要に応じて、バイナリを（再）コンパイルもします
+
+$ cargo readobj --bin app -- -file-headers
+</code></pre>
+<pre><code class="language-text">ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0x0
+  Type:                              EXEC (Executable file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x405
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          153204 (bytes into file)
+  Flags:                             0x5000200
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         2
+  Size of section headers:           40 (bytes)
+  Number of section headers:         19
+  Section header string table index: 18
+</code></pre>
+<!-- 
+`cargo-size` can print the size of the linker sections of the binary.
+ -->
+<p><code>cargo-size</code>はバイナリのリンカセクションのサイズを表示できます。</p>
+<!-- 
+> **NOTE** this output assumes that rust-embedded/cortex-m-rt#111 has been
+> merged
+ -->
+<blockquote>
+<p><strong>注記</strong> この出力は、rust-embedded/cortex-m-rt#111がマージされていることを前提とします</p>
+</blockquote>
+<pre><code class="language-console">$ # 最適化されたバイナリを確認するために`--release`を使います。
+
+$ cargo size --bin app --release -- -A
+</code></pre>
+<pre><code class="language-text">app  :
+section             size        addr
+.vector_table       1024         0x0
+.text                 92       0x400
+.rodata                0       0x45c
+.data                  0  0x20000000
+.bss                   0  0x20000000
+.debug_str          2958         0x0
+.debug_loc            19         0x0
+.debug_abbrev        567         0x0
+.debug_info         4929         0x0
+.debug_ranges         40         0x0
+.debug_macinfo         1         0x0
+.debug_pubnames     2035         0x0
+.debug_pubtypes     1892         0x0
+.ARM.attributes       46         0x0
+.debug_frame         100         0x0
+.debug_line          867         0x0
+Total              14570
+</code></pre>
+<!--
+> A refresher on ELF linker sections
+>
+> - `.text` contains the program instructions
+> - `.rodata` contains constant values like strings
+> - `.data` contains statically allocated variables whose initial values are
+>   *not* zero
+> - `.bss` also contains statically allocated variables whose initial values
+>   *are* zero
+> - `.vector_table` is a *non*-standard section that we use to store the vector
+>   (interrupt) table
+> - `.ARM.attributes` and the `.debug_*` sections contain metadata and will
+>   *not* be loaded onto the target when flashing the binary.
+-->
+<blockquote>
+<p>ELFリンカセクションの補足</p>
+<ul>
+<li><code>.text</code>は、プログラムの実行コードを含んでいます</li>
+<li><code>.rodata</code>は、文字列のような定数を含んでいます</li>
+<li><code>.data</code>は、初期値が0<em>ではない</em>静的に割り当てられた変数が格納されています</li>
+<li><code>.bss</code>も静的に割り当てられた変数が格納されますが、その<em>初期値は0です</em></li>
+<li><code>.vector_table</code>は、<em>非</em>標準のセクションです。（割り込み）ベクタテーブルを格納するために使用します</li>
+<li><code>.ARM.attributes</code>と<code>.debug_*</code>セクションはメタデータを含んでおり、バイナリをフラッシュに書き込む際、
+ターゲットボード上にロード<em>されません</em></li>
+</ul>
+</blockquote>
+<!--
+**IMPORTANT**: ELF files contain metadata like debug information so their *size
+on disk* does *not* accurately reflect the space the program will occupy when
+flashed on a device. *Always* use `cargo-size` to check how big a binary really
+is.
+-->
+<p><strong>重要</strong>: ELFファイルは、デバッグ情報といったメタデータを含んでいるため、<em>そのディスク上のサイズ</em>は、
+プログラムがデバイスに書き込まれた時に専有するスペースを正確に反映して<em>いません</em>。
+実際のバイナリサイズを確認するために、<em>常に</em><code>cargo-size</code>を使用して下さい。</p>
+<!-- `cargo-objdump` can be used to disassemble the binary. -->
+<p><code>cargo-objdump</code>は、バイナリをディスアセンブルするために使用できます。</p>
+<pre><code class="language-console">$ cargo objdump --bin app --release -- -disassemble -no-show-raw-insn -print-imm-hex
+</code></pre>
+<!--
+> **NOTE** this output assumes that rust-embedded/cortex-m-rt#111 has been
+> merged
+-->
+<blockquote>
+<p><strong>注記</strong> この出力は、rust-embedded/cortex-m-rt#111がマージされていることを前提とします</p>
+</blockquote>
+<pre><code class="language-text">app:    file format ELF32-arm-little
+
+Disassembly of section .text:
+Reset:
+     400:       bl      #0x36
+     404:       movw    r0, #0x0
+     408:       movw    r1, #0x0
+     40c:       movt    r0, #0x2000
+     410:       movt    r1, #0x2000
+     414:       bl      #0x2c
+     418:       movw    r0, #0x0
+     41c:       movw    r1, #0x45c
+     420:       movw    r2, #0x0
+     424:       movt    r0, #0x2000
+     428:       movt    r1, #0x0
+     42c:       movt    r2, #0x2000
+     430:       bl      #0x1c
+     434:       b       #-0x4 &lt;Reset+0x34&gt;
+
+HardFault_:
+     436:       b       #-0x4 &lt;HardFault_&gt;
+
+UsageFault:
+     438:       b       #-0x4 &lt;UsageFault&gt;
+
+__pre_init:
+     43a:       bx      lr
+
+HardFault:
+     43c:       mrs     r0, msp
+     440:       bl      #-0xe
+
+__zero_bss:
+     444:       movs    r2, #0x0
+     446:       b       #0x0 &lt;__zero_bss+0x6&gt;
+     448:       stm     r0!, {r2}
+     44a:       cmp     r0, r1
+     44c:       blo     #-0x8 &lt;__zero_bss+0x4&gt;
+     44e:       bx      lr
+
+__init_data:
+     450:       b       #0x2 &lt;__init_data+0x6&gt;
+     452:       ldm     r1!, {r3}
+     454:       stm     r0!, {r3}
+     456:       cmp     r0, r2
+     458:       blo     #-0xa &lt;__init_data+0x2&gt;
+     45a:       bx      lr
+</code></pre>
+<!-- ### Running -->
+<h3><a class="header" href="#実行" id="実行">実行</a></h3>
+<!--
+Next, let's see how to run an embedded program on QEMU! This time we'll use the
+`hello` example which actually does something.
+-->
+<p>次は、QEMUで組込みプログラムを実行する方法を見ていきましょう。
+今回は、実際に何かを行う<code>hello</code>の例を使います。</p>
+<!-- For convenience here's the source code of `src/main.rs`: -->
+<p>便宜上の<code>src/main.rs</code>のソースコードです:</p>
+<pre><code class="language-console">$ cat examples/hello.rs
+</code></pre>
+<!--
+下から4行目のコメント`debugger section`は、`debugger session`の誤記と考えられるため、
+翻訳もデバッガセッションとしています。
+-->
+<pre><pre class="playground"><code class="language-rust"><span class="boring">//! Prints &quot;Hello, world!&quot; on the host console using semihosting
+</span>//! セミホスティングを使って&quot;Hello, world!&quot;をホストのコンソールに表示します
+
+#![no_main]
+#![no_std]
+
+extern crate panic_halt;
+
+use core::fmt::Write;
+
+use cortex_m_rt::entry;
+use cortex_m_semihosting::{debug, hio};
+
+#[entry]
+fn main() -&gt; ! {
+    let mut stdout = hio::hstdout().unwrap();
+    writeln!(stdout, &quot;Hello, world!&quot;).unwrap();
+
+<span class="boring">    // exit QEMU or the debugger section
+</span>    // QEMUもしくはデバッガセッションを終了します
+    debug::exit(debug::EXIT_SUCCESS);
+
+    loop {}
+}
+</code></pre></pre>
+<!--
+This program uses something called semihosting to print text to the *host*
+console. When using real hardware this requires a debug session but when using
+QEMU this Just Works.
+-->
+<p>このプログラムは、<em>ホスト</em>コンソールにテキストを表示するために、セミホスティングと呼ばれるものを使います。
+実際のハードウェアを使用する場合、セミホスティングはデバッグセッションを必要としますが、
+QEMUを使う場合、これで機能します。</p>
+<!-- Let's start by compiling the example: -->
+<p>例をコンパイルすることから始めましょう。</p>
+<pre><code class="language-console">$ cargo build --example hello
+</code></pre>
+<!--
+The output binary will be located at
+`target/thumbv7m-none-eabi/debug/examples/hello`.
+-->
+<p><code>target/thumbv7m-none-eabi/debug/examples/hello</code>に出力バイナリがあります。</p>
+<!-- To run this binary on QEMU run the following command: -->
+<p>QEMU上でこのバイナリを動かすために、次のコマンドを実行して下さい。</p>
+<pre><code class="language-console">$ qemu-system-arm \
+      -cpu cortex-m3 \
+      -machine lm3s6965evb \
+      -nographic \
+      -semihosting-config enable=on,target=native \
+      -kernel target/thumbv7m-none-eabi/debug/examples/hello
+Hello, world!
+</code></pre>
+<!--
+The command should successfully exit (exit code = 0) after printing the text. On
+*nix you can check that with the following command:
+-->
+<p>上記コマンドは、テキストを表示したあと、正常終了（終了コードが0）するはずです。
+*nixでは、次のコマンドで正常終了したことを確認できます。</p>
+<pre><code class="language-console">$ echo $?
+0
+</code></pre>
+<!-- Let me break down that long QEMU command for you: -->
+<p>この長いQEMUコマンドを分解して説明します。</p>
+<!--
+- `qemu-system-arm`. This is the QEMU emulator. There are a few variants of
+  these QEMU binaries; this one does full *system* emulation of *ARM* machines
+  hence the name.
+-->
+<ul>
+<li><code>qemu-system-arm</code>。これはQEMUエミュレータです。QEMUにはいくつかのバイナリがあります。
+このバイナリは、<em>ARM</em>マシンのフル<em>システム</em>をエミュレーションするので、この名前になっています。</li>
+</ul>
+<!--
+- `-cpu cortex-m3`. This tells QEMU to emulate a Cortex-M3 CPU. Specifying the
+  CPU model lets us catch some miscompilation errors: for example, running a
+  program compiled for the Cortex-M4F, which has a hardware FPU, will make QEMU
+  error during its execution.
+-->
+<ul>
+<li><code>-cpu cortex-m3</code>。QEMUに、Cortex-M3 CPUをエミュレーションするように伝えます。
+CPUモデルを指定すると、いくつかのコンパイルミスのエラーを検出できます。例えば、
+ハードウェアFPUを搭載しているCortex-M4F用にコンパイルしたプログラムを実行すると、
+実行中にQEMUがエラーを発生させるでしょう。</li>
+</ul>
+<!--
+- `-machine lm3s6965evb`. This tells QEMU to emulate the LM3S6965EVB, a
+  evaluation board that contains a LM3S6965 microcontroller.
+-->
+<ul>
+<li><code>-machine lm3s6965evb</code>。QEMUに、LM3S6965EVBをエミュレーションするように伝えます。
+LM3S6965EVBは、LM3S6965マイクロコントローラを搭載している評価ボードです。</li>
+</ul>
+<!-- - `-nographic`. This tells QEMU to not launch its GUI. -->
+<ul>
+<li><code>-nographic</code>。QEMUがGUIを起動しないようにします。</li>
+</ul>
+<!--
+- `-semihosting-config (..)`. This tells QEMU to enable semihosting. Semihosting
+  lets the emulated device, among other things, use the host stdout, stderr and
+  stdin and create files on the host.
+-->
+<ul>
+<li><code>-semihosting-config (..)</code>。QEMUのセミホスティングを有効にします。セミホスティングにより、
+エミュレーションされたデバイスは、ホストの標準出力、標準エラー、標準入力を使用できるようになり、
+ホスト上にファイルを作成することができます。</li>
+</ul>
+<!--
+- `-kernel $file`. This tells QEMU which binary to load and run on the emulated
+  machine.
+-->
+<ul>
+<li><code>-kernel $file</code>。QEMUに、エミュレーションしたマシン上にロードして、実行するバイナリを教えます。</li>
+</ul>
+<!--
+Typing out that long QEMU command is too much work! We can set a custom runner
+to simplify the process. `.cargo/config` has a commented out runner that invokes
+QEMU; let's uncomment it:
+-->
+<p>この長いQEMUコマンドを入力するのは大変過ぎます。このプロセスを簡略化するために、
+カスタムランナーを設定できます。<code>.cargo/config</code>には、QEMUを起動するランナーが、
+コメントアウトされた状態であります。コメントアウトを外して下さい。</p>
+<pre><code class="language-console">$ head -n3 .cargo/config
+</code></pre>
+<pre><code class="language-toml">[target.thumbv7m-none-eabi]
+# `cargo run`で、プログラムをQEMUで実行するため、コメントアウトを外して下さい。
+runner = &quot;qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel&quot;
+</code></pre>
+<!--
+This runner only applies to the `thumbv7m-none-eabi` target, which is our
+default compilation target. Now `cargo run` will compile the program and run it
+on QEMU:
+-->
+<p>このランナーは、デフォルトのコンパイルターゲットである<code>thumbv7m-none-eabi</code>のみに適用されます。
+これで、<code>cargo run</code>はプログラムをコンパイルしてQEMUで実行します。</p>
+<pre><code class="language-console">$ cargo run --example hello --release
+   Compiling app v0.1.0 (file:///tmp/app)
+    Finished release [optimized + debuginfo] target(s) in 0.26s
+     Running `qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel target/thumbv7m-none-eabi/release/examples/hello`
+Hello, world!
+</code></pre>
+<!-- ### Debugging -->
+<h3><a class="header" href="#デバッグ" id="デバッグ">デバッグ</a></h3>
+<!-- Debugging is critical to embedded development. Let's see how it's done. -->
+<p>デバッグは組込み開発にとって非常に重要です。どのように行うのか、見てみましょう。</p>
+<!--
+Debugging an embedded device involves *remote* debugging as the program that we
+want to debug won't be running on the machine that's running the debugger
+program (GDB or LLDB).
+-->
+<p>組込みデバイスのデバッグは、<em>リモート</em>デバッグを伴います。デバッグしたいプログラムは、
+デバッガプログラム（GDBまたはLLDB）を実行しているマシン上で実行されないためです。</p>
+<!--
+Remote debugging involves a client and a server. In a QEMU setup, the client
+will be a GDB (or LLDB) process and the server will be the QEMU process that's
+also running the embedded program.
+-->
+<p>リモートデバッグは、クライアントとサーバからなります。QEMUのセットアップで、
+クライアントはGDB（またはLLDB）プロセスとなり、サーバは組込みプログラムを実行しているQEMUプロセスとなります。</p>
+<!-- In this section we'll use the `hello` example we already compiled. -->
+<p>このセクションでは、コンパイル済みの<code>hello</code>の例を使用します。</p>
+<!-- The first debugging step is to launch QEMU in debugging mode: -->
+<p>最初のデバッグステップは、QEMUをデバッグモードで起動することです。</p>
+<pre><code class="language-console">$ qemu-system-arm \
+      -cpu cortex-m3 \
+      -machine lm3s6965evb \
+      -nographic \
+      -semihosting-config enable=on,target=native \
+      -gdb tcp::3333 \
+      -S \
+      -kernel target/thumbv7m-none-eabi/debug/examples/hello
+</code></pre>
+<!--
+This command won't print anything to the console and will block the terminal. We
+have passed two extra flags this time:
+-->
+<p>このコマンドは、コンソールに何も表示せず、端末をブロックします。
+ここでは2つの追加フラグを渡しています。</p>
+<!--
+- `-gdb tcp::3333`. This tells QEMU to wait for a GDB connection on TCP
+  port 3333.
+-->
+<ul>
+<li><code>-gdb tcp::3333</code>。QEMUがTCPポート3333番で、GDBコネクションを待つようにします。</li>
+</ul>
+<!--
+- `-S`. This tells QEMU to freeze the machine at startup. Without this the
+  program would have reached the end of main before we had a chance to launch
+  the debugger!
+-->
+<ul>
+<li><code>-S</code>。QEMUが、起動時に、マシンをフリーズします。このフラグがないと、
+デバッガを起動する前に、プログラムがmain関数の終わりに到達してしまいます。</li>
+</ul>
+<!--
+Next we launch GDB in another terminal and tell it to load the debug symbols of
+the example:
+-->
+<p>次に別の端末でGDBを起動し、<code>hello</code>の例のデバッグシンボルをロードします。</p>
+<pre><code class="language-console">$ &lt;gdb&gt; -q target/thumbv7m-none-eabi/debug/examples/hello
+</code></pre>
+<!--
+**NOTE**: `<gdb>` represents a GDB program capable of debugging ARM binaries.
+This could be `arm-none-eabi-gdb`, `gdb-multiarch` or `gdb` depending on your
+system -- you may have to try all three.
+-->
+<p><strong>注記</strong>: <code>&lt;gdb&gt;</code>はARMバイナリをデバッグ可能なGDBを意味します。
+あなたが利用しているシステムに依存して、<code>arm-none-eabi-gdb</code>か、<code>gdb-multiarch</code>、<code>gdb</code>になります。
+3つ全てを試してみる必要があるかもしれません。</p>
+<!--
+Then within the GDB shell we connect to QEMU, which is waiting for a connection
+on TCP port 3333.
+-->
+<p>すると、GDBシェルは、TCPポート3333番で接続を待っていたQEMUに接続します。</p>
+<pre><code class="language-console">(gdb) target remote :3333
+Remote debugging using :3333
+Reset () at $REGISTRY/cortex-m-rt-0.6.1/src/lib.rs:473
+473     pub unsafe extern &quot;C&quot; fn Reset() -&gt; ! {
+</code></pre>
+<!--
+You'll see that the process is halted and that the program counter is pointing
+to a function named `Reset`. That is the reset handler: what Cortex-M cores
+execute upon booting.
+-->
+<p>プロセスは停止しており、プログラムカウンタが<code>Reset</code>という名前の関数を指していることがわかります。
+<code>Reset</code>関数は、Cortex-Mコアが起動時に実行するリセットハンドラです。</p>
+<!--
+This reset handler will eventually call our main function. Let's skip all the
+way there using a breakpoint and the `continue` command:
+-->
+<p>このリセットハンドラは、最終的に、私たちのメイン関数を呼び出します。
+ブレイクポイントと<code>continue</code>コマンドを使って、メイン関数呼び出しまでスキップしましょう。</p>
+<pre><code class="language-console">(gdb) break main
+Breakpoint 1 at 0x400: file examples/panic.rs, line 29.
+
+(gdb) continue
+Continuing.
+
+Breakpoint 1, main () at examples/hello.rs:17
+17          let mut stdout = hio::hstdout().unwrap();
+</code></pre>
+<!--
+We are now close to the code that prints "Hello, world!". Let's move forward
+using the `next` command.
+-->
+<p>「Hello, world!」を表示するコードに近づいてきました。
+<code>next</code>コマンドを使って、先へ進みましょう。</p>
+<pre><code class="language-console">(gdb) next
+18          writeln!(stdout, &quot;Hello, world!&quot;).unwrap();
+
+(gdb) next
+20          debug::exit(debug::EXIT_SUCCESS);
+</code></pre>
+<!--
+At this point you should see "Hello, world!" printed on the terminal that's
+running `qemu-system-arm`.
+-->
+<p>この時点で、<code>qemu-system-arm</code>を実行している端末に「Hello, world」が表示されるはずです。</p>
+<pre><code class="language-console">$ qemu-system-arm (..)
+Hello, world!
+</code></pre>
+<!--
+Calling `next` again will terminate the QEMU process.
+-->
+<p>もう1度<code>next</code>を実行すると、QEMUプロセスが終了します。</p>
+<pre><code class="language-console">(gdb) next
+[Inferior 1 (Remote target) exited normally]
+</code></pre>
+<!--
+You can now exit the GDB session.
+-->
+<p>これでGDBセッションを終了できます。</p>
+<pre><code class="language-console">(gdb) quit
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../start/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../start/hardware.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../start/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../start/hardware.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

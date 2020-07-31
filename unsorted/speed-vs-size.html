@@ -1,0 +1,459 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>最適化: 速度とサイズのトレードオフ - The Embedded Rust Book</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro/index.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/no-std.html"><strong aria-hidden="true">1.1.</strong> no_std</a></li><li class="chapter-item expanded "><a href="../intro/tooling.html"><strong aria-hidden="true">1.2.</strong> ツール</a></li><li class="chapter-item expanded "><a href="../intro/install.html"><strong aria-hidden="true">1.3.</strong> インストール</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/install/linux.html"><strong aria-hidden="true">1.3.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../intro/install/macos.html"><strong aria-hidden="true">1.3.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../intro/install/windows.html"><strong aria-hidden="true">1.3.3.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../intro/install/verify.html"><strong aria-hidden="true">1.3.4.</strong> インストールの確認</a></li></ol></li><li class="chapter-item expanded "><a href="../intro/hardware.html"><strong aria-hidden="true">1.4.</strong> ハードウェア</a></li></ol></li><li class="chapter-item expanded "><a href="../start/index.html"><strong aria-hidden="true">2.</strong> 入門</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../start/qemu.html"><strong aria-hidden="true">2.1.</strong> QEMU</a></li><li class="chapter-item expanded "><a href="../start/hardware.html"><strong aria-hidden="true">2.2.</strong> ハードウェア</a></li><li class="chapter-item expanded "><a href="../start/registers.html"><strong aria-hidden="true">2.3.</strong> メモリマップドレジスタ</a></li><li class="chapter-item expanded "><a href="../start/semihosting.html"><strong aria-hidden="true">2.4.</strong> セミホスティング</a></li><li class="chapter-item expanded "><a href="../start/panicking.html"><strong aria-hidden="true">2.5.</strong> パニック</a></li><li class="chapter-item expanded "><a href="../start/exceptions.html"><strong aria-hidden="true">2.6.</strong> 例外</a></li><li class="chapter-item expanded "><a href="../start/interrupts.html"><strong aria-hidden="true">2.7.</strong> 割り込み</a></li><li class="chapter-item expanded "><a href="../start/io.html"><strong aria-hidden="true">2.8.</strong> IO</a></li></ol></li><li class="chapter-item expanded "><a href="../peripherals/index.html"><strong aria-hidden="true">3.</strong> ペリフェラル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../peripherals/a-first-attempt.html"><strong aria-hidden="true">3.1.</strong> Rustでの最初の試み</a></li><li class="chapter-item expanded "><a href="../peripherals/borrowck.html"><strong aria-hidden="true">3.2.</strong> 借用チェッカ</a></li><li class="chapter-item expanded "><a href="../peripherals/singletons.html"><strong aria-hidden="true">3.3.</strong> シングルトン</a></li></ol></li><li class="chapter-item expanded "><a href="../static-guarantees/index.html"><strong aria-hidden="true">4.</strong> 静的な保証</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../static-guarantees/typestate-programming.html"><strong aria-hidden="true">4.1.</strong> 型状態プログラミング</a></li><li class="chapter-item expanded "><a href="../static-guarantees/state-machines.html"><strong aria-hidden="true">4.2.</strong> ステートマシンとしてのペリフェラル</a></li><li class="chapter-item expanded "><a href="../static-guarantees/design-contracts.html"><strong aria-hidden="true">4.3.</strong> 設計契約</a></li><li class="chapter-item expanded "><a href="../static-guarantees/zero-cost-abstractions.html"><strong aria-hidden="true">4.4.</strong> ゼロコスト抽象化</a></li></ol></li><li class="chapter-item expanded "><a href="../portability/index.html"><strong aria-hidden="true">5.</strong> 移植性</a></li><li class="chapter-item expanded "><a href="../concurrency/index.html"><strong aria-hidden="true">6.</strong> 並行性</a></li><li class="chapter-item expanded "><a href="../collections/index.html"><strong aria-hidden="true">7.</strong> コレクション</a></li><li class="chapter-item expanded "><a href="../c-tips/index.html"><strong aria-hidden="true">8.</strong> 組込みC開発者へのヒント</a></li><li class="chapter-item expanded "><a href="../interoperability/index.html"><strong aria-hidden="true">9.</strong> 相互運用性</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/c-with-rust.html"><strong aria-hidden="true">9.1.</strong> Rustと少しのC</a></li><li class="chapter-item expanded "><a href="../interoperability/rust-with-c.html"><strong aria-hidden="true">9.2.</strong> Cと少しのRust</a></li></ol></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">10.</strong> 未分類のトピック</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/speed-vs-size.html" class="active"><strong aria-hidden="true">10.1.</strong> 最適化: 速度とサイズのトレードオフ</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">The Embedded Rust Book</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- # Optimizations: the speed size tradeoff -->
+<h1><a class="header" href="#最適化速度とサイズのトレードオフ" id="最適化速度とサイズのトレードオフ">最適化：速度とサイズのトレードオフ</a></h1>
+<!--
+Everyone wants their program to be super fast and super small but it's usually
+not possible to have maximize both characteristics. This section discusses the
+different optimization levels that `rustc` provides and how the affect the
+execution time and binary size of a program.
+-->
+<p>誰もがプログラムを超高速で超小さくしたいと願いますが、両方の特性を最大化することはできません。
+このセクションは、<code>rustc</code>が提供する異なる最適化レベルについて、どのようにプログラムの実行時間とバイナリサイズに影響するかを説明します。</p>
+<!-- ## No optimizations -->
+<h2><a class="header" href="#最適化なし" id="最適化なし">最適化なし</a></h2>
+<!--
+This is the default. When you call `cargo build` you use the development (AKA
+`dev`) profile. This profile is optimized for debugging so it enables debug
+information and does *not* enable any optimizations, i.e. it uses `-C opt-level
+= 0`.
+-->
+<p>これはデフォルトです。<code>cargo build</code>を実行する場合、開発（別名<code>dev</code>）プロファイルを使います。
+このプロファイルはデバッグに最適化されています。そのため、デバッグ情報が有効化されており、最適化は一切有効化されて<em>いません</em>。
+つまり、<code>-C opt-level = 0</code>を使用します。</p>
+<!--
+At least for bare metal development, debuginfo is zero cost in the sense that it
+won't occupy space in Flash / ROM so we actually recommend that you enable
+debuginfo in the release profile -- it is disabled by default. That will let you
+use breakpoints when debugging release builds.
+-->
+<p>少なくともベアメタルの開発では、デバッグ情報はある意味ゼロコストです。
+デバッグ情報は、Flash/ROMの容量を使いません。そのため、リリースプロファイルで、デフォルトで無効化されているデバッグ情報を有効化することをお勧めします。
+これにより、リリースビルドをデバッグする時、ブレイクポイントを使うことができます。</p>
+<pre><code class="language-toml">[profile.release]
+# シンボルは素晴らしく、Flashのサイズを増やしません
+debug = true
+</code></pre>
+<!--
+No optimizations is great for debugging because stepping through the code feels
+like you are executing the program statement by statement, plus you can `print`
+stack variables and function arguments in GDB. When the code is optimized trying
+to print variables results in `$0 = <value optimized out>` being printed.
+-->
+<p>最適化しないことはデバッグでは重要です。コードをステップ実行する時、プログラムをステートメントごとに実行しているように感じられるからです。
+さらに、スタックの変数や関数の引数をGDBで<code>print</code>することができます。
+コードが最適化されると、変数を表示しようとしても、<code>$0 = &lt;value optimized out&gt;</code>と表示されます。</p>
+<!--
+The biggest downside of the `dev` profile is that the resulting binary will be
+huge and slow. The size is usually more of a problem because unoptimized
+binaries can occupy dozens of KiB of Flash, which your target device may not
+have -- the result: your unoptimized binary doesn't fit in your device!
+-->
+<p><code>dev</code>プロファイルの最大の欠点は、バイナリが大きく、遅いことです。
+バイナリサイズは通常、より問題となります。最適化されていないバイナリは数十KiBもFlashを専有するからです。
+ターゲットデバイスは、数十KiBものFlashを持っていないかもしれず、最適化されていないバイナリは、デバイス内に納まりません。</p>
+<!-- Can we have smaller debugger friendly binaries? Yes, there's a trick. -->
+<p>デバッガで扱いやすい、小さなバイナリを作ることができるのでしょうか？できます。良いやり方があります。</p>
+<!-- ### Optimizing dependencies -->
+<h3><a class="header" href="#依存関係の最適化" id="依存関係の最適化">依存関係の最適化</a></h3>
+<!--
+> **WARNING** This section uses an unstable feature and it was last tested on
+> 2018-09-18. Things may have changed since then!
+-->
+<blockquote>
+<p><strong>注意</strong> このセクションは、2018-9-18に最後にテストされた安定化していないフィーチャを使います。
+それ以降、状況が変わっているかもしれません！</p>
+</blockquote>
+<!--
+On nightly, there's a Cargo feature named [`profile-overrides`] that lets you
+override the optimization level of dependencies. You can use that feature to
+optimize all dependencies for size while keeping the top crate unoptimized and
+debugger friendly.
+-->
+<p>nightlyでは、<a href="https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#profile-overrides"><code>profile-overrides</code></a>と呼ばれるCargoフィーチャがあります。これは、依存関係の最適化レベルをオーバーライドします。
+このフィーチャを使って、全ての依存クレートのサイズを最適化しながら、トップクレートを最適化しないでデバッガで扱いやすくすることができます。。</p>
+<!-- Here's an example: -->
+<p>例を示します。</p>
+<pre><code class="language-toml"># Cargo.toml
+cargo-features = [&quot;profile-overrides&quot;] # +
+
+[package]
+name = &quot;app&quot;
+# ..
+
+[profile.dev.overrides.&quot;*&quot;] # +
+opt-level = &quot;z&quot; # +
+</code></pre>
+<!-- Without the override: -->
+<p>オーバーライドなしでは、次の通りです。</p>
+<pre><code class="language-console">$ cargo size --bin app -- -A
+app  :
+section               size        addr
+.vector_table         1024   0x8000000
+.text                 9060   0x8000400
+.rodata               1708   0x8002780
+.data                    0  0x20000000
+.bss                     4  0x20000000
+</code></pre>
+<!-- With the override: -->
+<p>オーバーライドをすると、以下のようになります。</p>
+<pre><code class="language-console">$ cargo size --bin app -- -A
+app  :
+section               size        addr
+.vector_table         1024   0x8000000
+.text                 3490   0x8000400
+.rodata               1100   0x80011c0
+.data                    0  0x20000000
+.bss                     4  0x20000000
+</code></pre>
+<!--
+That's a 6 KiB reduction in Flash usage without any loss in the debuggability of
+the top crate. If you step into a dependency then you'll start seeing those
+`<value optimized out>` messages again but it's usually the case that you want
+to debug the top crate and not the dependencies. And if you *do* need to debug a
+dependency then you can use the `profile-overrides` feature to exclude a
+particular dependency from being optimized. See example below:
+-->
+<p>トップクレートのデバッグ性を失うことなしに、Flash使用量を6KiB減らしています。
+依存クレートの中に足を踏み入れると、<code>&lt;value optimized out&gt;</code>のメッセージを目にするでしょう。
+しかし、依存クレートではなく、トップクレートをデバッグしたい場合がほとんどでしょう。
+依存クレートをデバッグする必要が<em>ある</em>場合、特定の依存クレートを最適化から除外するために、<code>profile-overrides</code>フィーチャを使えます。
+例えば、以下のようになります。</p>
+<pre><code class="language-toml"># ..
+
+# `cortex-m-rt`クレートは最適化しません
+[profile.dev.overrides.cortex-m-rt] # +
+opt-level = 0 # +
+
+# しかし、他の依存クレートは最適化します
+[profile.dev.overrides.&quot;*&quot;]
+codegen-units = 1 # better optimizations
+opt-level = &quot;z&quot;
+</code></pre>
+<!-- Now the top crate and `cortex-m-rt` are debugger friendly! -->
+<p>これで、トップクレートと<code>cortex-m-rt</code>クレートはデバッガで扱いやすくなります！</p>
+<!-- ## Optimize for speed -->
+<h2><a class="header" href="#速度の最適化" id="速度の最適化">速度の最適化</a></h2>
+<!--
+As of 2018-09-18 `rustc` supports three "optimize for speed" levels: `opt-level
+= 1`, `2` and `3`. When you run `cargo build --release` you are using the release
+profile which defaults to `opt-level = 3`.
+-->
+<p>2018-09-18の<code>rustc</code>は、3つの「速度最適化」を提供しています。<code>opt-level = 1</code>、<code>2</code>と<code>3</code>です。
+<code>cargo build --release</code>を実行した時、デフォルトでは<code>opt-level = 3</code>のリリースプロファイルを使います。</p>
+<!--
+Both `opt-level = 2` and `3` optimize for speed at the expense of binary size,
+but level `3` does more vectorization and inlining than level `2`. In
+particular, you'll see that at `opt-level` equal or greater than `2` LLVM will
+unroll loops. Loop unrolling has a rather high cost in terms of Flash / ROM
+(e.g. from 26 bytes to 194 for a zero this array loop) but can also halve the
+execution time given the right conditions (e.g. number of iterations is big
+enough).
+-->
+<p><code>opt-level = 2</code>と<code>3</code>は、バイナリサイズを犠牲にして、速度を最適化します。レベル<code>3</code>はレベル<code>2</code>より、ベクトル化とインライン化を行います。
+特に、<code>opt-level</code>が<code>2</code>以上の場合、LLVMがループを展開するのがわかるでしょう。
+ループ展開は、Flash/ROMの観点からはよりコストが高いです（例えば、配列のループをゼロにする場合、26バイトから194バイトまで増加します）。
+しかし、適切な条件では、実行時間が半分になります（例えば、イテレーションの回数が十分大きい場合）。</p>
+<!--
+Currently there's no way to disable loop unrolling in `opt-level = 2` and `3` so
+if you can't afford its cost you should optimize your program for size.
+-->
+<p>現在、<code>opt-level = 2</code>と<code>3</code>でループ展開を無効化する方法はありません。
+ループ展開のコストを払うことができない場合、プログラムサイズの最適化をするべきです。</p>
+<!-- ## Optimize for size -->
+<h2><a class="header" href="#サイズの最適化" id="サイズの最適化">サイズの最適化</a></h2>
+<!--
+As of 2018-09-18 `rustc` supports two "optimize for size" levels: `opt-level =
+"s"` and `"z"`. These names were inherited from clang / LLVM and are not too
+descriptive but `"z"` is meant to give the idea that it produces smaller
+binaries than `"s"`.
+-->
+<p>2018-09-18の<code>rustc</code>は、2つの<code>サイズ最適化</code>を提供しています。<code>opt-level = &quot;s&quot;</code>と<code>&quot;z&quot;</code>です。
+これらの名前は、clang / LLVMから受け継いでおり、意味がわかりにくいです。
+<code>&quot;z&quot;</code>は、<code>&quot;s&quot;</code>より小さなバイナリを作る意図を意味します。</p>
+<!--
+If you want your release binaries to be optimized for size then change the
+`profile.release.opt-level` setting in `Cargo.toml` as shown below.
+-->
+<p>リリースバイナリのサイズを最適化したい場合、<code>Cargo.toml</code>の<code>profile.release.opt-level</code>設定を下記の通り変更します。</p>
+<pre><code class="language-toml">[profile.release]
+# または&quot;z&quot;
+opt-level = &quot;s&quot;
+</code></pre>
+<!--
+These two optimization levels greatly reduce LLVM's inline threshold, a metric
+used to decide whether to inline a function or not. One of Rust principles are
+zero cost abstractions; these abstractions tend to use a lot of newtypes and
+small functions to hold invariants (e.g. functions that borrow an inner value
+like `deref`, `as_ref`) so a low inline threshold can make LLVM miss
+optimization opportunities (e.g. eliminate dead branches, inline calls to
+closures).
+-->
+<p>これらの2つの最適化レベルは、LLVMのインラインしきい値を大幅に減らします。
+インラインしきい値は、関数をインライン化するか否かを決めるために使われる基準値です。
+Rustの原則の1つは、ゼロコスト抽象化です。
+これらの抽象化は、不変条件を保持するため、多くの新しい型と小さな関数を使う傾向にあります
+（例えば、<code>deref</code>や<code>as_ref</code>のような内部の値を借用するための関数）。
+そのため、インラインしきい値を低くすると、LLVMが最適化の機会を失います
+（例えば、不要な分岐を削除したり、クロージャをインライン呼び出しにする、など）。</p>
+<!--
+When optimizing for size you may want to try increasing the inline threshold to
+see if that has any effect on the binary size. The recommended way to change the
+inline threshold is to append the `-C inline-threshold` flag to the other
+rustflags in `.cargo/config`.
+-->
+<p>サイズの最適化を行っている時、バイナリサイズに影響があるかどうかを見るために、インラインしきい値を増やしたいかもしれません。
+インラインしきい値を変更するお勧めの方法は、<code>.cargo/config</code>内のrustflagsに<code>-C inline-threshold</code>フラグを追加することです。</p>
+<pre><code class="language-toml"># .cargo/config
+# cortex-m-quickstartテンプレートを使っていることを想定しています
+[target.'cfg(all(target_arch = &quot;arm&quot;, target_os = &quot;none&quot;))']
+rustflags = [
+  # ..
+  &quot;-C&quot;, &quot;inline-threshold=123&quot;, # +
+]
+</code></pre>
+<!--
+What value to use? [As of 1.29.0 these are the inline thresholds that the
+different optimization levels use][inline-threshold]:
+-->
+<p>この値は何に使われるのでしょうか？
+<a href="https://github.com/rust-lang/rust/blob/1.29.0/src/librustc_codegen_llvm/back/write.rs#L2105-L2122">1.29.0では、下記の値は、異なる最適化レベルで使われるインラインしきい値です</a></p>
+<!-- [inline-threshold]: https://github.com/rust-lang/rust/blob/1.29.0/src/librustc_codegen_llvm/back/write.rs#L2105-L2122 -->
+<!--
+- `opt-level = 3` uses 275
+- `opt-level = 2` uses 225
+- `opt-level = "s"` uses 75
+- `opt-level = "z"` uses 25
+-->
+<ul>
+<li><code>opt-level = 3</code>は275を使います</li>
+<li><code>opt-level = 2</code>は225を使います</li>
+<li><code>opt-level = &quot;s&quot;</code>は75を使います</li>
+<li><code>opt-level = &quot;z&quot;</code>は25を使います</li>
+</ul>
+<!-- You should try `225` and `275` when optimizing for size. -->
+<p>サイズの最適化をするときは、<code>225</code>と<code>275</code>を試してみるべきです。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../unsorted/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../unsorted/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
