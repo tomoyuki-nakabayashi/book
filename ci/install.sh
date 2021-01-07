@@ -8,7 +8,7 @@ main() {
                         | sort --version-sort \
                         | tail -n1)
     # Temporarily use older version until packages are available for 0.2.2 (or newer)
-    local tag="v0.2.1"
+    local tag="v0.4.5"
     curl -LSfs https://japaric.github.io/trust/install.sh | \
         sh -s -- --git rust-lang-nursery/mdbook --tag $tag
 
